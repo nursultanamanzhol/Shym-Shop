@@ -3,7 +3,9 @@ package com.example.bookapp
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
 import com.example.bookapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -60,5 +62,17 @@ class RegisterActivity : AppCompatActivity() {
         email = binding.emailEt.text.toString().trim()
         password = binding.passwordEt.text.toString().trim()
         val cPassword = binding.cPasswordEt.text.toString().trim()
+
+        //2) Validate Data
+        if (name.isEmpty()){
+            //empty name...
+            Toast.makeText(this, "Enter your name...", Toast.LENGTH_SHORT).show()
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            //invalid email pattern
+            Toast.makeText(this, "Invalid Email Pattern...", Toast.LENGTH_SHORT).show()
+
+        }
+
     }
 }
