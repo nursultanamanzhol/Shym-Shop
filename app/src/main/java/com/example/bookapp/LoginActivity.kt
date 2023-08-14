@@ -116,6 +116,17 @@ class LoginActivity : AppCompatActivity() {
 
                     // get user type e.g. user or admin
                     val userType = snapshot.child("userType").value
+                    if (userType == "user"){
+                        //its simple user, open user  dashboard
+                        startActivity(Intent(this@LoginActivity, DashboardUserActivity::class.java))
+                        finish()
+                    }
+                    else if (userType == "admin"){
+                        //its admin
+                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+                        finish()
+                    }
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
