@@ -9,6 +9,8 @@ import android.widget.Toast
 import com.example.bookapp.databinding.ActivityLoginBinding
 import com.google.android.play.integrity.internal.e
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlin.math.log
@@ -103,12 +105,22 @@ class LoginActivity : AppCompatActivity() {
 
         progressDialog.setMessage("Checking User...")
 
-        val firebaseUser = firebaseAuth.currentUser
+        val firebaseUser = firebaseAuth.currentUser!!
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseUser.uid)
             .addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun on
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    progressDialog.dismiss()
+
+                    // get user type e.g. user or admin
+                    val userType = snapshot.child("userType").value
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
             })
     }
 
