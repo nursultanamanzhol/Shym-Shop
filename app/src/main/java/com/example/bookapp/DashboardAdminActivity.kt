@@ -3,6 +3,7 @@ package com.example.bookapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat.startActivity
 import com.example.bookapp.databinding.ActivityDashboardAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -29,6 +30,11 @@ class DashboardAdminActivity : AppCompatActivity() {
             firebaseAuth.signOut()
             checkUser()
         }
+        // handle click, start add category page
+        binding.addCategoryBtn.setOnClickListener {
+            startActivity(Intent(this, CategoryAddActivity::class.java))
+        }
+
 
     }
 
