@@ -6,20 +6,49 @@
     android:layout_height="match_parent"
     android:background="@drawable/back05"
     tools:context=".CategoryAddActivity">
-    
+
     <!--Toolbar-->
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/shape_toolbar01">
+        android:background="@drawable/shape_toolbar01"
+        >
 
         <!--Back Button-->
+
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:src="@drawable/ic_back_white"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:id="@+id/iconIv"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/backBtn"
+            android:src="@drawable/logo02"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iconIv"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_centerHorizontal="true"
+            android:text="Add a new Category"
+            android:textColor="@color/white"
+            android:scrollbarSize="28sp"/>
+
     </RelativeLayout>
 
 </RelativeLayout>
