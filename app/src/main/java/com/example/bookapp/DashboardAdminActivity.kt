@@ -15,6 +15,7 @@ class DashboardAdminActivity : AppCompatActivity() {
     //firebase auth
     private lateinit var firebaseAuth: FirebaseAuth
 
+    private lateinit var categoryArrayList: ArrayList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
