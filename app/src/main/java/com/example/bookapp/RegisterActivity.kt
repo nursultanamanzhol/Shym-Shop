@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //init firebase auth
+        // firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
 
         //init progress dialog, will show while creating account | Register user
