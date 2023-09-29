@@ -1,14 +1,15 @@
-package com.example.bookapp
+package com.example.bookapp.category
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.bookapp.DashboardAdminActivity
+import com.example.bookapp.MainActivity
 import com.example.bookapp.databinding.ActivityCategoryAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import java.sql.Timestamp
-import kotlin.text.Typography.times
 
 class CategoryAddActivity : AppCompatActivity() {
 
@@ -63,11 +64,14 @@ class CategoryAddActivity : AppCompatActivity() {
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
-//success
+//success for commit
                 progressDialog.dismiss()
                 Toast.makeText(this, "Added Successfully...", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, DashboardAdminActivity::class.java))
+                finish()
+
             }
-            .addOnFailureListener{ e->
+            .addOnFailureListener { e ->
                 progressDialog.dismiss()
                 Toast.makeText(this, "Failed to add due to ${e.message}", Toast.LENGTH_SHORT).show()
                 //failed

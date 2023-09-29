@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".CategoryAddActivity"
+            android:name=".category.CategoryAddActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
