@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         //init progress dialog, will show while creating account | Register user
         progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please wait")
+//        progressDialog.setTitle("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
 
         //handle click, not have account, goto register screen

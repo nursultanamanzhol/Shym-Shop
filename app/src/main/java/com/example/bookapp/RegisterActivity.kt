@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //init firebase auth
+        // firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
 
         //init progress dialog, will show while creating account | Register user
@@ -68,23 +68,23 @@ class RegisterActivity : AppCompatActivity() {
         //2) Validate Data
         if (name.isEmpty()){
             //empty name...
-            Toast.makeText(this, "Enter your name...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Введите свое ФИО...", Toast.LENGTH_SHORT).show()
         }
         else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             //invalid email pattern
-            Toast.makeText(this, "Invalid Email Pattern...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Неверный шаблон электронной почты...", Toast.LENGTH_SHORT).show()
 
         }
         else if(password.isEmpty()){
             //empty password
-            Toast.makeText(this, "Enter password...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Введите пароль...", Toast.LENGTH_SHORT).show()
         }
         else if(cPassword.isEmpty()){
             //empty password
-            Toast.makeText(this, "Confirm password...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Подтвердите пароль...", Toast.LENGTH_SHORT).show()
         }
         else if(password!=cPassword){
-            Toast.makeText(this, "Password doesn't match...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Пароли не совпадает...", Toast.LENGTH_SHORT).show()
         }
         else{
             createUserAccount()
@@ -96,7 +96,7 @@ class RegisterActivity : AppCompatActivity() {
         //3) Create Account - Firebase Auth
 
         //show progress
-        progressDialog.setMessage("Creating Account...")
+        progressDialog.setMessage("Создание учетной записи...")
         progressDialog.show()
 
         //create user in firebase auth
@@ -108,7 +108,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnFailureListener{  e->
                 //failed creating account
                 progressDialog.dismiss()
-                Toast.makeText(this, "Failed creating account due to ${e.message}...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Не удалось создать учетную запись по причине ${e.message}...", Toast.LENGTH_SHORT).show()
 
             }
 
