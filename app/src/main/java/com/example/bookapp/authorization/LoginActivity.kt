@@ -1,4 +1,4 @@
-package com.example.bookapp
+package com.example.bookapp.authorization
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.example.bookapp.dashboard.DashboardAdminActivity
+import com.example.bookapp.dashboard.DashboardUserActivity
 import com.example.bookapp.databinding.ActivityLoginBinding
-import com.google.android.play.integrity.internal.e
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 

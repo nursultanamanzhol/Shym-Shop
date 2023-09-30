@@ -1,12 +1,11 @@
-package com.example.bookapp
+package com.example.bookapp.dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bookapp.databinding.ActivityDashboardAdminBinding
+import com.example.bookapp.MainActivity
 import com.example.bookapp.databinding.ActivityDashboardUserBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class DashboardUserActivity : AppCompatActivity() {
 

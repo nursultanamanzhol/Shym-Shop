@@ -5,8 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.bookapp.DashboardAdminActivity
-import com.example.bookapp.MainActivity
+import com.example.bookapp.dashboard.DashboardAdminActivity
 import com.example.bookapp.databinding.ActivityCategoryAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase

@@ -3,6 +3,8 @@ package com.example.bookapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.bookapp.authorization.LoginActivity
+import com.example.bookapp.dashboard.DashboardUserActivity
 import com.example.bookapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
