@@ -1,13 +1,12 @@
-package com.example.bookapp
+package com.example.bookapp.authorization
 
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.constraintlayout.motion.widget.TransitionBuilder.validate
+import com.example.bookapp.dashboard.DashboardUserActivity
 import com.example.bookapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase

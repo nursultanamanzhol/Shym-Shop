@@ -1,15 +1,15 @@
-package com.example.bookapp
+package com.example.bookapp.dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
+import com.example.bookapp.MainActivity
 import com.example.bookapp.category.AdapterCategory
 import com.example.bookapp.category.CategoryAddActivity
 import com.example.bookapp.category.ModelCategory
+import com.example.bookapp.category.UploadPdfActivity
 import com.example.bookapp.databinding.ActivityDashboardAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -54,7 +54,7 @@ class DashboardAdminActivity : AppCompatActivity() {
                     adapterCategory.filter.filter(s)
 
 
-                } catch (e: Exception){
+                } catch (e: Exception) {
 
                 }
             }
@@ -75,6 +75,10 @@ class DashboardAdminActivity : AppCompatActivity() {
             startActivity(Intent(this, CategoryAddActivity::class.java))
         }
 
+        // handle click, start add pdf file page
+        binding.addPdfFab.setOnClickListener {
+            startActivity(Intent(this, UploadPdfActivity::class.java))
+        }
 
     }
 
