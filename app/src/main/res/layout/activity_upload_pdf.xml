@@ -40,6 +40,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_500"
@@ -78,6 +79,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
+                android:id="@+id/titleEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_gray_01"
@@ -107,6 +109,7 @@
             app:layout_constraintTop_toBottomOf="@+id/TitleTil">
 
             <EditText
+                android:id="@+id/descriptionEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_gray_01"
