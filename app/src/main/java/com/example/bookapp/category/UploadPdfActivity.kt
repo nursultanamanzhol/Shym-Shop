@@ -13,12 +13,16 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bookapp.databinding.ActivityUploadPdfBinding
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask.TaskSnapshot
 import java.nio.channels.CancelledKeyException
+import kotlin.jvm.internal.Intrinsics.Kotlin
 
 class UploadPdfActivity : AppCompatActivity() {
 
@@ -76,12 +80,17 @@ class UploadPdfActivity : AppCompatActivity() {
             categoryPickDialog()
         }
 
+        //handle click, goback
+        binding.backBtn.setOnClickListener{
+            onBackPressed()
+        }
+
         //handle click, pick pdf intent
-        binding.attacheBtn.setOnClickListener {
+        binding.attacheConst.setOnClickListener {
             pdfPickIntent()
         }
         //handle click, start uploading pdf/product
-        binding.submitBtn.setOnClickListener {
+        binding.submitConst.setOnClickListener {
             validateData()
         }
 
@@ -101,6 +110,9 @@ class UploadPdfActivity : AppCompatActivity() {
             Toast.makeText(this, "Enter Description...", Toast.LENGTH_SHORT).show()
         } else if (category.isEmpty()) {
             Toast.makeText(this, "Enter Category...", Toast.LENGTH_SHORT).show()
+        } else if (pdfUri == null) {
+            Toast.makeText(this, "Pick PDF...", Toast.LENGTH_SHORT).show()
+
         } else {
             //data validated, begin upload
             uploadPdfToStorage()
@@ -116,7 +128,68 @@ class UploadPdfActivity : AppCompatActivity() {
 
         //timestamp
         val timestamp = System.currentTimeMillis()
+        // path of pdf in firebase storage
+        val filePathAndName = "Books/$timestamp"
+        //storage reference
+        val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
+        storageReference.putFile(pdfUri!!)
+            .addOnSuccessListener { taskSnapshot ->
+                Log.d(TAG, "uploadPdfToStorage: PDF uploaded now getting url...")
+
+                //Step -3  Get url of upload pdf
+                val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
+                while (!uriTask.isSuccessful);
+                val uploadPdfUrl = "${uriTask.result}"
+                uploadPdfInfoToDo(uploadPdfUrl, timestamp)
+            }
+            .addOnFailureListener { e ->
+                Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
+                progressDialog.dismiss()
+                Toast.makeText(this, "Failure to upload due to ${e.message}", Toast.LENGTH_SHORT)
+                    .show()
+            }
     }
+
+    private fun uploadPdfInfoToDo(uploadPdfUrl: String, timestamp: Long) {
+        //Step 4: Uploaded Pdf info to firebase db
+        Log.d(TAG, "uploadPdfInfoToDo: uploding to db")
+        progressDialog.setMessage("Uploading pdf info...")
+
+        //uid current user
+        val uid = firebaseAuth.uid
+
+        //setup data to upload
+        val hashMap: HashMap<String, Any> = HashMap()
+        hashMap["uid"] = "$uid"
+        hashMap["id"] = "$timestamp"
+        hashMap["title"] = "$title"
+        hashMap["description"] = "$description"
+        hashMap["categoryId"] = "$selectedCategoryId"
+        hashMap["url"] = "$uploadPdfUrl"
+        hashMap["timestamp"] = timestamp
+        hashMap["viewsCount"] = 0
+        hashMap["downloadsCount"] = 0
+
+        //db reference DB > BookS>BookId> (Book Info)
+        val ref = FirebaseDatabase.getInstance().getReference("Books")
+        ref.child("$timestamp")
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                Log.d(TAG, "uploadPdfInfoToDo: upload to db")
+                progressDialog.dismiss()
+                Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
+                pdfUri = null
+            }
+            .addOnFailureListener { e ->
+                Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
+                progressDialog.dismiss()
+                Toast.makeText(this, "Failure to upload due to ${e.message}", Toast.LENGTH_SHORT).show()
+
+            }
+
+
+    }
+
 
     private fun loadPdfCategories() {
         Log.d(TAG, "loadCategories: Loading pdf categories")
