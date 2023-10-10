@@ -14,7 +14,7 @@
         android:id="@+id/iconIv"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:src="@drawable/logo02"
+        android:src="@drawable/logo_1"
 
         />
     <TextView
@@ -23,7 +23,7 @@
         android:layout_below="@+id/iconIv"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Welcome to Book App"
+        android:text="Welcome to Nursultan Apps"
         android:textColor="@color/black"
         android:textSize="16sp"
         />
@@ -45,7 +45,7 @@
         android:id="@+id/skipBtn"
         android:layout_alignParentBottom="true"
         android:text="Continue without login"
-        android:textColor="@color/purple_500"
+        android:textColor="#cde7e6"
         android:background="@drawable/shape_button02"
         />
 
