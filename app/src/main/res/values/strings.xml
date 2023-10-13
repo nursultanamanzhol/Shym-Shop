@@ -5,5 +5,8 @@
     <string name="description_product">Описание товара</string>
     <string name="category_product">Категория товара</string>
     <string name="upload">Загрузить</string>
+    <string name="login">Login</string>
+    <string name="continue_without_login">Continue without login</string>
     <string name="nursultan_apps">Nursultan Apps</string>
+    <string name="welcome_to_nursultan_apps">Welcome to Nursultan Apps</string>
 </resources>
