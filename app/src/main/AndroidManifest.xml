@@ -6,19 +6,19 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/shymkent_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@drawable/shymkent_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".category.UploadPdfActivity"
-            android:theme ="@style/Theme.MenuBtn"
+            android:theme ="@style/Theme.BookApp"
             android:exported="false" />
         <activity
             android:name=".category.CategoryAddActivity"
-            android:theme ="@style/Theme.MenuBtn"
+            android:theme ="@style/Theme.BookApp"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".dashboard.DashboardAdminActivity"
-            android:theme ="@style/Theme.MenuBtn"
+            android:theme ="@style/Theme.BookApp"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".dashboard.DashboardUserActivity"
-            android:theme ="@style/Theme.MenuBtn"
+            android:theme ="@style/Theme.BookApp"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
