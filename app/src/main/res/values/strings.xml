@@ -9,4 +9,7 @@
     <string name="continue_without_login">Continue without login</string>
     <string name="nursultan_apps">Nursultan Apps</string>
     <string name="welcome_to_nursultan_apps">Welcome to Nursultan Apps</string>
+    <string name="full_name">ФИО</string>
+    <string name="iin_main">ИИН</string>
+    <string name="divide">/</string>
 </resources>

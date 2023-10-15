@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import com.example.bookapp.MainActivity
 import com.example.bookapp.category.AdapterCategory
 import com.example.bookapp.category.CategoryAddActivity
@@ -37,6 +38,11 @@ class DashboardAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Скрываем навигационную панель и часы
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
 
         //init firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
