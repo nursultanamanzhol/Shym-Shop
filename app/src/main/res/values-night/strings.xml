@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Book App</string>
+    <string name="app_name">Shym Shop</string>
     <string name="not_have_account_singup">New User? <b>SingUp</b></string>
     <string name="name_product">Название Товара</string>
     <string name="description_product">Описание товара</string>
