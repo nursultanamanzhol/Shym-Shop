@@ -7,6 +7,16 @@
     android:background="@drawable/shape_toolbar03"
     tools:context=".authorization.LoginActivity">
 
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarRl"
@@ -96,31 +106,31 @@
                             android:textAlignment="center"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
 
                         <View
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
                             android:id="@+id/separatorTop"
                             android:layout_width="80dp"
                             android:layout_height="2dp"
                             android:background="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/loginTv" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/divideTv"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/divide"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:text="@string/divide"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -137,20 +147,20 @@
                             android:layout_height="wrap_content"
                             android:text="Register"
                             android:textAlignment="center"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-<!--                        <View-->
-<!--                            app:layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintEnd_toEndOf="parent"-->
-<!--                            android:id="@+id/separatorTop"-->
-<!--                            android:layout_width="80dp"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="@color/black"-->
-<!--                            app:layout_constraintTop_toBottomOf="@+id/registerId" />-->
+                        <!--                        <View-->
+                        <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                        <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+                        <!--                            android:id="@+id/separatorTop"-->
+                        <!--                            android:layout_width="80dp"-->
+                        <!--                            android:layout_height="2dp"-->
+                        <!--                            android:background="@color/black"-->
+                        <!--                            app:layout_constraintTop_toBottomOf="@+id/registerId" />-->
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -7,6 +7,16 @@
     android:background="@drawable/shape_toolbar03"
     tools:context=".authorization.RegisterActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarRl"
@@ -54,9 +64,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_toolbar04"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:background="@drawable/shape_toolbar04"
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -181,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_person_gray"
+                    android:drawableEnd="@drawable/identity_card"
                     android:drawablePadding="10dp"
                     android:hint="@string/iin_main"
                     android:inputType="number"
@@ -231,7 +242,7 @@
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
@@ -256,7 +267,7 @@
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
-                    android:hint="Confirm Password"
+                    android:hint="@string/confirm_password"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"

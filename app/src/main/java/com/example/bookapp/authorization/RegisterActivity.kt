@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -80,8 +81,20 @@ class RegisterActivity : AppCompatActivity() {
 //        }
 
         binding.LoginTv.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            val progressDialog = ProgressDialog(this)
+            progressDialog.setMessage("Загрузка...")
+
+            // Показываем ProgressDialog
+            progressDialog.show()
+
+            // Создаем задачу для Handler, чтобы закрыть ProgressDialog через 2 секунды
+            Handler().postDelayed({
+                progressDialog.dismiss()
+
+                // После закрытия ProgressDialog запускаем новую активность
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }, 2000) // 2000 миллисекунд (2 секунды)
         }
 
         //handle click, begin register
