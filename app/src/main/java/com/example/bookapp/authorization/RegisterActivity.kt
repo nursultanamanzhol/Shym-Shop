@@ -5,10 +5,15 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Patterns
+import android.widget.EditText
 import android.widget.Toast
+import com.example.bookapp.R
 import com.example.bookapp.dashboard.DashboardUserActivity
 import com.example.bookapp.databinding.ActivityRegisterBinding
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -27,6 +32,30 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val iinEt = findViewById<EditText>(R.id.iinEt)
+        val iinMain = findViewById<TextInputLayout>(R.id.iin_main)
+
+        iinEt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length ?: 0 < 12) {
+                    iinMain.error = "ИИН должен содержать 12 цифр"
+                    iinMain.isErrorEnabled = true
+                } else {
+                    iinMain.error = null
+                    iinMain.isErrorEnabled = false
+                }
+            }
+        })
+
+
 
         // Скрываем навигационную панель и часы
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -87,7 +116,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Введите свое ФИО...", Toast.LENGTH_SHORT).show()
         } else if (iinMain.isEmpty()) {
             //empty iinMain...
-            Toast.makeText(this, "Введите свое ФИО...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Введите свои ИИН...", Toast.LENGTH_SHORT).show()
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             //invalid email pattern
             Toast.makeText(this, "Неверный шаблон электронной почты...", Toast.LENGTH_SHORT).show()
@@ -147,6 +176,7 @@ class RegisterActivity : AppCompatActivity() {
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["uid"] = uid
         hashMap["email"] = email
+        hashMap["iiMain"] = iinMain
         hashMap["name"] = name
         hashMap["profileImage"] = "" //add empty, will do in profile edit
         hashMap["userType"] =
