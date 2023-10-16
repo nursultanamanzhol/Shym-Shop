@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="app_name">Shym Shop</string>
     <string name="not_have_account_singup">New User? <b>SingUp</b></string>
     <string name="name_product">Название Товара</string>
@@ -16,4 +19,5 @@
     <string name="confirm_password">Подтвердите Пароль</string>
     <string name="finalized">finalized</string>
     <string name="logout">Logout</string>
+    <string name="submit">Submit</string>
 </resources>

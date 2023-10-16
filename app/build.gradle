@@ -9,6 +9,7 @@ android {
     namespace 'com.example.bookapp'
     compileSdk 33
 
+
     defaultConfig {
         applicationId "com.example.bookapp"
         minSdk 21
@@ -41,21 +42,19 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-ktx:1.7.0'
 
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.7'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.3.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.2.1'
-    implementation 'com.google.firebase:firebase-storage:20.2.1'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.3.0'
 
-    //animated lottie
-    implementation 'com.airbnb.android:lottie:3.4.0'
-
+    //pdf viewer
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

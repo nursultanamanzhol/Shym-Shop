@@ -1,17 +1,22 @@
 package com.example.bookapp.dashboard
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.bookapp.MainActivity
+import com.example.bookapp.R
 import com.example.bookapp.category.AdapterCategory
 import com.example.bookapp.category.CategoryAddActivity
 import com.example.bookapp.category.ModelCategory
 import com.example.bookapp.category.UploadPdfActivity
 import com.example.bookapp.databinding.ActivityDashboardAdminBinding
+import com.example.bookapp.databinding.RowCategoryBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class DashboardAdminActivity : AppCompatActivity() {
+    private lateinit var row_holder: RowCategoryBinding
 
     //view binding
     private lateinit var binding: ActivityDashboardAdminBinding
@@ -34,20 +40,40 @@ class DashboardAdminActivity : AppCompatActivity() {
 
 //    private lateinit var categoryArrayList: ArrayList<firebaseAuth>
 
+//    lateinit var toggle: ActionBarDrawerToggle
+//    private lateinit var drawerLayout: DrawerLayout
+//    private var isDrawerOpen = false // Изначально предполагаем, что панель закрыта
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardAdminBinding.inflate(layoutInflater)
+        row_holder = RowCategoryBinding.inflate(layoutInflater) // Здесь используйте свой макет
         setContentView(binding.root)
 
-        // Скрываем навигационную панель и часы
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        uploadPdfFile()
+        closeWindow()
+        loadCategories()
 
         //init firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
-        loadCategories()
+
+
+    }
+
+    private fun uploadPdfFile() {
+        binding.addPdfFab.setOnClickListener {
+            startActivity(Intent(this, UploadPdfActivity::class.java))
+        }
+
+        binding.addCategoryBtn.setOnClickListener {
+            startActivity(Intent(this, CategoryAddActivity::class.java))
+        }
+        //handle click, logout
+        binding.logoutBtn.setOnClickListener {
+            firebaseAuth.signOut()
+            checkUser()
+        }
 
         //поиск
         binding.searchEt.addTextChangedListener(object : TextWatcher {
@@ -69,24 +95,16 @@ class DashboardAdminActivity : AppCompatActivity() {
 
             }
         })
-
-
-        //handle click, logout
-        binding.logoutBtn.setOnClickListener {
-            firebaseAuth.signOut()
-            checkUser()
-        }
-        // handle click, start add category page
-        binding.addCategoryBtn.setOnClickListener {
-            startActivity(Intent(this, CategoryAddActivity::class.java))
-        }
-
-        // handle click, start add pdf file page
-        binding.addPdfFab.setOnClickListener {
-            startActivity(Intent(this, UploadPdfActivity::class.java))
-        }
-
     }
+
+
+    // Скрываем навигационную панель и часы
+    private fun closeWindow() {
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+    }
+
 
     private fun loadCategories() {
         //init arraylist
@@ -132,3 +150,75 @@ class DashboardAdminActivity : AppCompatActivity() {
         }
     }
 }
+
+
+//        drawerLayout = binding.drawer
+//
+//        binding.apply {
+//            btnNavView.setOnClickListener {
+//                // Открываем drawer
+//                drawerLayout.openDrawer(GravityCompat.START)
+//            }
+//
+//
+//
+//
+//        }
+//
+//        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+//        drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
+//
+//        drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
+//            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+//                // Вызывается при изменении состояния панели (при открытии или закрытии)
+//                // slideOffset - это значение от 0 до 1, где 0 - закрыта, 1 - полностью открыта
+//                isDrawerOpen = slideOffset > 0.5 // Задайте желаемый порог открытия панели
+//                // Обновляем состояние кнопок при изменении панели
+//                updateButtonClickableState()
+//            }
+//
+//            override fun onDrawerOpened(drawerView: View) {
+//                // Вызывается, когда панель открывается
+//            }
+//
+//            override fun onDrawerClosed(drawerView: View) {
+//                // Вызывается, когда панель закрывается
+//            }
+//
+//            override fun onDrawerStateChanged(newState: Int) {
+//                // Вызывается при изменении состояния панели
+//            }
+//        })
+//
+//    }
+//
+//    override fun onPostCreate(savedInstanceState: Bundle?) {
+//        super.onPostCreate(savedInstanceState)
+//        // Вызывается после завершения создания активити
+//
+//        // Изначально устанавливаем состояние кнопок в зависимости от значения isDrawerOpen
+//        updateButtonClickableState()
+//    }
+//
+//    private fun updateButtonClickableState() {
+//        // Обновляем состояние кнопок в зависимости от значения isDrawerOpen
+//        if (isDrawerOpen) {
+//            binding.logoutBtn.isClickable = false
+//            binding.searchEt.isClickable = false
+//            binding.categoriesRv.isClickable = false
+//            binding.addCategoryBtn.isClickable = false
+//            row_holder.deleteBtn.isClickable = false
+//            row_holder.categoryTv.isClickable = false
+//            binding.addPdfFab.isClickable = false
+//
+//        } else {
+//            binding.logoutBtn.isClickable = true
+//            binding.searchEt.isClickable = true
+//            binding.categoriesRv.isClickable = true
+//            binding.addCategoryBtn.isClickable = true
+//            row_holder.deleteBtn.isClickable = true
+//            row_holder.categoryTv.isClickable = true
+//            binding.addPdfFab.isClickable = true
+//        }
+//    }
