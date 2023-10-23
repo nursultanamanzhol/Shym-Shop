@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.example.bookapp'
-    compileSdk 33
+    compileSdk 34
 
 
     defaultConfig {
@@ -54,8 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:20.3.0'
 
     //    pdf viewer
-    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
-
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     //animated lottie
     implementation 'com.airbnb.android:lottie:3.4.0'
 
