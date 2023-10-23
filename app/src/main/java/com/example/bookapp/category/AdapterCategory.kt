@@ -2,6 +2,7 @@ package com.example.bookapp.category
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookapp.databinding.RowCategoryBinding
+import com.example.bookapp.pdflist.PdfListAdminActivity
 import com.google.firebase.database.FirebaseDatabase
 
 class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Filterable {
@@ -65,7 +67,16 @@ class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fi
                 .show()
         }
 
+        //handle click, start pdf list admin activity, also pas pdf id, title
+        holder.itemView.setOnClickListener {
+            val intent =  Intent(context, PdfListAdminActivity::class.java)
+            intent.putExtra("categoryId", id)
+            intent.putExtra("category", category)
+            context.startActivity(intent)
+        }
+
     }
+
 
     private fun deleteCategory(model: ModelCategory, holder: HolderCategory) {
 //get id in category to delete

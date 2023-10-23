@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/back_circle"
             android:padding="5dp"
             android:src="@drawable/ic_back_white"
             app:layout_constraintStart_toStartOf="parent"

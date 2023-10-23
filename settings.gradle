@@ -10,7 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://customers.pspdfkit.com/maven")
+        }
     }
 }
-rootProject.name = "Book App"
+rootProject.name = "Shym Shop"
 include ':app'
