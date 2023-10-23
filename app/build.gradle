@@ -54,7 +54,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:20.3.0'
 
     //pdf viewer
-    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+//    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+    //animated lottie
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
