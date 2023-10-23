@@ -1,4 +1,4 @@
-package com.example.bookapp
+package com.shym.bookapp
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import com.example.bookapp.authorization.LoginActivity
-import com.example.bookapp.dashboard.DashboardUserActivity
-import com.example.bookapp.databinding.ActivityMainBinding
+import com.shym.bookapp.databinding.ActivityMainBinding
+import com.shym.bookapp.authorization.LoginActivity
+import com.shym.bookapp.dashboard.DashboardUserActivity
+
 
 class MainActivity : AppCompatActivity() {
 

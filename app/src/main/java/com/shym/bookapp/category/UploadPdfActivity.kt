@@ -1,4 +1,4 @@
-package com.example.bookapp.category
+package com.shym.bookapp.category
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
@@ -11,7 +11,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bookapp.databinding.ActivityUploadPdfBinding
+import com.shym.bookapp.dashboard.DashboardAdminActivity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.shym.bookapp.databinding.ActivityUploadPdfBinding
 
 @Suppress("DEPRECATION")
 class UploadPdfActivity : AppCompatActivity() {
@@ -176,6 +177,7 @@ class UploadPdfActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
                 pdfUri = null
+                startActivity(Intent(this, DashboardAdminActivity::class.java))
             }
             .addOnFailureListener { e ->
                 Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")

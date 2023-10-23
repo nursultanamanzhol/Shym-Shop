@@ -1,12 +1,12 @@
-package com.example.bookapp
+package com.shym.bookapp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import com.example.bookapp.dashboard.DashboardAdminActivity
-import com.example.bookapp.dashboard.DashboardUserActivity
+import com.shym.bookapp.dashboard.DashboardAdminActivity
+import com.shym.bookapp.dashboard.DashboardUserActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,7 +36,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed(Runnable{
             checkUser()
-        }, 3000) //means 1 seconds
+        }, 2000) //means 1 seconds
     }
 
     private fun checkUser() {

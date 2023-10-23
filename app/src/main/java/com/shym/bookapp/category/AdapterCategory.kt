@@ -1,4 +1,4 @@
-package com.example.bookapp.category
+package com.shym.bookapp.category
 
 import android.app.AlertDialog
 import android.content.Context
@@ -12,9 +12,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bookapp.databinding.RowCategoryBinding
-import com.example.bookapp.pdflist.PdfListAdminActivity
+import com.shym.bookapp.pdflist.PdfListAdminActivity
 import com.google.firebase.database.FirebaseDatabase
+import com.shym.bookapp.databinding.RowCategoryBinding
 
 class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Filterable {
     //ViewHolder class to hold/init UI Views for recycleView in row_category.xml

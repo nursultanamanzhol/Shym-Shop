@@ -1,4 +1,4 @@
-package com.example.bookapp.authorization
+package com.shym.bookapp.authorization
 
 import android.view.View
 import android.app.ProgressDialog
@@ -11,12 +11,12 @@ import android.text.TextWatcher
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
-import com.example.bookapp.R
-import com.example.bookapp.dashboard.DashboardUserActivity
-import com.example.bookapp.databinding.ActivityRegisterBinding
+import com.shym.bookapp.dashboard.DashboardUserActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.shym.bookapp.R
+import com.shym.bookapp.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
 

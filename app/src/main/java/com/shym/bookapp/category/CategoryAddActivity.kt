@@ -1,4 +1,4 @@
-package com.example.bookapp.category
+package com.shym.bookapp.category
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.bookapp.dashboard.DashboardAdminActivity
-import com.example.bookapp.databinding.ActivityCategoryAddBinding
+import com.shym.bookapp.dashboard.DashboardAdminActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.shym.bookapp.databinding.ActivityCategoryAddBinding
 
 class CategoryAddActivity : AppCompatActivity() {
 

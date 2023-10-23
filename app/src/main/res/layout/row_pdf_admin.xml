@@ -101,14 +101,14 @@
 
 
     <ImageButton
+        android:id="@+id/moreBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/moreBtn"
-        android:src="@drawable/ic_more_btn_black"
-        android:padding="5dp"
-        android:background="@android:color/transparent"
         android:layout_alignParentEnd="true"
-        />
+        android:layout_marginEnd="0dp"
+        android:background="@android:color/transparent"
+        android:padding="5dp"
+        android:src="@drawable/ic_more_btn_black" />
 
 
 </RelativeLayout>

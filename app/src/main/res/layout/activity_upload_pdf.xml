@@ -12,7 +12,7 @@
         android:id="@+id/toolbarUpload"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/shape_toolbar01"
+        android:background="@drawable/shape_toolbar05"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -51,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

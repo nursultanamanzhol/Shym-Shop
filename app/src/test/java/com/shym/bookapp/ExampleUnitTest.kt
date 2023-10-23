@@ -1,4 +1,4 @@
-package com.example.bookapp
+package com.shym.bookapp
 
 import org.junit.Test
 

@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    namespace 'com.example.bookapp'
+    namespace 'com.shym.bookapp'
     compileSdk 34
 
 
     defaultConfig {
-        applicationId "com.example.bookapp"
+        applicationId "com.shym.bookapp"
         minSdk 21
         multiDexEnabled true
         targetSdk 33

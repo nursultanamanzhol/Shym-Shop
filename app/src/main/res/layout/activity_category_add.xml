@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_toolbar04"
+    android:background="@color/white"
     tools:context=".category.CategoryAddActivity">
 
     <!--Toolbar-->
@@ -15,7 +15,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/shape_toolbar03"
+        android:background="@drawable/shape_toolbar05"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,9 +26,8 @@
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/back_circle"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
             android:padding="5dp"
             android:src="@drawable/ic_back_white"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,12 +36,12 @@
 
         <ImageView
             android:id="@+id/iconIv"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/backBtn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:src="@drawable/logo_1"
+            android:src="@drawable/shymkent_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:scrollbarSize="28sp"
+            android:textSize="16sp"
             android:text="Add a new Category"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

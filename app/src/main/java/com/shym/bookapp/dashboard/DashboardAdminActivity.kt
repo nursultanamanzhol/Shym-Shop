@@ -1,27 +1,23 @@
-package com.example.bookapp.dashboard
+package com.shym.bookapp.dashboard
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.example.bookapp.MainActivity
-import com.example.bookapp.R
-import com.example.bookapp.category.AdapterCategory
-import com.example.bookapp.category.CategoryAddActivity
-import com.example.bookapp.category.ModelCategory
-import com.example.bookapp.category.UploadPdfActivity
-import com.example.bookapp.databinding.ActivityDashboardAdminBinding
-import com.example.bookapp.databinding.RowCategoryBinding
+import com.shym.bookapp.MainActivity
+import com.shym.bookapp.category.AdapterCategory
+import com.shym.bookapp.category.CategoryAddActivity
+import com.shym.bookapp.category.ModelCategory
+import com.shym.bookapp.category.UploadPdfActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.shym.bookapp.databinding.ActivityDashboardAdminBinding
+import com.shym.bookapp.databinding.RowCategoryBinding
 
 class DashboardAdminActivity : AppCompatActivity() {
     private lateinit var row_holder: RowCategoryBinding

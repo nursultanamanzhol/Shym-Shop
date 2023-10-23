@@ -1,4 +1,4 @@
-package com.example.bookapp.authorization
+package com.shym.bookapp.authorization
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -8,14 +8,14 @@ import android.os.Handler
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import com.example.bookapp.dashboard.DashboardAdminActivity
-import com.example.bookapp.dashboard.DashboardUserActivity
-import com.example.bookapp.databinding.ActivityLoginBinding
+import com.shym.bookapp.dashboard.DashboardAdminActivity
+import com.shym.bookapp.dashboard.DashboardUserActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.shym.bookapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 

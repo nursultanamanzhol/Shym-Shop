@@ -29,13 +29,14 @@
 
         <ImageView
             android:id="@+id/iconIv"
-            android:layout_width="wrap_content"
-            android:layout_height="220dp"
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:cropToPadding="true"
-            android:src="@drawable/logo_1"
+            android:src="@drawable/shymkent_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="180dp"
+        android:scrollbarSize="300sp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +70,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             app:layout_constraintStart_toStartOf="parent">
