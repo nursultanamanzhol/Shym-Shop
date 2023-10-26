@@ -105,6 +105,8 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
                 }else if (position == 1){
                     //delete
 
+                    //show confirmation dialog first if you need...
+                    MyApplication.deleteBook(context, bookId, bookUrl, bookTitle)
                 }
             }
             .show()
