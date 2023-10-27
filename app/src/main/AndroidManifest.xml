@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name="com.shym.bookapp.pdflist.MyApplication"
+        android:name=".pdflist.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".pdflist.PdfDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".pdflist.PdfEditActivity"
             android:exported="false" />

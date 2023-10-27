@@ -184,6 +184,36 @@ class MyApplication : Application() {
 
         }
 
+        fun incrementBookViewCount(bookId: String){
+            //get current book views count
+            val ref  = FirebaseDatabase.getInstance().getReference("Books")
+            ref.child(bookId)
+                .addListenerForSingleValueEvent(object :ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //gt viewscount
+                        var viewsCount = "${snapshot.child(" viewsCount ").value}"
+
+                        if (viewsCount == "" || viewsCount == "null"){
+                            viewsCount = "0";
+                        }
+                        //2) Increment views count
+                        val newViewsCount = viewsCount.toLong() + 1
+                        //setup data to update in db
+                        val hashMap = HashMap<String, Any>()
+                        hashMap["viewsCount"] = newViewsCount
+
+                        //set to db
+                        val dbRef = FirebaseDatabase.getInstance().getReference("Books")
+                        dbRef.child(bookId)
+                            .updateChildren(hashMap)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+                })
+        }
+
 
     }
 

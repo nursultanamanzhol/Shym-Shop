@@ -7,8 +7,8 @@
         android:endColor="#16135F"
         android:startColor="@color/back_btn" />
     <corners
-        android:bottomLeftRadius="30dp"
-        android:bottomRightRadius="30dp"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
         />
 
 
