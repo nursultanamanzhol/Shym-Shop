@@ -47,7 +47,7 @@ class DashboardAdminActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         uploadPdfFile()
-        closeWindow()
+//        closeWindow()
         loadCategories()
 
         //init firebase Auth
@@ -95,11 +95,11 @@ class DashboardAdminActivity : AppCompatActivity() {
 
 
     // Скрываем навигационную панель и часы
-    private fun closeWindow() {
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-    }
+//    private fun closeWindow() {
+//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+//    }
 
 
     private fun loadCategories() {

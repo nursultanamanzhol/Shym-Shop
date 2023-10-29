@@ -115,7 +115,7 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/bottomLl"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,11 +127,10 @@
             android:id="@+id/bottomLl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
             android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <!--add category-->

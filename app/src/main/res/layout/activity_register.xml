@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_person_gray"
-                    android:drawableEnd="@drawable/identity_card"
+                    android:drawableEnd="@drawable/ic_iin_identity_card"
                     android:drawablePadding="10dp"
                     android:hint="@string/iin_main"
                     android:inputType="number"

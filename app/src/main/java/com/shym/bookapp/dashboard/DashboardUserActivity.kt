@@ -21,11 +21,6 @@ class DashboardUserActivity : AppCompatActivity() {
         binding = ActivityDashboardUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Скрываем навигационную панель и часы
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
