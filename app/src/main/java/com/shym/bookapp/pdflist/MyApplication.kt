@@ -49,15 +49,13 @@ class MyApplication : Application() {
 
 
                     //convert bytes to KB/MB
-                    val kb = bytes/1024
-                    val mb = kb/1024
-                    if (mb>1){
+                    val kb = bytes / 1024
+                    val mb = kb / 1024
+                    if (mb > 1) {
                         sizeTv.text = "${String.format("%.2f", mb)} MB"
-                    }
-                    else if(kb>= 1){
+                    } else if (kb >= 1) {
                         sizeTv.text = "${String.format("%.2f", kb)} KB"
-                    }
-                    else{
+                    } else {
                         sizeTv.text = "${String.format("%.2f", bytes)} BYTES"
                     }
                 }
@@ -77,7 +75,13 @@ class MyApplication : Application() {
 //        2) If we don't require page number we will pass null
 //        *And in function if pagesTv (TextView) parameter is not null we will set the page number count*/
 
-        fun loadPdfFromUrlSinglePage(pdfUrl: String, pdfTitle: String, pdfView: PDFView, progressBar: ProgressBar,pagesTv: TextView?){
+        fun loadPdfFromUrlSinglePage(
+            pdfUrl: String,
+            pdfTitle: String,
+            pdfView: PDFView,
+            progressBar: ProgressBar,
+            pagesTv: TextView?
+        ) {
             // using url we can get file its metadata from firebase storage
             val TAG = "PDF_THUMBNAIL_TAG"
 
@@ -96,17 +100,17 @@ class MyApplication : Application() {
                             progressBar.visibility = View.INVISIBLE
                             Log.d(TAG, "loadPdfFromUrlSinglePage: ${t.message}")
                         }
-                        .onPageError{page, t ->
+                        .onPageError { page, t ->
                             progressBar.visibility = View.INVISIBLE
                             Log.d(TAG, "loadPdfFromUrlSinglePage: ${t.message}")
                         }
-                        .onLoad {nbPages ->
+                        .onLoad { nbPages ->
                             Log.d(TAG, "loadPdfFromUrlSinglePage: Pages: $nbPages")
                             //pdf loaded, we can set page count, pdf thumbnail
                             progressBar.visibility = View.INVISIBLE
 
                             // if pagesTv param is not null then set page numbers
-                            if (pagesTv != null){
+                            if (pagesTv != null) {
                                 pagesTv.text = "$nbPages"
                             }
                         }
@@ -121,11 +125,11 @@ class MyApplication : Application() {
         }
 
 
-        fun loadCategory(categoryId: String, categoryTv: TextView){
+        fun loadCategory(categoryId: String, categoryTv: TextView) {
             // load category using category id from firebase
             val ref = FirebaseDatabase.getInstance().getReference("Categories")
             ref.child(categoryId)
-                .addListenerForSingleValueEvent(object : ValueEventListener{
+                .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         //get category
                         val category = "${snapshot.child("category").value}"
@@ -141,7 +145,7 @@ class MyApplication : Application() {
 
         }
 
-        fun deleteBook(context: Context, bookId: String, bookUrl: String, bookTitle: String){
+        fun deleteBook(context: Context, bookId: String, bookUrl: String, bookTitle: String) {
             //param details
             //1) context 2)book id 3) bookUrl 4)bookTitle
             val TAG = "DELETE_BOOK_TAG"
@@ -166,34 +170,43 @@ class MyApplication : Application() {
                         .removeValue()
                         .addOnSuccessListener {
                             progressDialog.dismiss()
-                            Toast.makeText(context, "Successfully deleted...", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Successfully deleted...", Toast.LENGTH_SHORT)
+                                .show()
                             Log.d(TAG, "deleteBook: Successfully deleted...")
                         }
                         .addOnFailureListener { e ->
                             progressDialog.dismiss()
                             Log.d(TAG, "deleteBook: Failed to delete from db due to ${e.message}")
-                            Toast.makeText(context, "Failed to delete from db due to ${e.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                "Failed to delete from db due to ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                 }
-                .addOnFailureListener {e ->
+                .addOnFailureListener { e ->
                     progressDialog.dismiss()
                     Log.d(TAG, "deleteBook: Failed to delete from storage due to ${e.message}")
-                    Toast.makeText(context, "Failed to delete from storage due to ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Failed to delete from storage due to ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
 
         }
 
-        fun incrementBookViewCount(bookId: String){
+        fun incrementBookViewCount(bookId: String) {
             //get current book views count
-            val ref  = FirebaseDatabase.getInstance().getReference("Books")
+            val ref = FirebaseDatabase.getInstance().getReference("Books")
             ref.child(bookId)
-                .addListenerForSingleValueEvent(object :ValueEventListener{
+                .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         //gt viewscount
                         var viewsCount = "${snapshot.child(" viewsCount ").value}"
 
-                        if (viewsCount == "" || viewsCount == "null"){
+                        if (viewsCount == "" || viewsCount == "null") {
                             viewsCount = "0";
                         }
                         //2) Increment views count

@@ -93,15 +93,6 @@ class DashboardAdminActivity : AppCompatActivity() {
         })
     }
 
-
-    // Скрываем навигационную панель и часы
-//    private fun closeWindow() {
-//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-//    }
-
-
     private fun loadCategories() {
         //init arraylist
         categoryArrayList = ArrayList()
@@ -120,7 +111,7 @@ class DashboardAdminActivity : AppCompatActivity() {
                 }
                 //setup adapter
                 adapterCategory = AdapterCategory(this@DashboardAdminActivity, categoryArrayList)
-                //set adapter Rv
+//                //set adapter Rv
                 binding.categoriesRv.adapter = adapterCategory
 
             }
@@ -140,9 +131,8 @@ class DashboardAdminActivity : AppCompatActivity() {
             finish()
         } else {
             //logged in, get and show user info
-            val email = firebaseUser.email
             //set to textview of toolbar
-            binding.subTitleTv.text = email
+            binding.subTitleTv.text = firebaseUser.email
         }
     }
 }

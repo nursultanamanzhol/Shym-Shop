@@ -15,7 +15,7 @@ class PdfListAdminActivity : AppCompatActivity() {
     //viewBinding
     private lateinit var binding: ActivityPdfListBinding
 
-    private companion object{
+    private companion object {
         const val TAG = "PDF_LIST_ADMIN_TAG"
     }
 
@@ -24,6 +24,7 @@ class PdfListAdminActivity : AppCompatActivity() {
 
     //arrayList to hold books
     private lateinit var pdfArrayList: ArrayList<ModelPdf>
+
     //adapter
     private lateinit var adapterPdfAdmin: AdapterPdfAdmin
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class PdfListAdminActivity : AppCompatActivity() {
         loadPdfList()
 
         //search
-        binding.searchEt.addTextChangedListener(object :TextWatcher{
+        binding.searchEt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -52,10 +53,8 @@ class PdfListAdminActivity : AppCompatActivity() {
                 //filter data
                 try {
                     adapterPdfAdmin.filter!!.filter(s)
-                }
-                catch (e: Exception){
+                } catch (e: Exception) {
                     Log.d(TAG, "onTextChanged: ${e.message}")
-
                 }
             }
 
@@ -76,11 +75,11 @@ class PdfListAdminActivity : AppCompatActivity() {
         pdfArrayList = ArrayList()
         val ref = FirebaseDatabase.getInstance().getReference("Books")
         ref.orderByChild("categoryId").equalTo(categoryId)
-            .addValueEventListener(object :ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     //clear list before start adding data into it
                     pdfArrayList.clear()
-                    for (ds in snapshot.children){
+                    for (ds in snapshot.children) {
                         //get data
                         val model = ds.getValue(ModelPdf::class.java)
                         //add to list
