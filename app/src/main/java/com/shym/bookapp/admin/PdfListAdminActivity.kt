@@ -1,4 +1,4 @@
-package com.shym.bookapp.pdflist
+package com.shym.bookapp.admin
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.bookapp.databinding.ActivityPdfListBinding
+import com.shym.bookapp.pdflist.ModelPdf
 
 class PdfListAdminActivity : AppCompatActivity() {
     //viewBinding

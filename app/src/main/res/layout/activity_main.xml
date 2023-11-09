@@ -50,7 +50,7 @@
         android:id="@+id/loginBtn"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/skipBtn"
+        app:layout_constraintBottom_toTopOf="@+id/registerBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="15dp"
@@ -105,7 +105,7 @@
     <!--        android:textColorHint="@color/white" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/skipBtn"
+        android:id="@+id/registerBtn"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_500"
-            android:text="@string/continue_without_login"
+            android:text="Регистрация"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

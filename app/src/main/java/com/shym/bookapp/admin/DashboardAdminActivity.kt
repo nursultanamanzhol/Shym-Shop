@@ -1,10 +1,9 @@
-package com.shym.bookapp.dashboard
+package com.shym.bookapp.admin
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.shym.bookapp.MainActivity
 import com.shym.bookapp.category.AdapterCategory

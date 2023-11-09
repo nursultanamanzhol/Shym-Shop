@@ -1,6 +1,5 @@
 package com.shym.bookapp.authorization
 
-import android.view.View
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +10,7 @@ import android.text.TextWatcher
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
-import com.shym.bookapp.dashboard.DashboardUserActivity
+import com.shym.bookapp.user.DashboardUserActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase

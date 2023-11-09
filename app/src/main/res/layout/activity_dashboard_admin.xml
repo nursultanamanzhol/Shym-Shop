@@ -2,12 +2,12 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:layout_gravity="start"
-    android:id="@+id/drawer"
-    tools:context=".dashboard.DashboardAdminActivity">
+    android:background="@color/white"
+    tools:context=".admin.DashboardAdminActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,8 +31,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
-                android:padding="5dp"
                 android:background="@drawable/back_circle"
+                android:padding="5dp"
                 android:src="@drawable/ic_menu"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,13 +69,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingStart="15dp"
-                android:id="@+id/logoutBtn"
                 android:paddingEnd="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
+                    android:id="@+id/logoutBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -113,9 +113,9 @@
             android:id="@+id/categoriesRv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/bottomLl"
             app:layout_constraintEnd_toEndOf="parent"
@@ -129,8 +129,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:orientation="horizontal"
             android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <!--add category-->
@@ -182,145 +182,144 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addPdfFab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:contentDescription="TODO"
                 android:src="@drawable/ic_pdf_white"
                 app:fabCustomSize="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white"
-                android:contentDescription="TODO" />
+                app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="start"-->
-<!--        android:background="@drawable/shape_toolbar03"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:ignore="RtlSymmetry">-->
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="300dp"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_gravity="start"-->
+    <!--        android:background="@drawable/shape_toolbar03"-->
+    <!--        android:orientation="vertical"-->
+    <!--        tools:ignore="RtlSymmetry">-->
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/center_custom"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:padding="20dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            >-->
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/center_custom"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="50dp"-->
+    <!--            android:padding="20dp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            >-->
 
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:id="@+id/btn_finalized"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/btn_finalized"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="50dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent"-->
 
-<!--                >-->
+    <!--                >-->
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:background="?android:attr/selectableItemBackground"-->
-<!--                    android:clickable="true"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent">-->
-
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/finalizedText"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="15dp"-->
-<!--                        android:text="@string/finalized"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textFontWeight="500"-->
-<!--                        android:textSize="24sp"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/finalizedImg"-->
-<!--                        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/finalizedImg"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="15dp"-->
-<!--                        android:src="@drawable/ic_logout_custom"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent"-->
+    <!--                    android:background="?android:attr/selectableItemBackground"-->
+    <!--                    android:clickable="true"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent">-->
 
 
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/finalizedText"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginStart="15dp"-->
+    <!--                        android:text="@string/finalized"-->
+    <!--                        android:textColor="@color/black"-->
+    <!--                        android:textFontWeight="500"-->
+    <!--                        android:textSize="24sp"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/finalizedImg"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/finalizedImg"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginStart="15dp"-->
+    <!--                        android:src="@drawable/ic_logout_custom"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/backBtnLogout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="165dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:background="@drawable/add_new_product"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent">-->
-
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:id="@+id/bottom_custom"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:background="?android:attr/selectableItemBackground"-->
-<!--                android:clickable="true"-->
-<!--                android:paddingTop="10dp"-->
-<!--                android:paddingBottom="10dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/LogoutTextView"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="15dp"-->
-<!--                    android:text="@string/logout"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textFontWeight="500"-->
-<!--                    android:textSize="24sp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/logoutBtnHeader"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="15dp"-->
-<!--                    android:src="@drawable/ic_logout_custom"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/LogoutTextView"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/backBtnLogout"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="165dp"-->
+    <!--            android:layout_marginBottom="20dp"-->
+    <!--            android:background="@drawable/add_new_product"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent">-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/bottom_custom"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:background="?android:attr/selectableItemBackground"-->
+    <!--                android:clickable="true"-->
+    <!--                android:paddingTop="10dp"-->
+    <!--                android:paddingBottom="10dp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/LogoutTextView"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginStart="15dp"-->
+    <!--                    android:text="@string/logout"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textFontWeight="500"-->
+    <!--                    android:textSize="24sp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/logoutBtnHeader"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginStart="15dp"-->
+    <!--                    android:src="@drawable/ic_logout_custom"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toEndOf="@+id/LogoutTextView"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>

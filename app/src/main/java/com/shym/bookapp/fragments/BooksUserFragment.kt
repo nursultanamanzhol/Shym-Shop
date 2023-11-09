@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.shym.bookapp.R
 import com.shym.bookapp.databinding.FragmentBooksUserBinding
-import com.shym.bookapp.pdflist.AdapterPdfUser
+import com.shym.bookapp.user.AdapterPdfUser
 import com.shym.bookapp.pdflist.ModelPdf
-import java.security.AllPermission
 
 class BooksUserFragment : Fragment {
 

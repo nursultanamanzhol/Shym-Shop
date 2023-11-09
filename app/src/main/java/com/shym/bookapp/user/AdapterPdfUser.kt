@@ -1,4 +1,4 @@
-package com.shym.bookapp.pdflist
+package com.shym.bookapp.user
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,9 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.shym.bookapp.databinding.RowPdfUserBinding
+import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.pdflist.MyApplication
+import com.shym.bookapp.pdflist.PdfDetailsActivity
 
 class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filterable {
     private lateinit var context: Context
@@ -47,7 +50,7 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         val title = model.title
         val description = model.description
         val uid = model.uid
-        val url = model.url
+        val pdfUrl = model.url
         val timestamp = model.timestamp
 
         // convert time
@@ -58,16 +61,17 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         holder.descriptionTv.text = description
         holder.dateTv.text = date
 
+        MyApplication.loadCategory(categoryId, holder.categoryTv)
+
         MyApplication.loadPdfFromUrlSinglePage(
-            url,
+            pdfUrl,
             title,
             holder.pdfView,
             holder.progressBar,
             null
         ) // no need number of pages so pass bull
 
-        MyApplication.loadCategory(categoryId, holder.categoryTv)
-        MyApplication.loadPdfSize(url, title, holder.sizeTv)
+        MyApplication.loadPdfSize(pdfUrl, title, holder.sizeTv)
 
         //handle click, open pdf details page
         holder.itemView.setOnClickListener {

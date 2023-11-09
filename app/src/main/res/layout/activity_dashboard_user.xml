@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".dashboard.DashboardUserActivity">
+    tools:context=".user.DashboardUserActivity">
 
     <!--Toolbar-->
 
@@ -64,7 +64,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/logoutBtn"
+
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingStart="15dp"
@@ -74,6 +74,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
+                    android:id="@+id/logoutBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -92,8 +93,10 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarRl"
             app:tabBackground="@drawable/tab_selector"
             app:tabIndicatorFullWidth="false"

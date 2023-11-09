@@ -1,4 +1,4 @@
-package com.shym.bookapp.pdflist
+package com.shym.bookapp.admin
 
 import android.app.AlertDialog
 import android.content.Context
@@ -10,6 +10,10 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.shym.bookapp.databinding.RowPdfAdminBinding
+import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.pdflist.MyApplication
+import com.shym.bookapp.pdflist.PdfDetailsActivity
+import com.shym.bookapp.pdflist.PdfEditActivity
 
 class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Filterable {
 
@@ -50,7 +54,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         /*----- Get data,  set data, handle click etc---*/
         //get data
         val model = pdfArrayList[position]
-        val pdfId = model.id
+        val bookId = model.id
         val categoryId = model.categoryId
         val title = model.title
         val description = model.description
@@ -68,11 +72,17 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         //load further detail like category, pdf url, pdf size
 
         //load category
-        MyApplication.loadCategory( categoryId, holder.categoryTv)
+        MyApplication.loadCategory(categoryId, holder.categoryTv)
 
 
         //we dont  need page number here, pas null for page number  || load pdf thumbnail
-        MyApplication.loadPdfFromUrlSinglePage(pdfUrl, title, holder.pdfView, holder.progressBar, null)
+        MyApplication.loadPdfFromUrlSinglePage(
+            pdfUrl,
+            title,
+            holder.pdfView,
+            holder.progressBar,
+            null
+        )
 
         //load pdf size
         MyApplication.loadPdfSize(pdfUrl, title, holder.sizeTv)
@@ -84,12 +94,12 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         //handle item click, open PdfDetailsActivity activity, lets create it first
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PdfDetailsActivity::class.java)
-            intent.putExtra("bookId", pdfId) // will be used to load book details
+            intent.putExtra("bookId", bookId) // will be used to load book details
             context.startActivity(intent)
         }
     }
 
-    private fun moreOptionsDialog(model: ModelPdf, holder: AdapterPdfAdmin.HolderPdfAdmin) {
+    private fun moreOptionsDialog(model: ModelPdf, holder: HolderPdfAdmin) {
         //get id, url, title of book
         val bookId = model.id
         val bookUrl = model.url

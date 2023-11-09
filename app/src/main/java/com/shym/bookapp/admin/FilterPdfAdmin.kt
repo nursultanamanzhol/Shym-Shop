@@ -1,6 +1,7 @@
-package com.shym.bookapp.pdflist
+package com.shym.bookapp.admin
 
 import android.widget.Filter
+import com.shym.bookapp.pdflist.ModelPdf
 
 
 /*used to filter data from recyclerview | search pdf from pdf list in recyclerview*/

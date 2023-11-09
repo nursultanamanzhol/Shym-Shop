@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".pdflist.MyApplication"
@@ -24,7 +25,7 @@
             android:name=".pdflist.PdfEditActivity"
             android:exported="false" />
         <activity
-            android:name=".pdflist.PdfListAdminActivity"
+            android:name=".admin.PdfListAdminActivity"
             android:exported="false" />
         <activity
             android:name=".category.UploadPdfActivity"
@@ -39,7 +40,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".dashboard.DashboardAdminActivity"
+            android:name=".admin.DashboardAdminActivity"
             android:exported="false"
             android:theme="@style/Theme.BookApp">
             <meta-data
@@ -47,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".dashboard.DashboardUserActivity"
+            android:name=".user.DashboardUserActivity"
             android:exported="false"
             android:theme="@style/Theme.BookApp">
             <meta-data

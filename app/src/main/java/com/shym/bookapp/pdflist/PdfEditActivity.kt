@@ -11,7 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.shym.bookapp.dashboard.DashboardAdminActivity
+import com.shym.bookapp.admin.DashboardAdminActivity
 import com.shym.bookapp.databinding.ActivityPdfEditBinding
 
 class PdfEditActivity : AppCompatActivity() {

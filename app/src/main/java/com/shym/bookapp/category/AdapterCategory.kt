@@ -12,7 +12,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.shym.bookapp.pdflist.PdfListAdminActivity
+import com.shym.bookapp.admin.PdfListAdminActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.shym.bookapp.databinding.RowCategoryBinding
 

@@ -1,11 +1,9 @@
-package com.shym.bookapp.dashboard
+package com.shym.bookapp.user
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout.AttachedBehavior
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -61,7 +59,6 @@ class DashboardUserActivity : AppCompatActivity() {
         //load category from db
         val ref = FirebaseDatabase.getInstance().getReference("Categories")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
-
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 categoryArrayList.clear()  // clear list
