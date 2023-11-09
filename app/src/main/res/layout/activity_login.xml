@@ -30,11 +30,11 @@
         <ImageView
             android:id="@+id/iconIv"
             android:layout_width="150dp"
-            android:layout_marginTop="10dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:cropToPadding="true"
             android:src="@drawable/shymkent_logo"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -60,9 +60,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:scrollbarSize="300sp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="10dp"
+        android:scrollbarSize="300sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -70,8 +70,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="80dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="30dp"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -171,16 +171,19 @@
                 <!--Email-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/emailTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/back_btn"
+                    app:boxStrokeColor="@color/white"
+                    app:boxStrokeWidth="2dp"
                     app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/emailEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -192,18 +195,17 @@
                         android:padding="10dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray01" />
-
-
                 </com.google.android.material.textfield.TextInputLayout>
+
 
                 <!--Password-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/emailTil"
                     android:layout_marginTop="10dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -255,8 +257,8 @@
                     <View
                         android:id="@+id/loginView"
                         android:layout_width="match_parent"
-                        android:background="@drawable/add_new_product"
                         android:layout_height="match_parent"
+                        android:background="@drawable/add_new_product"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
