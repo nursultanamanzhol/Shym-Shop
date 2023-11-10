@@ -1,4 +1,4 @@
-package com.shym.bookapp.admin
+package com.shym.bookapp.users_role.admin
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,8 +9,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.shym.bookapp.users_role.admin.adapter.AdapterPdfAdmin
 import com.shym.bookapp.databinding.ActivityPdfListBinding
-import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.models.ModelPdf
 
 class PdfListAdminActivity : AppCompatActivity() {
     //viewBinding

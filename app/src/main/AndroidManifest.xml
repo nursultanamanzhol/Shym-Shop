@@ -19,43 +19,42 @@
         <activity
             android:name=".pdflist.PdfViewActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp" />
+            />
         <activity
             android:name=".pdflist.PdfDetailsActivity"
             android:exported="false"
-             />
+            />
         <activity
             android:name=".pdflist.PdfEditActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp" />
+            />
         <activity
-            android:name=".admin.PdfListAdminActivity"
+            android:name=".users_role.admin.PdfListAdminActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp" />
+            />
         <activity
             android:name=".category.UploadPdfActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp" />
+            />
         <activity
             android:name=".category.CategoryAddActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp">
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".admin.DashboardAdminActivity"
+            android:name=".users_role.admin.DashboardAdminActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp">
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.DashboardUserActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BookApp">
+            android:name=".users_role.customer.DashboardUserActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -63,7 +62,8 @@
         <activity
             android:name=".authorization.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp">
+            android:theme="@style/Theme.TheAuthorized"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -71,7 +71,7 @@
         <activity
             android:name=".authorization.RegisterActivity"
             android:exported="false"
-            android:theme="@style/Theme.BookApp">
+            android:theme="@style/Theme.TheAuthorized">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -90,9 +90,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".MainActivity"
-            />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.shym.bookapp.fragments
+package com.shym.bookapp.users_role.customer.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -14,8 +14,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.bookapp.databinding.FragmentBooksUserBinding
-import com.shym.bookapp.user.AdapterPdfUser
-import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.users_role.customer.adapter.AdapterPdfUser
+import com.shym.bookapp.models.ModelPdf
 
 class BooksUserFragment : Fragment {
 

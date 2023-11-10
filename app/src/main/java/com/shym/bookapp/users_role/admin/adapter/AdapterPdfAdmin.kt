@@ -1,4 +1,4 @@
-package com.shym.bookapp.admin
+package com.shym.bookapp.users_role.admin.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.shym.bookapp.users_role.admin.FilterPdfAdmin
 import com.shym.bookapp.databinding.RowPdfAdminBinding
-import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.models.ModelPdf
 import com.shym.bookapp.pdflist.MyApplication
 import com.shym.bookapp.pdflist.PdfDetailsActivity
 import com.shym.bookapp.pdflist.PdfEditActivity

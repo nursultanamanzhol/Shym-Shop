@@ -1,4 +1,4 @@
-package com.shym.bookapp.user
+package com.shym.bookapp.users_role.customer.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,10 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.shym.bookapp.databinding.RowPdfUserBinding
-import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.models.ModelPdf
 import com.shym.bookapp.pdflist.MyApplication
 import com.shym.bookapp.pdflist.PdfDetailsActivity
+import com.shym.bookapp.users_role.customer.FilterPdfUser
 
 class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filterable {
     private lateinit var context: Context

@@ -1,7 +1,8 @@
-package com.shym.bookapp.admin
+package com.shym.bookapp.users_role.admin
 
 import android.widget.Filter
-import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.users_role.admin.adapter.AdapterPdfAdmin
+import com.shym.bookapp.models.ModelPdf
 
 
 /*used to filter data from recyclerview | search pdf from pdf list in recyclerview*/

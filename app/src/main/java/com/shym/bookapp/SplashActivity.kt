@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import com.shym.bookapp.admin.DashboardAdminActivity
-import com.shym.bookapp.user.DashboardUserActivity
+import com.shym.bookapp.users_role.admin.DashboardAdminActivity
+import com.shym.bookapp.users_role.customer.DashboardUserActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

@@ -1,20 +1,34 @@
-package com.shym.bookapp.admin
+package com.shym.bookapp.users_role.admin
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.shym.bookapp.MainActivity
-import com.shym.bookapp.category.AdapterCategory
+import com.shym.bookapp.category.adapter.AdapterCategory
 import com.shym.bookapp.category.CategoryAddActivity
-import com.shym.bookapp.category.ModelCategory
+import com.shym.bookapp.models.ModelCategory
 import com.shym.bookapp.category.UploadPdfActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.shym.bookapp.R
 import com.shym.bookapp.databinding.ActivityDashboardAdminBinding
 import com.shym.bookapp.databinding.RowCategoryBinding
 
@@ -35,9 +49,9 @@ class DashboardAdminActivity : AppCompatActivity() {
 
 //    private lateinit var categoryArrayList: ArrayList<firebaseAuth>
 
-//    lateinit var toggle: ActionBarDrawerToggle
-//    private lateinit var drawerLayout: DrawerLayout
-//    private var isDrawerOpen = false // Изначально предполагаем, что панель закрыта
+    lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var drawerLayout: DrawerLayout
+    private var isDrawerOpen = false // Изначально предполагаем, что панель закрыта
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +84,18 @@ class DashboardAdminActivity : AppCompatActivity() {
             checkUser()
         }
 
+        /*Btnsheet menu*/
+//        binding.btnNavView.setOnClickListener {
+//            val view : View = layoutInflater.inflate(R.layout.bottomsheet_fragment, null)
+//            val dialog = BottomSheetDialog(this)
+//            dialog.setContentView(view)
+//            dialog.show()
+//        }
+
+        binding.btnNavView.setOnClickListener {
+            showBottomDialog()
+        }
+
         //поиск
         binding.searchEt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -91,6 +117,44 @@ class DashboardAdminActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun showBottomDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.bottomsheet_fragment)
+
+//        val videoLayout: LinearLayout = dialog.findViewById(R.id.layoutVideo)
+//        val shortsLayout: LinearLayout = dialog.findViewById(R.id.layoutShorts)
+//        val liveLayout: LinearLayout = dialog.findViewById(R.id.layoutLive)
+        val cancelButton: ImageView = dialog.findViewById(R.id.cancelButton)
+
+//        videoLayout.setOnClickListener {
+//            dialog.dismiss()
+//            Toast.makeText(this@MainActivity, "Upload a Video is clicked", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        shortsLayout.setOnClickListener {
+//            dialog.dismiss()
+//            Toast.makeText(this@MainActivity, "Create a short is Clicked", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        liveLayout.setOnClickListener {
+//            dialog.dismiss()
+//            Toast.makeText(this@MainActivity, "Go live is Clicked", Toast.LENGTH_SHORT).show()
+//        }
+
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        dialog.window?.setGravity(Gravity.BOTTOM)
+    }
+
+
 
     private fun loadCategories() {
         //init arraylist

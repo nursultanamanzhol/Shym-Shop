@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
-import com.shym.bookapp.admin.DashboardAdminActivity
-import com.shym.bookapp.user.DashboardUserActivity
+import com.shym.bookapp.users_role.admin.DashboardAdminActivity
+import com.shym.bookapp.users_role.customer.DashboardUserActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -33,10 +34,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Скрываем навигационную панель и часы
-//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
 
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
@@ -78,6 +78,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
+
     private var email = ""
     private var password = ""
 
@@ -88,13 +89,11 @@ class LoginActivity : AppCompatActivity() {
 
 
         //2) Validate data
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Invalid email format...", Toast.LENGTH_SHORT).show()
-        }
-        else if(password.isEmpty()){
+        } else if (password.isEmpty()) {
             Toast.makeText(this, "Enter password...", Toast.LENGTH_SHORT).show()
-        }
-        else{
+        } else {
             loginUser()
         }
     }
@@ -112,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
                 checkUser()
 
             }
-            .addOnFailureListener { e->
+            .addOnFailureListener { e ->
                 //failed login
                 Toast.makeText(this, "Login failed due to ${e.message}", Toast.LENGTH_SHORT).show()
 
@@ -130,21 +129,25 @@ class LoginActivity : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addListenerForSingleValueEvent(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     progressDialog.dismiss()
 
                     // get user type e.g. user or admin
                     val userType = snapshot.child("userType").value
-                    if (userType == "user"){
+                    if (userType == "user") {
                         //its simple user, open user  dashboard
                         startActivity(Intent(this@LoginActivity, DashboardUserActivity::class.java))
                         finish()
-                    }
-                    else if (userType == "admin"){
+                    } else if (userType == "admin") {
                         //its admin
-                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                DashboardAdminActivity::class.java
+                            )
+                        )
                         finish()
                     }
 

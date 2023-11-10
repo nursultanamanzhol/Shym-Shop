@@ -1,4 +1,4 @@
-package com.shym.bookapp.pdflist
+package com.shym.bookapp.models
 
 class ModelPdf {
 

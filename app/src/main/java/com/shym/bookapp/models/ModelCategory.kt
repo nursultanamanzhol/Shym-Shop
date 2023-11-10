@@ -1,4 +1,4 @@
-package com.shym.bookapp.category
+package com.shym.bookapp.models
 
 class ModelCategory {
     //variables

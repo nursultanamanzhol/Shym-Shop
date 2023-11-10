@@ -1,4 +1,4 @@
-package com.shym.bookapp.category
+package com.shym.bookapp.category.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -12,8 +12,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.shym.bookapp.admin.PdfListAdminActivity
+import com.shym.bookapp.users_role.admin.PdfListAdminActivity
 import com.google.firebase.database.FirebaseDatabase
+import com.shym.bookapp.category.FilterCategory
+import com.shym.bookapp.models.ModelCategory
 import com.shym.bookapp.databinding.RowCategoryBinding
 
 class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Filterable {

@@ -1,7 +1,8 @@
-package com.shym.bookapp.user
+package com.shym.bookapp.users_role.customer
 
 import android.widget.Filter
-import com.shym.bookapp.pdflist.ModelPdf
+import com.shym.bookapp.models.ModelPdf
+import com.shym.bookapp.users_role.customer.adapter.AdapterPdfUser
 
 class FilterPdfUser : Filter {
 

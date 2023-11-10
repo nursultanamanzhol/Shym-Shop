@@ -10,12 +10,13 @@ import android.text.TextWatcher
 import android.util.Patterns
 import android.widget.EditText
 import android.widget.Toast
-import com.shym.bookapp.user.DashboardUserActivity
+import com.shym.bookapp.users_role.customer.DashboardUserActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shym.bookapp.R
 import com.shym.bookapp.databinding.ActivityRegisterBinding
+import android.view.View
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -58,9 +59,9 @@ class RegisterActivity : AppCompatActivity() {
 
 
         // Скрываем навигационную панель и часы
-//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
 
         // Если у вас есть ActionBar, скройте его
 //        supportActionBar?.hide()

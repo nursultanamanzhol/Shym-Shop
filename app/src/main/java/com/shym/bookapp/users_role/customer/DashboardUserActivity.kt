@@ -1,4 +1,4 @@
-package com.shym.bookapp.user
+package com.shym.bookapp.users_role.customer
 
 import android.content.Context
 import android.content.Intent
@@ -14,9 +14,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.shym.bookapp.category.ModelCategory
+import com.shym.bookapp.models.ModelCategory
 import com.shym.bookapp.databinding.ActivityDashboardUserBinding
-import com.shym.bookapp.fragments.BooksUserFragment
+import com.shym.bookapp.users_role.customer.fragments.BooksUserFragment
 
 class DashboardUserActivity : AppCompatActivity() {
 

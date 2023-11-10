@@ -1,6 +1,8 @@
 package com.shym.bookapp.category
 
 import android.widget.Filter
+import com.shym.bookapp.category.adapter.AdapterCategory
+import com.shym.bookapp.models.ModelCategory
 
 class FilterCategory : Filter {
     // arraylist in which we want to search
