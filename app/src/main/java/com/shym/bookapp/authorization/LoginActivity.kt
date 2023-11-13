@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.bookapp.databinding.ActivityLoginBinding
+import com.shym.bookapp.users_role.salesman.DashboardSalesmanActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -140,14 +141,13 @@ class LoginActivity : AppCompatActivity() {
                         //its simple user, open user  dashboard
                         startActivity(Intent(this@LoginActivity, DashboardUserActivity::class.java))
                         finish()
+                    } else if (userType == "salesman") {
+                        //its admin
+                        startActivity(Intent(this@LoginActivity, DashboardSalesmanActivity::class.java))
+                        finish()
                     } else if (userType == "admin") {
                         //its admin
-                        startActivity(
-                            Intent(
-                                this@LoginActivity,
-                                DashboardAdminActivity::class.java
-                            )
-                        )
+                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
                         finish()
                     }
 

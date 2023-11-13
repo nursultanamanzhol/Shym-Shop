@@ -17,37 +17,36 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".users_role.salesman.DashboardSalesmanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".users_role.admin.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".pdflist.PdfViewActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".pdflist.PdfDetailsActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".pdflist.PdfEditActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".users_role.admin.PdfListAdminActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".category.UploadPdfActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".category.CategoryAddActivity"
-            android:exported="false"
-            >
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".users_role.admin.DashboardAdminActivity"
-            android:exported="false"
-            >
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -62,8 +61,7 @@
         <activity
             android:name=".authorization.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.TheAuthorized"
-            >
+            android:theme="@style/Theme.TheAuthorized">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

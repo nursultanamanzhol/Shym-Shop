@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -16,8 +18,12 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.search.SearchView.Behavior
 import com.shym.bookapp.MainActivity
 import com.shym.bookapp.category.adapter.AdapterCategory
 import com.shym.bookapp.category.CategoryAddActivity
@@ -67,17 +73,56 @@ class DashboardAdminActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
+        binding.apply {
+            navHeader.setNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.profile -> {
+                        startActivity(
+                            Intent(
+                                this@DashboardAdminActivity,
+                                ProfileActivity::class.java
+                            )
+                        )
+                    }
+                    R.id.add_category_menu ->{
+                        startActivity(
+                            Intent(
+                                this@DashboardAdminActivity,
+                                CategoryAddActivity::class.java
+                            )
+                        )
+                    }R.id.add_product_menu ->{
+                        startActivity(
+                            Intent(
+                                this@DashboardAdminActivity,
+                                UploadPdfActivity::class.java
+                            )
+                        )
+                    }
+                }
+//                drawer.closeDrawer(GravityCompat.START)
+                true
+            }
+            btnNavView.setOnClickListener {
+                drawer.openDrawer(GravityCompat.START)
+            }
+        }
+
+//        BottomSheetBehavior.from(binding.sheet).apply {
+//            peekHeight = 100
+//            this.state = BottomSheetBehavior.STATE_COLLAPSED
+//        }
 
     }
 
     private fun uploadPdfFile() {
-        binding.addPdfFab.setOnClickListener {
-            startActivity(Intent(this, UploadPdfActivity::class.java))
-        }
-
-        binding.addCategoryBtn.setOnClickListener {
-            startActivity(Intent(this, CategoryAddActivity::class.java))
-        }
+//        binding.addPdfFab.setOnClickListener {
+//            startActivity(Intent(this, UploadPdfActivity::class.java))
+//        }
+//
+//        binding.addCategoryBtn.setOnClickListener {
+//            startActivity(Intent(this, CategoryAddActivity::class.java))
+//        }
         //handle click, logout
         binding.logoutBtn.setOnClickListener {
             firebaseAuth.signOut()
@@ -92,9 +137,9 @@ class DashboardAdminActivity : AppCompatActivity() {
 //            dialog.show()
 //        }
 
-        binding.btnNavView.setOnClickListener {
-            showBottomDialog()
-        }
+//        binding.btnNavView.setOnClickListener {
+//            showBottomDialog()
+//        }
 
         //поиск
         binding.searchEt.addTextChangedListener(object : TextWatcher {
@@ -123,37 +168,22 @@ class DashboardAdminActivity : AppCompatActivity() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.bottomsheet_fragment)
 
-//        val videoLayout: LinearLayout = dialog.findViewById(R.id.layoutVideo)
-//        val shortsLayout: LinearLayout = dialog.findViewById(R.id.layoutShorts)
-//        val liveLayout: LinearLayout = dialog.findViewById(R.id.layoutLive)
         val cancelButton: ImageView = dialog.findViewById(R.id.cancelButton)
 
-//        videoLayout.setOnClickListener {
-//            dialog.dismiss()
-//            Toast.makeText(this@MainActivity, "Upload a Video is clicked", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        shortsLayout.setOnClickListener {
-//            dialog.dismiss()
-//            Toast.makeText(this@MainActivity, "Create a short is Clicked", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        liveLayout.setOnClickListener {
-//            dialog.dismiss()
-//            Toast.makeText(this@MainActivity, "Go live is Clicked", Toast.LENGTH_SHORT).show()
-//        }
 
         cancelButton.setOnClickListener {
             dialog.dismiss()
         }
 
         dialog.show()
-        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog.window?.setGravity(Gravity.BOTTOM)
     }
-
 
 
     private fun loadCategories() {
@@ -196,20 +226,19 @@ class DashboardAdminActivity : AppCompatActivity() {
             //logged in, get and show user info
             //set to textview of toolbar
             binding.subTitleTv.text = firebaseUser.email
+            val navigationView: NavigationView = findViewById(R.id.nav_header)
+            val menu: Menu = navigationView.menu
+            val emailItem: MenuItem = menu.findItem(R.id.email)
+            val currentUser = firebaseAuth.currentUser
+            currentUser?.let {
+                val userEmail = currentUser.email
+                emailItem.title = userEmail
+            }
         }
     }
 }
 
 
-//        drawerLayout = binding.drawer
-//
-//        binding.apply {
-//            btnNavView.setOnClickListener {
-//                // Открываем drawer
-//                drawerLayout.openDrawer(GravityCompat.START)
-//            }
-//
-//
 //
 //
 //        }

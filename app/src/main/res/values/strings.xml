@@ -24,4 +24,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register">Регистрация</string>
     <string name="add_category">Добавить категорию</string>
+    <string name="add_newproduct">Добавить новый продукт</string>
+    <string name="settings">Settings</string>
+    <string name="favorites">Избранные</string>
+    <string name="profile">Профиль</string>
+    <string name="history">История поиска</string>
+    <string name="shared_friend">Пригласить друзей</string>
+    <string name="shym_shop_make">Возможности Shym Shop</string>
 </resources>
