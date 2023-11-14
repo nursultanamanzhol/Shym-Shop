@@ -5,7 +5,6 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="start"
     android:background="@color/white"
     tools:context=".users_role.salesman.DashboardSalesmanActivity">
 
@@ -22,7 +21,7 @@
             android:id="@+id/toolbarRl"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/shape_toolbar05"
+            android:background="@drawable/salesman_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -100,7 +99,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/back_gray_01"
+            android:background="@drawable/salesman_search_back"
             android:drawableEnd="@drawable/ic_search"
             android:hint="Search"
             android:paddingStart="15dp"
@@ -118,16 +117,13 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="70dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchEt"
-            tools:listitem="@layout/row_category"
-            />
-
-
+            tools:listitem="@layout/row_category" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -152,50 +148,59 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/profileImg"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/logo_and_splash"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_const"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintStart_toEndOf="@+id/profileImg"
-            android:text="Nursultan Amanzhol"
             app:layout_constraintTop_toBottomOf="@+id/icon_remove"
-            />
+            >
 
-        <Button
-            android:id="@+id/addCategoryBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/add_new_product"
-            android:text="@string/add_category"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:layout_margin="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/addPdfFab"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            <ImageView
+                android:id="@+id/profileImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/logo_and_splash"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/nameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Nursultan Amanzhol"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/profileImg"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/emailTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:text="+7"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/profileImg"
+                app:layout_constraintTop_toBottomOf="@+id/nameTv"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addPdfFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:background="@drawable/add_new_product"
             android:contentDescription="TODO"
             android:src="@drawable/ic_pdf_white"
             app:fabCustomSize="50dp"
-            android:layout_margin="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/white" />

@@ -116,30 +116,12 @@ class DashboardAdminActivity : AppCompatActivity() {
     }
 
     private fun uploadPdfFile() {
-//        binding.addPdfFab.setOnClickListener {
-//            startActivity(Intent(this, UploadPdfActivity::class.java))
-//        }
-//
-//        binding.addCategoryBtn.setOnClickListener {
-//            startActivity(Intent(this, CategoryAddActivity::class.java))
-//        }
+
         //handle click, logout
         binding.logoutBtn.setOnClickListener {
             firebaseAuth.signOut()
             checkUser()
         }
-
-        /*Btnsheet menu*/
-//        binding.btnNavView.setOnClickListener {
-//            val view : View = layoutInflater.inflate(R.layout.bottomsheet_fragment, null)
-//            val dialog = BottomSheetDialog(this)
-//            dialog.setContentView(view)
-//            dialog.show()
-//        }
-
-//        binding.btnNavView.setOnClickListener {
-//            showBottomDialog()
-//        }
 
         //поиск
         binding.searchEt.addTextChangedListener(object : TextWatcher {
@@ -163,27 +145,27 @@ class DashboardAdminActivity : AppCompatActivity() {
         })
     }
 
-    private fun showBottomDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.bottomsheet_fragment)
-
-        val cancelButton: ImageView = dialog.findViewById(R.id.cancelButton)
-
-
-        cancelButton.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.show()
-        dialog.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
-        dialog.window?.setGravity(Gravity.BOTTOM)
-    }
+//    private fun showBottomDialog() {
+//        val dialog = Dialog(this)
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.setContentView(R.layout.bottomsheet_fragment)
+//
+//        val cancelButton: ImageView = dialog.findViewById(R.id.cancelButton)
+//
+//
+//        cancelButton.setOnClickListener {
+//            dialog.dismiss()
+//        }
+//
+//        dialog.show()
+//        dialog.window?.setLayout(
+//            ViewGroup.LayoutParams.MATCH_PARENT,
+//            ViewGroup.LayoutParams.WRAP_CONTENT
+//        )
+//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
+//        dialog.window?.setGravity(Gravity.BOTTOM)
+//    }
 
 
     private fun loadCategories() {
@@ -238,65 +220,3 @@ class DashboardAdminActivity : AppCompatActivity() {
     }
 }
 
-
-//
-//
-//        }
-//
-//        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-//        drawerLayout.addDrawerListener(toggle)
-//        toggle.syncState()
-//
-//        drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
-//            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-//                // Вызывается при изменении состояния панели (при открытии или закрытии)
-//                // slideOffset - это значение от 0 до 1, где 0 - закрыта, 1 - полностью открыта
-//                isDrawerOpen = slideOffset > 0.5 // Задайте желаемый порог открытия панели
-//                // Обновляем состояние кнопок при изменении панели
-//                updateButtonClickableState()
-//            }
-//
-//            override fun onDrawerOpened(drawerView: View) {
-//                // Вызывается, когда панель открывается
-//            }
-//
-//            override fun onDrawerClosed(drawerView: View) {
-//                // Вызывается, когда панель закрывается
-//            }
-//
-//            override fun onDrawerStateChanged(newState: Int) {
-//                // Вызывается при изменении состояния панели
-//            }
-//        })
-//
-//    }
-//
-//    override fun onPostCreate(savedInstanceState: Bundle?) {
-//        super.onPostCreate(savedInstanceState)
-//        // Вызывается после завершения создания активити
-//
-//        // Изначально устанавливаем состояние кнопок в зависимости от значения isDrawerOpen
-//        updateButtonClickableState()
-//    }
-//
-//    private fun updateButtonClickableState() {
-//        // Обновляем состояние кнопок в зависимости от значения isDrawerOpen
-//        if (isDrawerOpen) {
-//            binding.logoutBtn.isClickable = false
-//            binding.searchEt.isClickable = false
-//            binding.categoriesRv.isClickable = false
-//            binding.addCategoryBtn.isClickable = false
-//            row_holder.deleteBtn.isClickable = false
-//            row_holder.categoryTv.isClickable = false
-//            binding.addPdfFab.isClickable = false
-//
-//        } else {
-//            binding.logoutBtn.isClickable = true
-//            binding.searchEt.isClickable = true
-//            binding.categoriesRv.isClickable = true
-//            binding.addCategoryBtn.isClickable = true
-//            row_holder.deleteBtn.isClickable = true
-//            row_holder.categoryTv.isClickable = true
-//            binding.addPdfFab.isClickable = true
-//        }
-//    }
