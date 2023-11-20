@@ -5,8 +5,8 @@
     <!--transparent fill color-->
     <solid android:color="#cde7e6"/>
 
-    <!--shape corners-->
-    <corners android:radius="10dp"/>
+<!--    &lt;!&ndash;shape corners&ndash;&gt;-->
+<!--    <corners android:radius="10dp"/>-->
 
 
 

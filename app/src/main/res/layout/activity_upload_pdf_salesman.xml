@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".category.UploadPdfActivity">
+    tools:context=".users_role.salesman.UploadPdfActivitySalesman">
 
 
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarUpload"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/admin_toolbar"
+        android:layout_height="wrap_content"
+        android:background="@drawable/salesman_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,20 +28,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="200dp"
+            android:layout_height="170dp"
+            android:src="@drawable/logo_and_splash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_500"
-            android:text="Add a new Product"
+            android:text="Add a new Product Salesman"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="26dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_logo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -49,15 +58,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/centerToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="30dp"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarUpload"
-
-        >
+        android:layout_marginEnd="30dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TitleTil"
@@ -103,17 +107,18 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/back_gray_01"
                 android:drawableEnd="@drawable/ic_pdf_black"
+                android:drawablePadding="10dp"
                 android:fontFamily="@font/roboto_400"
                 android:hint="@string/description_product"
                 android:inputType="textMultiLine|textCapSentences"
                 android:padding="10dp"
-                android:drawablePadding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray01"
                 android:textSize="16sp"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/costProduct"
             android:layout_width="match_parent"
@@ -142,45 +147,16 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoryConst"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/costProduct">
-
-            <TextView
-                android:id="@+id/categoryTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/back_orange_01"
-                android:drawableStart="@drawable/ic_category"
-                android:drawableEnd="@drawable/arrow_down_black"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/roboto_400"
-                android:gravity="center_vertical"
-                android:hint="@string/category_product"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/gray01"
-                android:textSize="16sp"
-                app:hintEnabled="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <ImageButton
             android:id="@+id/attacheConst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/add_new_product_salesman"
+            android:background="@drawable/add_new_product_salesman_uploaded"
             android:padding="15dp"
             android:src="@drawable/ic_attach_black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
+            app:layout_constraintTop_toBottomOf="@+id/costProduct" />
 
         <Button
             android:id="@+id/submitConst"
@@ -188,12 +164,13 @@
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/add_new_product_admin"
+            android:background="@drawable/add_new_product_salesman"
             android:text="@string/upload"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/attacheConst"
-            app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
+            app:layout_constraintTop_toBottomOf="@+id/costProduct" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

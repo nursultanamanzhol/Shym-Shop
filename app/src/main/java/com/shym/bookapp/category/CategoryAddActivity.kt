@@ -70,7 +70,7 @@ class CategoryAddActivity : AppCompatActivity() {
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
-//success for commit
+                //success for commit
                 progressDialog.dismiss()
                 Toast.makeText(this, "Added Successfully...", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, DashboardAdminActivity::class.java))

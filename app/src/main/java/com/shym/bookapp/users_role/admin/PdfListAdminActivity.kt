@@ -41,7 +41,6 @@ class PdfListAdminActivity : AppCompatActivity() {
         // set pdf category
         binding.subTitleTv.text = category
 
-
         //load pdf  / books
         loadPdfList()
 

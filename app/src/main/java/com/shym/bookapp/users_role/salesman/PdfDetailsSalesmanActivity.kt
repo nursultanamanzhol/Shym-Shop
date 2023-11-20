@@ -1,4 +1,4 @@
-package com.shym.bookapp.pdflist
+package com.shym.bookapp.users_role.salesman
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -18,17 +18,21 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.shym.bookapp.R
 import com.shym.bookapp.databinding.ActivityPdfDetailsBinding
+import com.shym.bookapp.databinding.ActivityPdfDetailsSalesmanBinding
+import com.shym.bookapp.pdflist.Constants
+import com.shym.bookapp.pdflist.MyApplication
+import com.shym.bookapp.pdflist.PdfViewActivity
 import java.io.File
 import java.io.FileOutputStream
 import kotlin.math.log
 
-class PdfDetailsActivity : AppCompatActivity() {
+class PdfDetailsSalesmanActivity : AppCompatActivity() {
 
     private companion object {
         const val TAG = "BOOK_DETAILS_TAG"
     }
 
-    private lateinit var binding: ActivityPdfDetailsBinding
+    private lateinit var binding: ActivityPdfDetailsSalesmanBinding
     private var bookId = ""
     private var bookTitle = ""
     private var price = ""
@@ -39,7 +43,7 @@ class PdfDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPdfDetailsBinding.inflate(layoutInflater)
+        binding = ActivityPdfDetailsSalesmanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Get book id from intent

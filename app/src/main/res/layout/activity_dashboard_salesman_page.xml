@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="@color/white"
-    tools:context=".users_role.admin.DashboardAdminActivity">
+    tools:context=".users_role.salesman.DashboardSalesmanPageActivity"
+    >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
                 android:id="@+id/toolbarRl"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@drawable/admin_toolbar"
+                android:background="@drawable/salesman_toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -52,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
-                    android:text="Dashboard Admin"
+                    android:text="Dashboard Salesman"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -116,19 +117,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbarRl" />
 
+            <!--Pdf book-->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoriesRv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:id="@+id/booksRsv"
+                app:layout_constraintTop_toBottomOf="@+id/searchEt"
+                android:layout_margin="10dp"
+                tools:listitem="@layout/row_product_salesman"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchEt"
-                tools:listitem="@layout/row_category" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
 
@@ -137,15 +137,15 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    
+
     <com.google.android.material.navigation.NavigationView
         android:layout_width="330dp"
-        android:id="@+id/nav_header"
+        android:id="@+id/navHeaderSalesman"
         app:headerLayout="@layout/header_drawer"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/white"
-        app:menu="@menu/menu_drawer"
+        app:menu="@menu/menu_salesman"
         >
 
     </com.google.android.material.navigation.NavigationView>

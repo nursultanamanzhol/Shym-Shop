@@ -1,8 +1,8 @@
 package com.shym.bookapp.users_role.salesman
 
-
 import android.widget.Filter
 import com.shym.bookapp.models.ModelPdf
+import com.shym.bookapp.users_role.salesman.adapter.AdapterPdfSalesman
 
 
 /*used to filter data from recyclerview | search pdf from pdf list in recyclerview*/

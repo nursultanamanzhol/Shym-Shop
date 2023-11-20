@@ -7,6 +7,7 @@ class ModelPdf {
     var uid: String = ""
     var id: String = ""
     var title: String = ""
+    var price: String = ""
     var description: String = ""
     var categoryId: String = ""
     var url: String = ""
@@ -24,6 +25,7 @@ class ModelPdf {
         id: String,
         title: String,
         description: String,
+        price: String,
         categoryId: String,
         url: String,
         timestamp: Long,
@@ -34,6 +36,7 @@ class ModelPdf {
         this.id = id
         this.title = title
         this.description = description
+        this.price = price
         this.categoryId = categoryId
         this.url = url
         this.timestamp = timestamp

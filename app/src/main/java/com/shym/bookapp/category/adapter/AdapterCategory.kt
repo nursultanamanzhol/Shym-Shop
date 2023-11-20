@@ -26,6 +26,10 @@ class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fi
     private var filterList: ArrayList<ModelCategory>
     private var filter: FilterCategory? = null
 
+    internal fun getCategoryArrayList(): ArrayList<ModelCategory> {
+        return categoryArrayList
+    }
+
     //constructor
     constructor(context: Context, categoryArrayList: ArrayList<ModelCategory>) {
         this.context = context
