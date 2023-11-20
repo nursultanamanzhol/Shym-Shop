@@ -11,23 +11,31 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarUpload"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/admin_toolbar"
+        android:layout_height="wrap_content"
+        android:background="@drawable/salesman_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:padding="10dp"
-            android:src="@drawable/ic_back_white"
+            android:src="@drawable/ic_back_red"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="200dp"
+            android:layout_height="170dp"
+            android:src="@drawable/logo_and_splash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/titleTv"
@@ -37,25 +45,22 @@
             android:text="Add a new Product"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="26dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_logo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/centerToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="30dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarUpload"
 
         >
 
@@ -188,9 +193,9 @@
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/add_new_product_admin"
+            android:background="@drawable/add_new_product_salesman"
             android:text="@string/upload"
-            android:textColor="@color/white"
+            android:textColor="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/attacheConst"
             app:layout_constraintTop_toBottomOf="@+id/categoryConst" />

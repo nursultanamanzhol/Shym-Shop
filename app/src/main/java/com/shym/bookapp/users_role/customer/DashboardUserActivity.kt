@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -16,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.bookapp.models.ModelCategory
 import com.shym.bookapp.databinding.ActivityDashboardUserBinding
+import com.shym.bookapp.users_role.admin.ProfileActivity
 import com.shym.bookapp.users_role.customer.fragments.BooksUserFragment
 
 class DashboardUserActivity : AppCompatActivity() {
@@ -44,6 +46,9 @@ class DashboardUserActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+        binding.profileBtn.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
     }
 
@@ -65,12 +70,12 @@ class DashboardUserActivity : AppCompatActivity() {
                 //add data to models
                 val modelAll = ModelCategory("01", "All", 1, "")
                 val modelMostViewed = ModelCategory("01", "Most Viewed", 1, "")
-                val modelMostDownloaded = ModelCategory("01", "Most Downloaded", 1, "")
+//                val modelMostDownloaded = ModelCategory("01", "Most Downloaded", 1, "")
 
                 //add to list
                 categoryArrayList.add(modelAll)
                 categoryArrayList.add(modelMostViewed)
-                categoryArrayList.add(modelMostDownloaded)
+//                categoryArrayList.add(modelMostDownloaded)
                 //add to ViewPagerAdapter
                 viewPagerAdapter.addFragment(
                     BooksUserFragment.newInstance(
@@ -87,13 +92,13 @@ class DashboardUserActivity : AppCompatActivity() {
                         modelMostViewed.uid
                     ), modelMostViewed.category
                 )
-                viewPagerAdapter.addFragment(
-                    BooksUserFragment.newInstance(
-                        modelMostDownloaded.id,
-                        modelMostDownloaded.category,
-                        modelMostDownloaded.uid
-                    ), modelMostDownloaded.category
-                )
+//                viewPagerAdapter.addFragment(
+//                    BooksUserFragment.newInstance(
+//                        modelMostDownloaded.id,
+//                        modelMostDownloaded.category,
+//                        modelMostDownloaded.uid
+//                    ), modelMostDownloaded.category
+//                )
                 //refresh list
                 viewPagerAdapter.notifyDataSetChanged()
                 //Now load from firebase db
@@ -166,11 +171,16 @@ class DashboardUserActivity : AppCompatActivity() {
         if (firebaseUser == null) {
             //not logged in, user can stay in user dashboard without login toolbar
             binding.subTitleTv.text = "Not logged In"
+
+            binding.logoutBtn.visibility = View.GONE
+            binding.profileBtn.visibility = View.GONE
         } else {
             //logged in, get and show user info
             val email = firebaseUser.email
             //set to textview of toolbar
             binding.subTitleTv.text = email
+            binding.logoutBtn.visibility = View.VISIBLE
+            binding.profileBtn.visibility = View.VISIBLE
         }
     }
 }

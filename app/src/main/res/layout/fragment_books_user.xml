@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchEt"
-        android:background="@drawable/admin_back_recyclerview"
+        android:background="@drawable/back_gray_01"
         android:drawableEnd="@drawable/ic_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
