@@ -11,7 +11,7 @@
         android:id="@+id/toolbarCn"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/admin_toolbar"
+        android:background="@drawable/salesman_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_500"
-            android:text="Book Details"
+            android:text="Book Details Salesman"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -57,14 +57,15 @@
             android:id="@+id/priceTv"
             />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--All content under scrollview-->
     <ScrollView
         android:id="@+id/scrollDetails"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
         android:padding="10dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/bookOptionsCns"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -309,9 +310,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/admin_back_details_activity"
+            android:background="@drawable/salesman_back_details_activity"
             android:drawableTop="@drawable/ic_book_24"
-            android:text="Читать"
+            android:text="Посмотреть"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="10sp"
@@ -324,7 +325,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/admin_back_details_activity"
+            android:background="@drawable/salesman_back_details_activity"
             android:drawableTop="@drawable/ic_download_book"
             android:text="Загрузить"
             android:textAllCaps="false"
@@ -340,7 +341,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/admin_back_details_activity"
+            android:background="@drawable/salesman_back_details_activity"
             android:drawableTop="@drawable/ic_favorite"
             android:text="Нравится"
             android:textAllCaps="false"
@@ -349,6 +350,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
     </LinearLayout>
 

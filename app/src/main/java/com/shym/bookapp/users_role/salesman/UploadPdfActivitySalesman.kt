@@ -1,6 +1,5 @@
-package com.shym.bookapp.category
+package com.shym.bookapp.users_role.salesman
 
-import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
@@ -12,7 +11,6 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.shym.bookapp.users_role.admin.DashboardAdminActivity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -21,14 +19,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.shym.bookapp.R
-import com.shym.bookapp.databinding.ActivityUploadPdfBinding
+import com.shym.bookapp.databinding.ActivityUploadPdfSalesmanBinding
 import com.shym.bookapp.models.ModelCategory
 
 @Suppress("DEPRECATION")
-class UploadPdfActivity : AppCompatActivity() {
-
-
-    private lateinit var binding: ActivityUploadPdfBinding
+class UploadPdfActivitySalesman : AppCompatActivity() {
+    private var categoryId = ""
+    private lateinit var binding: ActivityUploadPdfSalesmanBinding
 
     //pdf categories
     private lateinit var categoryArrayList: ArrayList<ModelCategory>
@@ -65,10 +62,10 @@ class UploadPdfActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUploadPdfBinding.inflate(layoutInflater)
+        binding = ActivityUploadPdfSalesmanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        categoryId = intent.getStringExtra("categoryId")!!
         //init firebase
         firebaseAuth = FirebaseAuth.getInstance()
         loadPdfCategories()
@@ -78,9 +75,9 @@ class UploadPdfActivity : AppCompatActivity() {
         progressDialog.setCanceledOnTouchOutside(false)
         //handle click, show categorypick dialog
 
-        binding.categoryTv.setOnClickListener {
-            categoryPickDialog()
-        }
+//        binding.categoryTv.setOnClickListener {
+//            categoryPickDialog()
+//        }
 
         //handle click, goback
         binding.backBtn.setOnClickListener {
@@ -104,8 +101,8 @@ class UploadPdfActivity : AppCompatActivity() {
         //get data
         title = binding.titleEt.text.toString().trim()
         description = binding.descriptionEt.text.toString().trim()
-        category = binding.categoryTv.text.toString().trim()
         price = binding.costEt.text.toString().trim()
+//        category = binding.categoryTv.text.toString().trim()
         //validate data
         if (title.isEmpty()) {
             Toast.makeText(this, "Enter Title...", Toast.LENGTH_SHORT).show()
@@ -113,8 +110,6 @@ class UploadPdfActivity : AppCompatActivity() {
             Toast.makeText(this, "Enter Description...", Toast.LENGTH_SHORT).show()
         } else if (price.isEmpty()) {
             Toast.makeText(this, "Write a price product...", Toast.LENGTH_SHORT).show()
-        } else if (category.isEmpty()) {
-            Toast.makeText(this, "Enter Category...", Toast.LENGTH_SHORT).show()
         } else if (pdfUri == null) {
             Toast.makeText(this, "Pick PDF...", Toast.LENGTH_SHORT).show()
 
@@ -172,7 +167,7 @@ class UploadPdfActivity : AppCompatActivity() {
         hashMap["title"] = "$title"
         hashMap["description"] = "$description"
         hashMap["price"] = "$price"
-        hashMap["categoryId"] = "$selectedCategoryId"
+        hashMap["categoryId"] = "$categoryId"
         hashMap["url"] = "$uploadPdfUrl"
         hashMap["timestamp"] = timestamp
         hashMap["viewsCount"] = 0
@@ -187,7 +182,13 @@ class UploadPdfActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
                 pdfUri = null
-                startActivity(Intent(this, DashboardAdminActivity::class.java))
+
+                onBackPressed()
+//                val intent = Intent(this, DashboardSalesmanPageActivity::class.java)
+
+//                startActivity(intent)
+//                intent.putExtra("categoryUp", categoryId)
+//                finish()
             }
             .addOnFailureListener { e ->
                 Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
@@ -226,32 +227,41 @@ class UploadPdfActivity : AppCompatActivity() {
         })
     }
 
-    private fun categoryPickDialog() {
-        Log.d(TAG, "categoryPickDialog: Showing pdf category pick dialog")
+//    private fun categoryPickDialog() {
+//        Log.d(TAG, "categoryPickDialog: Showing pdf category pick dialog")
+//
+//        val categoriesArray = arrayOfNulls<String>(categoryArrayList.size)
+//        for (i in categoriesArray.indices) {
+//            categoriesArray[i] = categoryArrayList[i].category
+//        }
+//
+//        val builder = AlertDialog.Builder(this)
+//        var selectedPosition = -1 // Позиция выбранного элемента, изначально не выбрано
+//
+//        builder.setTitle("Pick Category")
+//            .setSingleChoiceItems(categoriesArray, -1) { _, which ->
+//                // Обработка выбора элемента
+//                selectedPosition = which
+//            }
+//            .setPositiveButton("OK") { dialog, _ ->
+//                // Обработка нажатия кнопки "OK"
+//                if (selectedPosition != -1) {
+//                    // Если элемент выбран
+//                    selectedCategoryTitle = categoryArrayList[selectedPosition].category
+//                    selectedCategoryId = categoryArrayList[selectedPosition].id
+//                    binding.categoryTv.text = selectedCategoryTitle
+//                    Log.d(TAG, "categoryPickDialog: Selected Category ID: $selectedCategoryId")
+//                    Log.d(TAG, "categoryPickDialog: Selected Category Title: $selectedCategoryTitle")
+//                }
+//                dialog.dismiss() // Закрыть диалоговое окно
+//            }
+//            .setNegativeButton("Cancel") { dialog, _ ->
+//                // Обработка нажатия кнопки "Cancel"
+//                dialog.dismiss() // Закрыть диалоговое окно
+//            }
+//            .show()
+//    }
 
-        //get string array of categories from arrayList
-        val categoriesArray = arrayOfNulls<String>(categoryArrayList.size)
-        for (i in categoriesArray.indices) {
-            categoriesArray[i] = categoryArrayList[i].category
-        }
-
-        //alert dialog
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Pick Category")
-            .setItems(categoriesArray) { dialog, which ->
-
-                //handle click
-                //get click item
-
-                selectedCategoryTitle = categoryArrayList[which].category
-                selectedCategoryId = categoryArrayList[which].id
-                //set category
-                binding.categoryTv.text = selectedCategoryTitle
-                Log.d(TAG, "categoryPickDialog: Selected Category ID: $selectedCategoryId")
-                Log.d(TAG, "categoryPickDialog: Selected Category Title: $selectedCategoryTitle")
-            }
-            .show()
-    }
 
     private fun pdfPickIntent() {
         Log.d(TAG, "pdfPickIntent: starting pdf pick intent")

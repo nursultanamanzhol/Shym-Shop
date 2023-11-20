@@ -58,6 +58,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         val bookId = model.id
         val categoryId = model.categoryId
         val title = model.title
+        val price = model.price
         val description = model.description
         val pdfUrl = model.url
         val timestamp = model.timestamp
@@ -67,6 +68,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         val formattedDate = MyApplication.formatTimeStamp(timestamp)
 
         holder.titleTv.text = title
+        holder.priceTv.text = price
         holder.descriptionTv.text = description
         holder.dateTv.text = formattedDate
 
@@ -145,6 +147,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         val progressBar = binding.progressBar
         val titleTv = binding.titleTv
         val descriptionTv = binding.descriptionTv
+        val priceTv = binding.priceTv
         val categoryTv = binding.categoryTv
         val sizeTv = binding.sizeTv
         val dateTv = binding.dateTv

@@ -1,5 +1,4 @@
-package com.shym.bookapp.users_role.salesman
-
+package com.shym.bookapp.users_role.salesman.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -15,6 +14,8 @@ import com.shym.bookapp.models.ModelPdf
 import com.shym.bookapp.pdflist.MyApplication
 import com.shym.bookapp.pdflist.PdfDetailsActivity
 import com.shym.bookapp.pdflist.PdfEditActivity
+import com.shym.bookapp.users_role.salesman.FilterPdfSalesman
+import com.shym.bookapp.users_role.salesman.PdfDetailsSalesmanActivity
 
 class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSalesman>, Filterable {
 
@@ -60,6 +61,7 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
         val bookId = model.id
         val categoryId = model.categoryId
         val title = model.title
+        val price = model.price
         val description = model.description
         val pdfUrl = model.url
         val timestamp = model.timestamp
@@ -69,6 +71,7 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
         val formattedDate = MyApplication.formatTimeStamp(timestamp)
 
         holder.titleTv.text = title
+        holder.priceTv.text = price
         holder.descriptionTv.text = description
         holder.dateTv.text = formattedDate
 
@@ -96,7 +99,7 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
 
         //handle item click, open PdfDetailsActivity activity, lets create it first
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, PdfDetailsActivity::class.java)
+            val intent = Intent(context, PdfDetailsSalesmanActivity::class.java)
             intent.putExtra("bookId", bookId) // will be used to load book details
             context.startActivity(intent)
         }
@@ -127,7 +130,6 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
 
                 } else if (position == 1) {
                     //delete
-
                     //show confirmation dialog first if you need...
                     MyApplication.deleteBook(context, bookId, bookUrl, bookTitle)
                 }
@@ -138,7 +140,7 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
 
     override fun getFilter(): Filter {
         if (filter == null) {
-            filter = FilterPdfSalesman(filterList,this)
+            filter = FilterPdfSalesman(filterList, this)
         }
         return filter as FilterPdfSalesman
     }
@@ -150,6 +152,7 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
         val progressBar = binding.progressBar
         val titleTv = binding.titleTv
         val descriptionTv = binding.descriptionTv
+        val priceTv = binding.priceTv
         val categoryTv = binding.categoryTv
         val sizeTv = binding.sizeTv
         val dateTv = binding.dateTv

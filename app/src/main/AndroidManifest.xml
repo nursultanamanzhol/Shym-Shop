@@ -17,8 +17,16 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".users_role.salesman.DashboardSalesmanActivity"
+            android:name=".users_role.salesman.PdfDetailsSalesmanActivity"
             android:exported="false" />
+        <activity
+            android:name=".users_role.salesman.UploadPdfActivitySalesman"
+            android:exported="false" />
+        <activity
+            android:name=".users_role.salesman.DashboardSalesmanPageActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".users_role.salesman.DashboardSalesmanActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".users_role.admin.ProfileActivity"
             android:exported="false" />

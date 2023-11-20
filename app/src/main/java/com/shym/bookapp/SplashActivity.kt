@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import com.shym.bookapp.users_role.admin.DashboardAdminActivity
 import com.shym.bookapp.users_role.customer.DashboardUserActivity
@@ -12,7 +13,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.shym.bookapp.users_role.salesman.DashboardSalesmanActivity
+import com.shym.bookapp.users_role.salesman.DashboardSalesmanPageActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -50,49 +51,80 @@ class SplashActivity : AppCompatActivity() {
         } else {
             //user logged in, check user type, same as done in login screen
 
-            val ref = FirebaseDatabase.getInstance().getReference("Users")
-            ref.child(firebaseUser.uid)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
+//            progressDialog.setMessage("Checking User...")
 
-                    override fun onDataChange(snapshot: DataSnapshot) {
+            val firebaseUser = firebaseAuth.currentUser!!
 
-                        // get user type e.g. user or admin
-                        val userType = snapshot.child("userType").value
-                        if (userType == "user") {
-                            //its simple user, open user  dashboard
-                            startActivity(
-                                Intent(
-                                    this@SplashActivity,
-                                    DashboardUserActivity::class.java
-                                )
-                            )
-                            finish()
-                        } else if (userType == "admin") {
-                            //its admin
-                            startActivity(
-                                Intent(
-                                    this@SplashActivity,
-                                    DashboardAdminActivity::class.java
-                                )
-                            )
-                            finish()
-                        } else if (userType == "salesman") {
-                            //its admin
-                            startActivity(
-                                Intent(
-                                    this@SplashActivity,
-                                    DashboardSalesmanActivity::class.java
-                                )
-                            )
-                            finish()
+            // Firebase
+            val categoriesRef = FirebaseDatabase.getInstance().getReference("Categories")
+            val usersRef = FirebaseDatabase.getInstance().getReference("Users")
+
+            categoriesRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(categoriesSnapshot: DataSnapshot) {
+                    val categoryArrayList: ArrayList<String> = ArrayList()
+
+                    for (ds in categoriesSnapshot.children) {
+                        val category = ds.child("category").getValue(String::class.java)
+                        val categoryId = ds.child("id").getValue(String::class.java)
+                        if (categoryId != null) {
+                            categoryArrayList.add(categoryId)
                         }
-
                     }
 
-                    override fun onCancelled(error: DatabaseError) {
+                    // Теперь у вас есть список всех категорий из "Categories"
 
-                    }
-                })
+                    // Проверим UserType
+                    usersRef.child(firebaseUser.uid)
+                        .addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(userSnapshot: DataSnapshot) {
+//                                progressDialog.dismiss()
+
+                                val userType = userSnapshot.child("userType").value
+
+                                if (userType == "user") {
+                                    startActivity(
+                                        Intent(
+                                            this@SplashActivity,
+                                            DashboardUserActivity::class.java
+                                        )
+                                    )
+                                    finish()
+                                } else if (userType == "salesman") {
+                                    // Проверим, есть ли у пользователя категория в списке
+                                    val userCategories = userSnapshot.child("categories").value
+                                    if (userCategories != null && userCategories is String) {
+                                        if (categoryArrayList.contains(userCategories)) {
+                                            val intent = Intent(
+                                                this@SplashActivity,
+                                                DashboardSalesmanPageActivity::class.java
+                                            )
+                                            intent.putExtra("categoryId", userCategories)
+                                            Log.d("TAG_Splash_activity", "onDataChange: ${userCategories}")
+                                            startActivity(intent)
+                                            finish()
+                                        }
+                                    }
+                                } else if (userType == "admin") {
+                                    startActivity(
+                                        Intent(
+                                            this@SplashActivity,
+                                            DashboardAdminActivity::class.java
+                                        )
+                                    )
+                                    finish()
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                // Обработка ошибок
+                            }
+                        })
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Обработка ошибок
+                }
+            })
 
         }
     }
