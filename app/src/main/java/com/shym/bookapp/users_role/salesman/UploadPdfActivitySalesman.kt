@@ -116,7 +116,7 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
         } else {
             //data validated, begin upload
             binding.attacheConst.background =
-                ContextCompat.getDrawable(this, R.drawable.add_new_product_salesman)
+                ContextCompat.getDrawable(this, R.drawable.add_new_product_salesman_uploaded)
             uploadPdfToStorage()
         }
     }
@@ -183,6 +183,7 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
                 pdfUri = null
 
+                onBackPressed()
                 onBackPressed()
 //                val intent = Intent(this, DashboardSalesmanPageActivity::class.java)
 

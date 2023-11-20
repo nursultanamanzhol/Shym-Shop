@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_toolbar03"
+    android:background="@color/white"
     tools:context=".authorization.LoginActivity">
 
 
@@ -57,16 +57,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/scrollLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="10dp"
-        android:scrollbarSize="300sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -81,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="250dp"
-                android:background="@drawable/shape_toolbar04"
+                android:background="@drawable/add_new_product_salesman"
                 android:padding="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +97,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/divideTv"
                         app:layout_constraintTop_toTopOf="parent">
 
+
                         <TextView
                             android:id="@+id/loginTv"
                             android:layout_width="90dp"
@@ -111,15 +107,15 @@
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
 
                         <View
                             android:id="@+id/separatorTop"
                             android:layout_width="80dp"
                             android:layout_height="2dp"
-                            android:background="@color/black"
+                            android:background="@color/red"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/loginTv" />
@@ -188,7 +184,7 @@
                         android:id="@+id/emailEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/shape_edittext01"
+                        android:background="@drawable/back_gray_01"
                         android:drawableStart="@drawable/ic_email_gray"
                         android:drawablePadding="10dp"
                         android:hint="Email"
@@ -217,7 +213,7 @@
                         android:id="@+id/passwordEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/shape_edittext01"
+                        android:background="@drawable/back_gray_01"
                         android:drawableStart="@drawable/ic_lock_gray"
                         android:drawablePadding="10dp"
                         android:hint="Password"
@@ -259,7 +255,7 @@
                         android:id="@+id/loginView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/add_new_product"
+                        android:background="@drawable/add_new_product_salesman"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -272,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_500"
                         android:text="@string/login"
-                        android:textColor="@color/white"
+                        android:textColor="@color/red"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

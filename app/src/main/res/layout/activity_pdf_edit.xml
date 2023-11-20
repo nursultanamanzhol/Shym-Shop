@@ -12,7 +12,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/shape_toolbar05">
+        android:background="@drawable/salesman_toolbar">
 
         <ImageButton
             android:id="@+id/backBtn"
@@ -21,7 +21,7 @@
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:padding="5dp"
-            android:src="@drawable/ic_back_white"
+            android:src="@drawable/ic_back_red"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="Edit Book Info"
-            android:textColor="@color/white"
+            android:textColor="@color/red"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,65 +157,29 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--btn update info-->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageButton
                 android:id="@+id/attacheConst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toStartOf="@+id/submitConst"
+                android:background="@drawable/add_new_product_salesman"
+                android:padding="15dp"
+                android:src="@drawable/ic_attach_black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categoryConst">
+                app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
 
-                <ImageView
-                    android:id="@+id/attacheBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/back_circle"
-                    android:padding="15dp"
-                    android:src="@drawable/ic_attach_black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <Button
                 android:id="@+id/submitConst"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/add_new_product_salesman"
+                android:text="@string/upload"
+                android:textColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/attacheConst"
-                app:layout_constraintTop_toBottomOf="@+id/categoryConst">
-
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/add_new_product"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_500"
-                    android:text="@string/upload"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

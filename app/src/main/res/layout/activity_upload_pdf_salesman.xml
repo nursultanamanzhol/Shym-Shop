@@ -24,7 +24,7 @@
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:padding="10dp"
-            android:src="@drawable/ic_back_white"
+            android:src="@drawable/ic_back_red"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/add_new_product_salesman_uploaded"
+            android:background="@drawable/add_new_product_salesman"
             android:padding="15dp"
             android:src="@drawable/ic_attach_black"
             app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +166,7 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/add_new_product_salesman"
             android:text="@string/upload"
-            android:textColor="@color/white"
+            android:textColor="@color/red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/attacheConst"
             app:layout_constraintTop_toBottomOf="@+id/costProduct" />

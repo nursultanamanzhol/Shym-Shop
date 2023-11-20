@@ -17,7 +17,7 @@
             android:id="@+id/pdfRl"
             android:layout_width="100dp"
             android:layout_height="130dp"
-            android:background="@drawable/shape_toolbar05"
+            android:background="@color/gray02"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

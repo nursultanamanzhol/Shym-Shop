@@ -15,7 +15,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/shape_toolbar05"
+        android:background="@drawable/salesman_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,7 +29,7 @@
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:padding="5dp"
-            android:src="@drawable/ic_back_white"
+            android:src="@drawable/ic_back_red"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
             android:text="Add a new Category"
-            android:textColor="@color/white"
+            android:textColor="@color/red"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,10 +77,10 @@
             android:id="@+id/categoryEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_edittext02"
+            android:background="@drawable/back_gray_01"
             android:drawableStart="@drawable/ic_category"
             android:drawablePadding="10dp"
-            android:hint="Category Title"
+            android:hint="Имя Компаний"
             android:inputType="textPersonName|textCapSentences"
             android:padding="10dp"
             android:textColor="@color/black"
@@ -89,42 +89,59 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--Btn category-->
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <Button
         android:id="@+id/submitBtn"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/add_new_product_salesman"
+        android:text="Создать"
+        android:textColor="@color/red"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryTil">
+        app:layout_constraintTop_toBottomOf="@+id/categoryTil" />
 
-        <View
-            android:id="@+id/registerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/add_new_product"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/submitBtn"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="52dp"-->
+    <!--        android:layout_marginStart="30dp"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        android:layout_marginEnd="30dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/categoryTil">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_500"
-            android:text="@string/submit"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!--        <View-->
+    <!--            android:id="@+id/registerView"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@drawable/add_new_product_salesman"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.0"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintVertical_bias="0.0" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:fontFamily="@font/roboto_500"-->
+    <!--            android:text="@string/submit"-->
+    <!--            android:textColor="@color/red"-->
+    <!--            android:textSize="20sp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
     <!--    <Button-->
