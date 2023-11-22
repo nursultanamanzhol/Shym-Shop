@@ -66,9 +66,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="250dp"
-                android:background="@drawable/add_new_product_salesman"
+                android:background="@drawable/reg_log_balk"
                 android:padding="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,15 +152,6 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <!--                        <View-->
-                        <!--                            app:layout_constraintStart_toStartOf="parent"-->
-                        <!--                            app:layout_constraintEnd_toEndOf="parent"-->
-                        <!--                            android:id="@+id/separatorTop"-->
-                        <!--                            android:layout_width="80dp"-->
-                        <!--                            android:layout_height="2dp"-->
-                        <!--                            android:background="@color/black"-->
-                        <!--                            app:layout_constraintTop_toBottomOf="@+id/registerId" />-->
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -255,7 +246,7 @@
                         android:id="@+id/loginView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/add_new_product_salesman"
+                        android:background="@drawable/reg_log_balk"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -292,27 +283,26 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-            <!--                android:id="@+id/noAccountTv"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="180dp"-->
-            <!--                android:background="@drawable/shape_edittext01"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/centerConst">-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/centerConst">
 
-            <!--                <TextView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_alignParentBottom="true"-->
-            <!--                    android:layout_centerHorizontal="true"-->
-            <!--                    android:padding="10dp"-->
-            <!--                    android:text="@string/not_have_account_singup" />-->
+                <TextView
+                    android:id="@+id/noAccountCn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:text="@string/not_have_account_singup"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
 
-            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

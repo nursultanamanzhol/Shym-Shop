@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/animated" />
+        app:lottie_rawRes="@raw/animated_main_page" />
 
     <!--    <ImageView-->
     <!--        android:id="@+id/iconIv"-->
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/add_new_product_salesman"
+        android:background="@drawable/reg_log_balk"
         android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/red"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:alpha="0.5"
-        android:background="@drawable/add_new_product_salesman"
+        android:background="@drawable/reg_log_balk"
         android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@color/red"

@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    namespace 'com.shym.bookapp'
+    namespace 'com.shym.commercial'
     compileSdk 34
 
 
     defaultConfig {
-        applicationId "com.shym.bookapp"
+        applicationId "com.shym.commercial"
         minSdk 21
         multiDexEnabled true
         targetSdk 33
@@ -59,8 +59,15 @@ dependencies {
     //animated lottie
     implementation 'com.airbnb.android:lottie:3.4.0'
 
+//    swipe update
+    implementation'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
     implementation 'com.google.android.gms:play-services-analytics:18.0.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //passcode
+    implementation 'com.kevalpatel2106:passcodeview:2.0.0'
+    implementation'com.hanks:passcodeview:0.1.2'
 }

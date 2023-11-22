@@ -11,7 +11,7 @@
         android:id="@+id/toolbarCn"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/add_new_product_salesman"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,6 +58,13 @@
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray03"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCn" />
     <!--All content under scrollview-->
     <ScrollView
         android:id="@+id/scrollDetails"
@@ -68,7 +75,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bookOptionsCns"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarCn">
+        app:layout_constraintTop_toBottomOf="@+id/view2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -16,5 +16,6 @@
     <color name="color_blackBlue">#16135F</color>
     <color name="red">#FF0000</color>
     <color name="my_red">#FF0000</color>
+    <color name="colorAccent">#009688</color>
 
 </resources>

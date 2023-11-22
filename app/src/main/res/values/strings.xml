@@ -9,10 +9,11 @@
     <string name="cost_product">Цена товара</string>
     <string name="category_product">Категория товара</string>
     <string name="upload">Загрузить</string>
+    <string name="sigUn">Зарегистрироваться</string>
     <string name="login">Войти</string>
     <string name="continue_without_login">Continue without login</string>
     <string name="nursultan_apps">Nursultan Apps</string>
-    <string name="welcome_to_nursultan_apps">Добро пожаловать в приложение Нурсултана</string>
+    <string name="welcome_to_nursultan_apps">Добро пожаловать в приложение Shym Shop</string>
     <string name="full_name">ФИО</string>
     <string name="iin_main">ИИН</string>
     <string name="divide">/</string>
@@ -32,4 +33,17 @@
     <string name="history">История поиска</string>
     <string name="shared_friend">Пригласить друзей</string>
     <string name="shym_shop_make">Возможности Shym Shop</string>
+
+    <string name="key_1">1</string>
+    <string name="key_2">2</string>
+    <string name="key_3">3</string>
+    <string name="key_4">4</string>
+    <string name="key_5">5</string>
+    <string name="key_6">6</string>
+    <string name="key_7">7</string>
+    <string name="key_8">8</string>
+    <string name="key_9">9</string>
+    <string name="key_0">0</string>
+    <string name="sevices">Сервисы</string>
+    <string name="welcome">Вход/Регистрация</string>
 </resources>
