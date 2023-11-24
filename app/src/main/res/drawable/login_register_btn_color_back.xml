@@ -14,15 +14,15 @@
     <!-- Shape for the border with shadow -->
     <item android:top="1dp">
         <shape android:shape="rectangle">
-            <solid android:color="@android:color/transparent" />
+            <solid android:color="@color/login_register_input_back" />
             <stroke
                 android:width="2dp"
-                android:color="#FF8B8B" />
+                android:color="@color/login_register_input_back" />
             <corners
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp" />
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp"
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
             <!-- Add shadow -->
             <padding
                 android:bottom="2dp"

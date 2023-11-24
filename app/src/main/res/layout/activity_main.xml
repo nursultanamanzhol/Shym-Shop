@@ -48,27 +48,29 @@
 
     <Button
         android:id="@+id/loginBtn"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/reg_log_balk"
+        android:background="@drawable/login_register_btn_color_back"
         android:text="@string/login"
         android:textAllCaps="false"
-        android:textColor="@color/red"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/registerBtn"
         />
 
     <Button
         android:id="@+id/registerBtn"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:alpha="0.5"
-        android:background="@drawable/reg_log_balk"
+        android:background="@drawable/login_register_btn_color_back"
         android:text="@string/register"
         android:textAllCaps="false"
-        android:textColor="@color/red"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="20dp" />

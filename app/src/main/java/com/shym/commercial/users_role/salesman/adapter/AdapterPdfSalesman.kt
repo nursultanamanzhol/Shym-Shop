@@ -120,12 +120,10 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
                 //handle item click
                 if (position == 0) {
                     //Edit is clicked, lets create activity to edit
-                    val intent = Intent(context, PdfEditActivity::class.java)
-                    intent.putExtra(
-                        "bookId",
-                        bookId
-                    ) //passed id in book, will be used to edit the book
-                    context.startActivity(intent)
+//                    val intent = Intent(context, PdfEditActivity::class.java)
+//                    intent.putExtra("bookId", bookId)
+                    //passed id in book, will be used to edit the book
+//                    context.startActivity(intent)
 
                 } else if (position == 1) {
                     //delete

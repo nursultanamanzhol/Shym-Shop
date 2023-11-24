@@ -127,18 +127,18 @@
 
             <!--Pdf book-->
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/booksRsv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:id="@+id/booksRsv"
-                app:layout_constraintTop_toBottomOf="@+id/searchEt"
                 android:layout_margin="10dp"
-                tools:listitem="@layout/row_product_salesman"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchEt"
+                app:layout_constraintVertical_bias="0.157"
+                tools:listitem="@layout/row_product_salesman" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

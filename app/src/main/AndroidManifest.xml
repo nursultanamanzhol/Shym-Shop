@@ -73,7 +73,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".authorization.LoginActivity"
+            android:name=".authorization.login.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized">
             <meta-data
@@ -81,7 +81,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".authorization.RegisterActivity"
+            android:name=".authorization.register.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized">
             <meta-data

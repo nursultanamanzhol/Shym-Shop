@@ -6,62 +6,73 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.animation.AnimationUtils
+import androidx.core.app.ActivityOptionsCompat
 import com.shym.commercial.databinding.ActivityMainBinding
-import com.shym.commercial.authorization.LoginActivity
-import com.shym.commercial.authorization.RegisterActivity
-
+import com.shym.commercial.authorization.login.LoginActivity
+import com.shym.commercial.authorization.register.RegisterActivity
+import com.shym.commercial.extensions.setSafeOnClickListener
 
 class MainActivity : AppCompatActivity() {
 
-    //view binding
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        animation()
+        setupFullScreen()
 
+        binding.loginBtn.setSafeOnClickListener { navigateTo(LoginActivity::class.java) }
+        binding.registerBtn.setSafeOnClickListener { navigateTo(RegisterActivity::class.java) }
+
+    }
+
+    private fun setupFullScreen() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+    }
 
-        //handle click, login
-        binding.loginBtn.setOnClickListener {
-            val progressDialog = ProgressDialog(this)
-            progressDialog.setMessage("Загрузка...")
-
-            // Показываем ProgressDialog
-            progressDialog.show()
-
-            // Создаем задачу для Handler, чтобы закрыть ProgressDialog через 2 секунды
-            Handler().postDelayed({
-                progressDialog.dismiss()
-
-                // После закрытия ProgressDialog запускаем новую активность
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }, 2000) // 2000 миллисекунд (2 секунды)
+    private fun navigateTo(destination: Class<*>) {
+        val progressDialog = ProgressDialog(this).apply {
+            setMessage("Загрузка...")
+            show()
         }
 
-        //hand click, skip and continue to main screen
-        binding.registerBtn.setOnClickListener {
-            val progressDialog = ProgressDialog(this)
-            progressDialog.setMessage("Загрузка...")
+        Handler().postDelayed({
+            progressDialog.dismiss()
+            val intent = Intent(this, destination)
+            val options = ActivityOptionsCompat.makeCustomAnimation(
+                this,
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
+            startActivity(intent, options.toBundle())
+            finish()
+        }, 2000)
+    }
 
-            // Показываем ProgressDialog
-            progressDialog.show()
+    private fun animation() {
+        //initialized animation
+        var fade_in = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        var bottom_down = AnimationUtils.loadAnimation(this, R.anim.bottom_down)
+        //settings the bottom down
+        binding.iconIv.animation = bottom_down
 
-            // Создаем задачу для Handler, чтобы закрыть ProgressDialog через 2 секунды
-            Handler().postDelayed({
-                progressDialog.dismiss()
+        //handler
+        var handler = Handler()
+        var runnable = Runnable() {
+            //lets set fadeIN animation on other layouts
+            binding.loginBtn.animation = fade_in
+            binding.registerBtn.animation = fade_in
 
-                // После закрытия ProgressDialog запускаем новую активность
-                startActivity(Intent(this, RegisterActivity::class.java))
-                finish()
-            }, 2000) // 2000 миллисекунд (2 секунды)
         }
 
-        //now lets connect with firebase
+        handler.postDelayed(runnable, 1000)
 
     }
+
+
 }
