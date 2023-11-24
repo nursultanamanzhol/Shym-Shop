@@ -17,6 +17,12 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".users_role.BiometricAuthenticationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".users_role.MainUserPage"
+            android:exported="false" />
+        <activity
             android:name=".users_role.salesman.PdfDetailsSalesmanActivity"
             android:exported="false" />
         <activity
@@ -67,7 +73,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".authorization.LoginActivity"
+            android:name=".authorization.login.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized">
             <meta-data
@@ -75,7 +81,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".authorization.RegisterActivity"
+            android:name=".authorization.register.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized">
             <meta-data

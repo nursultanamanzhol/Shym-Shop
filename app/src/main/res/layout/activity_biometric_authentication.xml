@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users_role.BiometricAuthenticationActivity">
+
+
+<!--    app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+
+        <com.hanks.passcodeview.PasscodeView
+            android:id="@+id/passcodeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#AAA1A1"
+            app:correctStateColor="#71bb4d"
+            app:firstInputTip="****"
+            app:normalStateColor="@color/black"
+            app:numberTextColor="@color/black"
+            app:passcodeLength="4"
+            app:passcodeViewType="set_passcode"
+            app:wrongStateColor="#ea2b46" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="@dimen/profile_image_dimen"-->
+<!--        android:layout_height="@dimen/profile_image_dimen"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:elevation="4dp"-->
+<!--        android:src="@drawable/ic_person_gray"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="ContentDescription" />-->
+
+
+<!--    <com.kevalpatel.passcodeview.PinView-->
+<!--        android:id="@+id/pattern_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+<!--        app:dividerColor="@color/red"-->
+<!--        app:fingerprintDefaultText="Scan your finger to unlock application"-->
+<!--        app:fingerprintEnable="true"-->
+<!--        app:fingerprintTextColor="@color/red"-->
+<!--        app:fingerprintTextSize="@dimen/finger_print_text_size"-->
+<!--        app:giveTactileFeedback="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:titleTextColor="@android:color/white" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

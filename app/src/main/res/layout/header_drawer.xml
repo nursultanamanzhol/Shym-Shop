@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/add_new_product_salesman"
+    android:background="@color/white"
     android:layout_height="wrap_content"
     android:padding="15dp"
-    android:layout_margin="20dp">
+    android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/profileImg"
@@ -16,11 +16,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/nameTvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/profileImg"
         app:layout_constraintStart_toStartOf="parent"
         android:text="Nursultan Amanzhol"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/gray02"
+        app:layout_constraintTop_toBottomOf="@+id/nameTvHeader"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
