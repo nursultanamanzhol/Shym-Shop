@@ -16,30 +16,93 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="ScreenBackground"><item name="android:background">@color/darKGrey</item></style>
-    <style name="CardBackgroundColor"><item name="cardBackgroundColor">@color/darKGrey</item></style>
-    <style name="TopBackground"><item name="android:background">@drawable/top_background_dark_mode</item></style>
-    <style name="ScreenBack"><item name="android:background">@color/gray02</item></style>
-    <style name="PasswordPageBack"><item name="android:background">@drawable/background_password_page_dark_mode</item></style>
-    <style name="CardBackground"><item name="android:background">@color/darKGrey</item></style>
-    <style name="ScreenBackCard"><item name="cardBackgroundColor">@color/gray02</item></style>
-    <style name="ScreenBackCns"><item name="android:background">@color/gray02</item></style>
-    <style name="TextColor"><item name="android:textColor">@color/grey</item></style>
-    <style name="TextColorPassword"><item name="android:textColor">@color/white</item></style>
-    <style name="TextFooter"><item name="android:textColor">@color/white</item></style>
-    <style name="TextColorBtn"><item name="android:textColor">@color/white</item></style>
-    <style name="ImageChange"><item name="android:src">@drawable/ic_dark_logo_and_splash</item></style>
-    <style name="IconLogoutBtn"><item name="android:src">@drawable/ic_logout_custom_white</item></style>
-    <style name="CheckBtnPassword"><item name="android:src">@drawable/ic_check_white_mode</item></style>
-    <style name="BackSpaceBtn"><item name="android:src">@drawable/ic_backspace_dark_mode</item></style>
-    <style name="BtnLock"><item name="android:src">@drawable/ic_lock_white</item></style>
 
-    <style name="ImagePersonMainPage"><item name="android:src">@drawable/ic_person_dark_mode</item></style>
+    <style name="ScreenBackground">
+        <item name="android:background">@color/darKGrey</item>
+    </style>
+
+    <style name="CardBackgroundColor">
+        <item name="cardBackgroundColor">@color/darKGrey</item>
+    </style>
+
+    <style name="TopBackground">
+        <item name="android:background">@drawable/top_background_dark_mode</item>
+    </style>
+
+    <style name="ScreenBack">
+        <item name="android:background">@color/gray02</item>
+    </style>
+
+    <style name="PasswordPageBack">
+        <item name="android:background">@drawable/background_password_page_dark_mode</item>
+    </style>
+
+    <style name="CardBackground">
+        <item name="android:background">@color/darKGrey</item>
+    </style>
+
+    <style name="ScreenBackCard">
+        <item name="cardBackgroundColor">#2B2B2B</item>
+    </style>
+
+    <style name="ScreenBackCns">
+        <item name="android:background">#2B2B2B</item>
+    </style>
+
+    <style name="TextColor">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextColorPassword">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextFooter">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextColorBtn">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ImageChange">
+        <item name="android:src">@drawable/ic_dark_logo_and_splash</item>
+    </style>
+
+    <style name="IconLogoutBtn">
+        <item name="android:src">@drawable/ic_logout_custom_white</item>
+    </style>
+
+    <style name="CheckBtnPassword">
+        <item name="android:src">@drawable/ic_check_white_mode</item>
+    </style>
+
+    <style name="BackSpaceBtn">
+        <item name="android:src">@drawable/ic_backspace_dark_mode</item>
+    </style>
+
+    <style name="BtnLock">
+        <item name="android:src">@drawable/ic_lock_white</item>
+    </style>
+
+    <style name="FloatActionBtn">
+        <item name="android:src">@drawable/ic_edit_dark_mode</item>
+        <item name="android:backgroundTint">@color/gray03</item>
+    </style>
+
+    <style name="ImagePersonMainPage">
+        <item name="android:src">@drawable/ic_person_dark_mode</item>
+    </style>
+
+    <style name="ProfileBackBtn">
+        <item name="android:src">@drawable/ic_back_btn_dark_mode</item>
+    </style>
 
 
     <style name="ProgressBar">
         <item name="colorSecondary">@color/login_register_input_back</item>
     </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_in</item>
         <item name="android:windowExitAnimation">@anim/slide_out</item>

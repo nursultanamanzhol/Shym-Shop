@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.shym.commercial.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.commercial.models.ModelCategory
 import com.shym.commercial.databinding.ActivityDashboardUserBinding
-import com.shym.commercial.users_role.admin.ProfileActivity
+import com.shym.commercial.users_role.profile.ProfileActivity
 import com.shym.commercial.users_role.customer.fragments.BooksUserFragment
 
 class DashboardUserActivity : AppCompatActivity() {

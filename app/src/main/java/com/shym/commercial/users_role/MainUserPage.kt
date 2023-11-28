@@ -9,18 +9,16 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
-import androidx.viewbinding.ViewBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.commercial.MainActivity
-import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityMainUserPageBinding
 import com.shym.commercial.extensions.setSafeOnClickListener
 import com.shym.commercial.users_role.admin.DashboardAdminActivity
-import com.shym.commercial.users_role.admin.ProfileActivity
+import com.shym.commercial.users_role.profile.ProfileActivity
 import com.shym.commercial.users_role.customer.DashboardUserActivity
 import com.shym.commercial.users_role.salesman.DashboardSalesmanPageActivity
 
@@ -50,7 +48,7 @@ class MainUserPage : AppCompatActivity() {
     }
 
     private fun refreshApp() {
-        binding.swipeContainer.setOnRefreshListener {
+        binding.swipeContainer.setSafeOnClickListener {
             binding.swipeContainer.isRefreshing = false
         }
     }
@@ -219,16 +217,16 @@ class MainUserPage : AppCompatActivity() {
         }
     }
 
-    private fun switchLDMode(){
+    private fun switchLDMode() {
         //switchMode
         switchMode = binding.switchMode
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE)
         nightMode = sharedPreferences.getBoolean("nightMode", false)
-        if (nightMode){
+        if (nightMode) {
             switchMode.isChecked = true
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
-        switchMode.setOnClickListener {
+        switchMode.setSafeOnClickListener {
             if (nightMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 editor = sharedPreferences.edit()

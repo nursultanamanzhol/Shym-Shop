@@ -2,18 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".users_role.admin.ProfileActivity">
+    tools:context=".users_role.profile.ProfileActivity">
 
 
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarUpload"
+        style="@style/ScreenBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,13 +21,13 @@
 
         <ImageButton
             android:id="@+id/backBtn"
+            style="@style/ProfileBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
             android:elevation="2dp"
             android:padding="10dp"
-            android:src="@drawable/ic_back_red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,12 +35,12 @@
 
         <TextView
             android:id="@+id/titleTv"
+            style="@style/TextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_500"
             android:text="Profile"
             android:textAllCaps="false"
-            android:textColor="@color/red"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,59 +50,87 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/gray02"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarUpload" />
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/back_profile_img"
+        style="@style/ScreenBackCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarUpload" />
+        app:layout_constraintTop_toBottomOf="@+id/view1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/back_profile_img"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/cameraImg"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/back_camera_cicrle"
-        android:elevation="5dp"
-        android:padding="5dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_camera"
-        app:layout_constraintBottom_toBottomOf="@+id/profileImg"
-        app:layout_constraintEnd_toEndOf="@+id/profileImg" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImg"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_margin="20dp"
+                android:background="@color/white"
+                android:elevation="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_gray"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/styleRoundedCornersImage" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profileImg"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_margin="20dp"
-        android:background="@color/white"
-        android:elevation="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_person_gray"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarUpload"
-        app:shapeAppearanceOverlay="@style/styleRoundedCornersImage" />
+            <ImageView
+                android:id="@+id/cameraImg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/back_camera_cicrle"
+                android:elevation="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintBottom_toBottomOf="@+id/profileImg"
+                app:layout_constraintEnd_toEndOf="@+id/profileImg" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <TextView
         android:id="@+id/nameTv"
+        style="@style/TextColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="Full Name"
-        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/emailTv"
+        style="@style/TextFooter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -129,19 +157,19 @@
 
             <TextView
                 android:id="@+id/accountTv"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Account"
-                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/accountTypeTv"
+                style="@style/TextFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="N/A"
-                android:textColor="@color/gray02"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -155,19 +183,19 @@
 
             <TextView
                 android:id="@+id/memberTv"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Member"
-                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/memberDateTv"
+                style="@style/TextFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="N/A"
-                android:textColor="@color/gray02"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -181,19 +209,19 @@
 
             <TextView
                 android:id="@+id/favoriteTv"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Favorite Products"
-                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/favoriteProductTv"
+                style="@style/TextFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="N/A"
-                android:textColor="@color/gray02"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -202,12 +230,14 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profileEditBtn"
+        style="@style/FloatActionBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/add_new_product_salesman"
-        android:src="@drawable/ic_edit_white"
+        app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    <!--    android:background="@drawable/add_new_product_salesman"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

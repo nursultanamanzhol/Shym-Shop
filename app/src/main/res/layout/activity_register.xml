@@ -9,9 +9,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topConst"
+        style="@style/TopBackground"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="@drawable/top_background"
         android:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,13 +40,13 @@
 
             <ImageView
                 android:id="@+id/iconIv"
+                style="@style/ImageChange"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:cropToPadding="true"
-                style="@style/ImageChange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,9 +60,9 @@
         android:id="@+id/topCardView"
         android:layout_width="200dp"
         android:layout_height="70dp"
+        style="@style/ScreenBackCard"
         app:cardCornerRadius="30dp"
         app:cardElevation="21dp"
-        app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/topConst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +70,8 @@
         tools:ignore="NotSibling">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/ScreenBackCns"
             android:layout_width="match_parent"
-            style="@style/ScreenBack"
             android:layout_height="match_parent">
 
             <TextView
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            app:cardBackgroundColor="@android:color/transparent"
+            style="@style/ScreenBackCard"
             app:cardCornerRadius="30dp"
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +114,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/centerConst"
-                style="@style/ScreenBackground"
+                style="@style/ScreenBackCns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -281,11 +281,11 @@
 
                 <TextView
                     android:id="@+id/logInBtn"
+                    style="@style/TextColorBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="Already Have on Account?"
-                    style="@style/TextColorBtn"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/quickAccessCode" />
@@ -293,13 +293,13 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/registerBtn"
+                    style="@style/TextColorBtn"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/login_register_btn_color_back"
                     android:text="@string/sigUn"
-                    style="@style/TextColorBtn"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/red"/>
+    <solid android:color="@color/login_register_input_back"/>
     <corners android:radius="150dp"/>
 
 

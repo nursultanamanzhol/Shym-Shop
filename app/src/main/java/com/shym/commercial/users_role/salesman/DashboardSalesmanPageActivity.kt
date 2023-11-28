@@ -19,7 +19,7 @@ import com.shym.commercial.MainActivity
 import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityDashboardSalesmanPageBinding
 import com.shym.commercial.models.ModelPdf
-import com.shym.commercial.users_role.admin.ProfileActivity
+import com.shym.commercial.users_role.profile.ProfileActivity
 import com.shym.commercial.users_role.salesman.adapter.AdapterPdfSalesman
 
 class DashboardSalesmanPageActivity : AppCompatActivity() {
