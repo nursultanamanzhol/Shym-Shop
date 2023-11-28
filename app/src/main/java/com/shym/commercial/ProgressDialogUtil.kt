@@ -28,10 +28,6 @@ object ProgressDialogUtil {
                 R.anim.slide_out_left
             )
             context.startActivity(intent, options.toBundle())
-            // Ключевой момент: если это вызывается внутри активити, используйте 'finish()',
-            // если внутри фрагмента или другого контекста, нужно использовать другой метод для завершения текущей активности или фрагмента.
-            // Например, для фрагмента используйте fragmentManager.popBackStack().
-            // finish()
         }, 1000)
     }
 }

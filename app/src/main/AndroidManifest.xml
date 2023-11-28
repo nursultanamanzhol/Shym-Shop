@@ -17,10 +17,10 @@
         android:theme="@style/Theme.BookApp"
         tools:targetApi="31">
         <activity
-            android:name=".authorization.PasswordPage"
+            android:name=".users_role.profile.ProfileEditActivity"
             android:exported="false" />
         <activity
-            android:name=".users_role.BiometricAuthenticationActivity"
+            android:name=".authorization.PasswordPage"
             android:exported="false" />
         <activity
             android:name=".users_role.MainUserPage"
@@ -35,7 +35,7 @@
             android:name=".users_role.salesman.DashboardSalesmanPageActivity"
             android:exported="false" />
         <activity
-            android:name=".users_role.admin.ProfileActivity"
+            android:name=".users_role.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".pdflist.PdfViewActivity"

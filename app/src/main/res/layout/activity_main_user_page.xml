@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarRl"
-        style="@style/ScreenBackground"
+        style="@style/ScreenBackCns"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/servicesTv"
-            style="@style/TextFooter"
+            style="@style/TextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -53,12 +53,11 @@
             android:id="@+id/control"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="15dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_control"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/switchMode"
+            app:layout_constraintStart_toEndOf="@+id/servicesTv"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -84,10 +83,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/logRl"
+        style="@style/ScreenBackCard"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_margin="10dp"
-        style="@style/ScreenBackCard"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,6 +101,7 @@
 
             <ImageButton
                 android:id="@+id/profileBtn"
+                style="@style/ImagePersonMainPage"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
@@ -107,7 +109,6 @@
                 android:layout_marginStart="15dp"
                 android:background="@android:color/transparent"
                 android:padding="5dp"
-                style="@style/ImagePersonMainPage"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -144,8 +145,8 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
         android:background="@color/gray02"
         app:layout_constraintTop_toBottomOf="@+id/logRl" />
 
@@ -192,10 +193,10 @@
                         android:layout_margin="10dp">
 
                         <androidx.cardview.widget.CardView
+                            style="@style/ScreenBackCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardCornerRadius="15dp"
-                            style="@style/ScreenBackCard"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -327,16 +328,15 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/product_list_2"
                         style="@style/ScreenBackground"
-                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
                         android:nestedScrollingEnabled="false" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         style="@style/ScreenBackground"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
+                        android:layout_height="match_parent">
 
                         <include
                             layout="@layout/footer_contact"
@@ -350,9 +350,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         style="@style/ScreenBackground"
-                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
 
                         <fragment
                             android:id="@+id/fragment_footer_credit"
