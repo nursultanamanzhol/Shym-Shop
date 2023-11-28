@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.shym.commercial.authorization.PasswordPage
 import com.shym.commercial.users_role.MainUserPage
 
 class SplashActivity : AppCompatActivity() {
@@ -23,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
             Handler().postDelayed({
                 when {
                     auth.currentUser == null -> startActivity(Intent(this, MainActivity::class.java))
-                    else -> startActivity(Intent(this, MainUserPage::class.java))
+                    else -> startActivity(Intent(this, PasswordPage::class.java))
                 }
                 finish()
             }, 500)

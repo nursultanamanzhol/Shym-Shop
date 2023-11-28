@@ -1,13 +1,15 @@
 package com.shym.commercial
 
-import android.app.ProgressDialog
-import android.content.Intent
+
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.animation.AnimationUtils
-import androidx.core.app.ActivityOptionsCompat
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import com.shym.commercial.databinding.ActivityMainBinding
 import com.shym.commercial.authorization.login.LoginActivity
 import com.shym.commercial.authorization.register.RegisterActivity
@@ -15,11 +17,38 @@ import com.shym.commercial.extensions.setSafeOnClickListener
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var switchMode: SwitchCompat
+    private var nightMode: Boolean = false
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+//        //switchMode
+//        switchMode = binding.switchMode
+//        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE)
+//        nightMode = sharedPreferences.getBoolean("nightMode", false)
+//        if (nightMode){
+//            switchMode.isChecked = true
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        }
+//        switchMode.setOnClickListener {
+//            if (nightMode) {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//                editor = sharedPreferences.edit()
+//                editor.putBoolean("nightMode", false)
+//            } else {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                editor = sharedPreferences.edit()
+//                editor.putBoolean("nightMode", true)
+//            }
+//            editor.apply()
+//        }
+
+
         setContentView(binding.root)
         animation()
         setupFullScreen()
@@ -36,23 +65,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo(destination: Class<*>) {
-        val progressDialog = ProgressDialog(this).apply {
-            setMessage("Загрузка...")
-            show()
-        }
+        val progressDialog = ProgressDialogUtil.showProgressDialog(this)
 
-        Handler().postDelayed({
-            progressDialog.dismiss()
-            val intent = Intent(this, destination)
-            val options = ActivityOptionsCompat.makeCustomAnimation(
-                this,
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
-            startActivity(intent, options.toBundle())
-            finish()
-        }, 2000)
+        ProgressDialogUtil.hideProgressDialog(progressDialog, destination, this)
     }
+
 
     private fun animation() {
         //initialized animation

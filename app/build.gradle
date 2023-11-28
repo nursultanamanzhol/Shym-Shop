@@ -68,10 +68,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     //ViewModels
     implementation "androidx.activity:activity-ktx:1.4.0"
-    // koin
-    implementation "org.koin:koin-android:3.2.0"
-    implementation "org.koin:koin-androidx-viewmodel:3.2.0"
 
+    //ProgressDialog
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 
     //passcode
     implementation 'com.kevalpatel2106:passcodeview:2.0.0'

@@ -1,9 +1,11 @@
 package com.shym.commercial.authorization.register
 
 import android.app.ProgressDialog
+import com.shym.commercial.extensions.setSafeOnClickListener
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -16,6 +18,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityRegisterBinding
 import android.view.View
+import android.view.animation.AnimationUtils
+import com.shym.commercial.DialogUtils
+import com.shym.commercial.ProgressDialogUtil
+import com.shym.commercial.authorization.login.LoginActivity
+import com.shym.commercial.users_role.MainUserPage
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -32,7 +39,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        animation()
+        navPages()
 
         val iinEt = findViewById<EditText>(R.id.iinEt)
         val iinMain = findViewById<TextInputLayout>(R.id.iin_main)
@@ -56,7 +64,6 @@ class RegisterActivity : AppCompatActivity() {
         })
 
 
-
         // Скрываем навигационную панель и часы
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -74,28 +81,35 @@ class RegisterActivity : AppCompatActivity() {
         progressDialog.setTitle("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
 
-        //handle back button click, goto previous screen
-//        binding.backBtn.setOnClickListener {
-//            onBackPressed() //goto previous screen
-//        }
 
-
+        /*Steps
+                    * 1) Input Data
+                    * 2) Validate Data
+                    * 3) Create Account - Firebase Auth
+                    * 4) Save User Info - Firebase Realtime Database*/
         //handle click, begin register
-        binding.registerBtn.setOnClickListener {
-            /*Steps
-            * 1) Input Data
-            * 2) Validate Data
-            * 3) Create Account - Firebase Auth
-            * 4) Save User Info - Firebase Realtime Database*/
+
+
+    }
+
+    private fun navPages() {
+        binding.logInBtn.setSafeOnClickListener { navigateTo(LoginActivity::class.java) }
+        binding.registerBtn.setSafeOnClickListener {
             validateData()
         }
+    }
 
+    private fun navigateTo(destination: Class<*>) {
+        val progressDialog = ProgressDialogUtil.showProgressDialog(this)
+
+        ProgressDialogUtil.hideProgressDialog(progressDialog, destination, this)
     }
 
     private var name = ""
     private var iinMain = ""
     private var email = ""
     private var password = ""
+    private var quickAccessCode = ""
 
 
     private fun validateData() {
@@ -103,28 +117,31 @@ class RegisterActivity : AppCompatActivity() {
         name = binding.nameEt.text.toString().trim()
         iinMain = binding.iinEt.text.toString().trim()
         email = binding.emailEt.text.toString().trim()
+        quickAccessCode = binding.quickAccessCodeEt.text.toString().trim()
         password = binding.passwordEt.text.toString().trim()
         val cPassword = binding.cPasswordEt.text.toString().trim()
 
         //2) Validate Data
         if (name.isEmpty()) {
             //empty name...
-            Toast.makeText(this, "Введите свое ФИО...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter your full name...", Toast.LENGTH_SHORT).show()
         } else if (iinMain.isEmpty()) {
             //empty iinMain...
-            Toast.makeText(this, "Введите свои ИИН...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter your Individual ID number...", Toast.LENGTH_SHORT).show()
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             //invalid email pattern
-            Toast.makeText(this, "Неверный шаблон электронной почты...", Toast.LENGTH_SHORT).show()
-
+            Toast.makeText(this, "Invalid e-mail template...", Toast.LENGTH_SHORT).show()
         } else if (password.isEmpty()) {
             //empty password
-            Toast.makeText(this, "Введите пароль...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter your password...", Toast.LENGTH_SHORT).show()
         } else if (cPassword.isEmpty()) {
             //empty password
-            Toast.makeText(this, "Подтвердите пароль...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Confirm password...", Toast.LENGTH_SHORT).show()
         } else if (password != cPassword) {
-            Toast.makeText(this, "Пароли не совпадает...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Passwords don't match...", Toast.LENGTH_SHORT).show()
+        } else if (quickAccessCode.isEmpty()) {
+            //empty quickAccessCode
+            Toast.makeText(this, "Think of a shortcut code...", Toast.LENGTH_SHORT).show()
         } else {
             createUserAccount()
         }
@@ -134,8 +151,8 @@ class RegisterActivity : AppCompatActivity() {
     private fun createUserAccount() {
         //3) Create Account - Firebase Auth
 
-        //show progress
-        progressDialog.setMessage("Создание учетной записи...")
+        //show progress with custom message
+        val progressDialog = DialogUtils.createProgressDialog(this, "Creating an account...")
         progressDialog.show()
 
         //create user in firebase auth
@@ -149,13 +166,12 @@ class RegisterActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(
                     this,
-                    "Не удалось создать учетную запись по причине ${e.message}...",
+                    "Failed to create an account due to ${e.message}...",
                     Toast.LENGTH_SHORT
                 ).show()
-
             }
-
     }
+
 
     private fun updateUserInfo() {
         // 4) Save User Info - Firebase Realtime Database
@@ -173,6 +189,7 @@ class RegisterActivity : AppCompatActivity() {
         hashMap["uid"] = uid
         hashMap["email"] = email
         hashMap["iiMain"] = iinMain
+        hashMap["quickAccessCode"] = quickAccessCode
         hashMap["name"] = name
         hashMap["profileImage"] = "" //add empty, will do in profile edit
         hashMap["userType"] =
@@ -189,7 +206,7 @@ class RegisterActivity : AppCompatActivity() {
                 //user info saved, open user dashboard
                 progressDialog.dismiss()
                 Toast.makeText(this, "Account created...", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@RegisterActivity, DashboardUserActivity::class.java))
+                startActivity(Intent(this@RegisterActivity, MainUserPage::class.java))
                 finish()
             }
             .addOnFailureListener { e ->
@@ -199,7 +216,27 @@ class RegisterActivity : AppCompatActivity() {
                     .show()
 
             }
+    }
 
+    private fun animation() {
+        //initialized animation
+        var fade_in = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        var bottom_down = AnimationUtils.loadAnimation(this, R.anim.bottom_down)
+        //settings the bottom down
+        binding.topConst.animation = bottom_down
+
+        //handler
+        var handler = Handler()
+        var runnable = Runnable() {
+            //lets set fadeIN animation on other layouts
+            binding.topCardView.animation = fade_in
+            binding.card1.animation = fade_in
+            binding.logInBtn.animation = fade_in
+            binding.registerBtn.animation = fade_in
+
+        }
+
+        handler.postDelayed(runnable, 1000)
 
     }
 }

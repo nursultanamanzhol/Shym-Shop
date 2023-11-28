@@ -12,7 +12,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Observer
+import com.shym.commercial.ProgressDialogUtil
 import com.shym.commercial.R
+import com.shym.commercial.authorization.PasswordPage
 import com.shym.commercial.authorization.register.RegisterActivity
 import com.shym.commercial.databinding.ActivityLoginBinding
 import com.shym.commercial.extensions.setSafeOnClickListener
@@ -37,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.loginSuccess.observe(this, Observer { success ->
             if (success) {
-                startActivity(Intent(this, MainUserPage::class.java))
+                startActivity(Intent(this, PasswordPage::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
@@ -78,24 +80,10 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun navigateTo(destination: Class<*>) {
-        val progressDialog = ProgressDialog(this).apply {
-            setMessage("Загрузка...")
-            show()
-        }
+        val progressDialog = ProgressDialogUtil.showProgressDialog(this)
 
-        Handler().postDelayed({
-            progressDialog.dismiss()
-            val intent = Intent(this, destination)
-            val options = ActivityOptionsCompat.makeCustomAnimation(
-                this,
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
-            startActivity(intent, options.toBundle())
-            finish()
-        }, 2000)
+        ProgressDialogUtil.hideProgressDialog(progressDialog, destination, this)
     }
-
     private fun animation() {
         //initialized animation
         var fade_in = AnimationUtils.loadAnimation(this, R.anim.fade_in)
