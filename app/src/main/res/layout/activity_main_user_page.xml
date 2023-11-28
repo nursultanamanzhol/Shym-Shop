@@ -6,7 +6,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users_role.MainUserPage">
+    tools:context=".ui.MainUserPage">
 
 
     <!--Toolbar-->
@@ -51,11 +51,11 @@
 
         <ImageButton
             android:id="@+id/control"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_control"
+            android:src="@drawable/ic_control_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/servicesTv"
             app:layout_constraintTop_toTopOf="parent"
@@ -99,20 +99,19 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize">
 
-            <ImageButton
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profileBtn"
-                style="@style/ImagePersonMainPage"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
                 android:background="@android:color/transparent"
-                android:padding="5dp"
+                android:elevation="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                app:shapeAppearanceOverlay="@style/styleRoundedCornersMainImage" />
 
             <TextView
                 android:id="@+id/subTitleTv"
@@ -292,6 +291,7 @@
                         app:cardCornerRadius="15dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/allProduct"
                             style="@style/ScreenBackCns"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -356,7 +356,7 @@
 
                         <fragment
                             android:id="@+id/fragment_footer_credit"
-                            android:name="com.shym.commercial.users_role.FooterCreditFragment"
+                            android:name="com.shym.commercial.ui.fragments.FooterCreditFragment"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"

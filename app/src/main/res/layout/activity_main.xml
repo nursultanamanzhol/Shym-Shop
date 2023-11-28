@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     style="@style/ScreenBackground"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
 <!--    <androidx.appcompat.widget.SwitchCompat-->
 <!--        android:id="@+id/switchMode"-->

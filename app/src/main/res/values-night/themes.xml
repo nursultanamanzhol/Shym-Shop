@@ -110,6 +110,7 @@
 
 
     <style name="Theme.TheAuthorized" parent="Theme.MaterialComponents.Light.NoActionBar">
-
+        <item name="android:statusBarColor" tools:targetApi="21">@color/gray02</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
 </resources>

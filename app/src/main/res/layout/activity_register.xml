@@ -5,7 +5,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authorization.register.RegisterActivity">
+    tools:context=".ui.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topConst"

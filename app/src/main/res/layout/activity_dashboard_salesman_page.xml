@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="@color/white"
-    tools:context=".users_role.salesman.DashboardSalesmanPageActivity"
+    tools:context=".ui.salesman.DashboardSalesmanPageActivity"
     >
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

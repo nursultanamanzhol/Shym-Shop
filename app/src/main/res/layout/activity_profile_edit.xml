@@ -5,7 +5,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users_role.profile.ProfileEditActivity">
+    tools:context=".ui.profile.ProfileEditActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/imageView"
@@ -66,18 +66,25 @@
 
             <ImageButton
                 android:id="@+id/backBtn"
-                style="@style/ProfileBackBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="@drawable/password_back"
                 android:elevation="4dp"
                 android:padding="10dp"
+                android:src="@drawable/ic_back_btn_white_mode"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray02"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -95,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="30dp"
-            app:cardBackgroundColor="@android:color/transparent"
+            style="@style/ScreenBackCard"
             app:cardCornerRadius="30dp"
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +111,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/centerConst"
-                style="@style/ScreenBackground"
+                style="@style/ScreenBackCns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -139,32 +146,32 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <!--Confirm Password-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/quickAccessCode"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:hintEnabled="false"
-                    app:layout_constraintTop_toBottomOf="@+id/nameTil"
-                    app:passwordToggleEnabled="true">
+<!--                &lt;!&ndash;Confirm Password&ndash;&gt;-->
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:id="@+id/quickAccessCode"-->
+<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:hintEnabled="false"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/nameTil"-->
+<!--                    app:passwordToggleEnabled="true">-->
 
-                    <EditText
-                        android:id="@+id/quickAccessCodeEt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/register_btn_back"
-                        android:drawableStart="@drawable/ic_lock_gray"
-                        android:drawablePadding="10dp"
-                        android:hint="Think of a shortcut code"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:padding="10dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/gray01" />
+<!--                    <EditText-->
+<!--                        android:id="@+id/quickAccessCodeEt"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/register_btn_back"-->
+<!--                        android:drawableStart="@drawable/ic_lock_gray"-->
+<!--                        android:drawablePadding="10dp"-->
+<!--                        android:hint="Think of a shortcut code"-->
+<!--                        android:inputType="number"-->
+<!--                        android:maxLength="4"-->
+<!--                        android:padding="10dp"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textColorHint="@color/gray01" />-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
 
                 <!--                <TextView-->
@@ -192,7 +199,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/quickAccessCode" />
+                    app:layout_constraintTop_toBottomOf="@+id/nameTil" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

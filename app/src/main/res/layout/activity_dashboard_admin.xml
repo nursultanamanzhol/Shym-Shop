@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="@color/white"
-    tools:context=".users_role.admin.DashboardAdminActivity">
+    tools:context=".ui.admin.DashboardAdminActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     android:paddingTop="10dp"
     style="@style/ScreenBackground"
     android:paddingEnd="10dp"
-    tools:context=".users_role.FooterCreditFragment">
+    tools:context=".ui.fragments.FooterCreditFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
