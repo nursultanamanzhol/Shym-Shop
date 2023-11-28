@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".authorization.register.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,22 +46,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:cropToPadding="true"
-                android:src="@drawable/logo_and_splash"
+                style="@style/ImageChange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!--        <TextView-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_below="@id/iconIv"-->
-            <!--            android:layout_centerHorizontal="true"-->
-            <!--            android:layout_marginTop="10dp"-->
-            <!--            android:fontFamily="sans-serif-condensed"-->
-            <!--            android:text="Please Login"-->
-            <!--            android:textColor="@color/white"-->
-            <!--            android:textSize="28sp"/>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -72,6 +62,7 @@
         android:layout_height="70dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="21dp"
+        app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/topConst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +71,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            style="@style/ScreenBack"
             android:layout_height="match_parent">
 
             <TextView
@@ -101,17 +93,19 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="190dp"
+        android:background="@android:color/transparent"
         android:elevation="2dp"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:background="@drawable/reg_log_balk"
+            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="30dp"
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,6 +114,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/centerConst"
+                style="@style/ScreenBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
@@ -172,6 +167,7 @@
                         android:drawablePadding="10dp"
                         android:hint="@string/iin_main"
                         android:inputType="number"
+                        android:maxLength="12"
                         android:padding="10dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray01" />
@@ -255,131 +251,66 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!--Confirm Password-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/quickAccessCode"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@+id/cPasswordTil"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/quickAccessCodeEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/register_btn_back"
+                        android:drawableStart="@drawable/ic_lock_gray"
+                        android:drawablePadding="10dp"
+                        android:hint="Think of a shortcut code"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray01" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/logInBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Already Have on Account?"
+                    style="@style/TextColorBtn"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/quickAccessCode" />
+
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="200dp"
                     android:id="@+id/registerBtn"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/login_register_btn_color_back"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/sigUn"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="15dp"
+                    android:background="@drawable/login_register_btn_color_back"
+                    android:text="@string/sigUn"
+                    style="@style/TextColorBtn"
                     android:textSize="20sp"
-                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cPasswordTil"
-                    />
-
-                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-                <!--                    android:id="@+id/registerBtn"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="55dp"-->
-                <!--                    android:layout_marginTop="30dp"-->
-                <!--                    android:layout_marginBottom="15dp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/cPasswordTil"
-                >-->
-
-                <!--                    <View-->
-                <!--                        android:id="@+id/registerView"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="match_parent"-->
-                <!--                        android:background="@drawable/reg_log_balk"-->
-                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                        app:layout_constraintHorizontal_bias="0.0"-->
-                <!--                        app:layout_constraintStart_toStartOf="parent"-->
-                <!--                        app:layout_constraintTop_toTopOf="parent"-->
-                <!--                        app:layout_constraintVertical_bias="0.0" />-->
-
-                <!--                    <TextView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:fontFamily="@font/roboto_500"-->
-                <!--                        android:text="@string/create_account"-->
-                <!--                        android:textColor="@color/red"-->
-                <!--                        android:textSize="20sp"-->
-                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                        app:layout_constraintStart_toStartOf="parent"-->
-                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                    app:layout_constraintTop_toBottomOf="@+id/logInBtn" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
-
     </ScrollView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewGoogle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:visibility="invisible"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="21dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView"
-        app:layout_constraintStart_toStartOf="@+id/scrollView"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            android:src="@drawable/google_logo" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewFaceBook"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:visibility="invisible"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="21dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            android:src="@drawable/facebook_logo" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewTwitter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:visibility="invisible"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="21dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
-        app:layout_constraintStart_toEndOf="@+id/cardViewGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:src="@drawable/twitter_logo" />
-
-    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
