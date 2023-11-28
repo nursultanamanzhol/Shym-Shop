@@ -18,5 +18,7 @@
     <color name="login_register_input_back">#00ff19</color>
     <color name="my_red">#FF0000</color>
     <color name="colorAccent">#009688</color>
+    <color name="grey">#aaa</color>
+    <color name="darKGrey">#ff424242</color>
 
 </resources>

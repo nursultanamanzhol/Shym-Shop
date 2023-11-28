@@ -4,9 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    style="@style/ScreenBackground"
     android:padding="20dp"
     tools:context=".MainActivity">
+
+<!--    <androidx.appcompat.widget.SwitchCompat-->
+<!--        android:id="@+id/switchMode"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:thumb="@drawable/thumb"-->
+<!--        app:track="@drawable/track"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iconIv"
@@ -20,27 +29,14 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/animated_main_page" />
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/iconIv"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="200dp"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:layout_marginTop="40dp"-->
-    <!--        android:src="@drawable/logo_1"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-
-    <!--        />-->
-
     <TextView
         android:id="@+id/iconTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        style="@style/TextColor"
         android:text="@string/welcome_to_nursultan_apps"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,29 +44,27 @@
 
     <Button
         android:id="@+id/loginBtn"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:background="@drawable/login_register_btn_color_back"
         android:text="@string/login"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/login_register_input_back"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/registerBtn"
         />
 
     <Button
         android:id="@+id/registerBtn"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:alpha="0.5"
         android:background="@drawable/login_register_btn_color_back"
-        android:text="@string/register"
+        android:text="Sing Up"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/login_register_input_back"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="20dp" />
