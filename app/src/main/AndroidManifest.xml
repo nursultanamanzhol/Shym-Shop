@@ -27,10 +27,10 @@
             android:name=".ui.MainUserPage"
             android:exported="false" />
         <activity
-            android:name=".ui.salesman.PdfDetailsSalesmanActivity"
+            android:name=".ui.PdfDetailsSalesmanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.salesman.UploadPdfActivitySalesman"
+            android:name=".ui.category.UploadPdfActivitySalesman"
             android:exported="false" />
         <activity
             android:name=".ui.salesman.DashboardSalesmanPageActivity"

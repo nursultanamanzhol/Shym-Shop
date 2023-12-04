@@ -73,6 +73,9 @@
     <style name="ImageChange">
         <item name="android:src">@drawable/logo_and_splash</item>
     </style>
+    <style name="IcAttachBtn">
+        <item name="android:src">@drawable/ic_attach_white</item>
+    </style>
 
     <style name="IconLogoutBtn">
         <item name="android:src">@drawable/ic_logout_custom</item>

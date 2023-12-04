@@ -140,7 +140,7 @@
                         android:hint="@string/full_name"
                         android:inputType="textPersonName|textCapWords"
                         android:padding="10dp"
-                        android:textColor="@color/black"
+                        style="@style/TextColor"
                         android:textColorHint="@color/gray01" />
 
                 </com.google.android.material.textfield.TextInputLayout>

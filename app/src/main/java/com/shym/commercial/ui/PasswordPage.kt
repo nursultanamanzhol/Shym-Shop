@@ -51,16 +51,16 @@ class PasswordPage : AppCompatActivity() {
         val deleteBtn: LinearLayout = binding.deleteBtn
         val passwordText: TextView = binding.passwordTex
 
-        btn1.setSafeOnClickListener { appendDigit(1) }
-        btn2.setSafeOnClickListener { appendDigit(2) }
-        btn3.setSafeOnClickListener { appendDigit(3) }
-        btn4.setSafeOnClickListener { appendDigit(4) }
-        btn5.setSafeOnClickListener { appendDigit(5) }
-        btn6.setSafeOnClickListener { appendDigit(6) }
-        btn7.setSafeOnClickListener { appendDigit(7) }
-        btn8.setSafeOnClickListener { appendDigit(8) }
-        btn9.setSafeOnClickListener { appendDigit(9) }
-        btn0.setSafeOnClickListener { appendDigit(0) }
+        btn1.setOnClickListener { appendDigit(1) }
+        btn2.setOnClickListener { appendDigit(2) }
+        btn3.setOnClickListener { appendDigit(3) }
+        btn4.setOnClickListener { appendDigit(4) }
+        btn5.setOnClickListener { appendDigit(5) }
+        btn6.setOnClickListener { appendDigit(6) }
+        btn7.setOnClickListener { appendDigit(7) }
+        btn8.setOnClickListener { appendDigit(8) }
+        btn9.setOnClickListener { appendDigit(9) }
+        btn0.setOnClickListener { appendDigit(0) }
 
         val firebaseUser = firebaseAuth.currentUser!!
         val usersRef = FirebaseDatabase.getInstance().getReference("Users")
@@ -95,7 +95,7 @@ class PasswordPage : AppCompatActivity() {
                             ).show()
                         }
                     }
-                    deleteBtn.setSafeOnClickListener {
+                    deleteBtn.setOnClickListener {
                         if (editPassword.isNotBlank()) {
                             editPassword =
                                 editPassword.subSequence(0, editPassword.length - 1).toString()

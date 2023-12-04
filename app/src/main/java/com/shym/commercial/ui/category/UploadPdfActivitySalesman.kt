@@ -1,4 +1,4 @@
-package com.shym.commercial.ui.salesman
+package com.shym.commercial.ui.category
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -21,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityUploadPdfSalesmanBinding
 import com.shym.commercial.models.ModelCategory
+import com.shym.commercial.ui.salesman.DashboardSalesmanPageActivity
 
 @Suppress("DEPRECATION")
 class UploadPdfActivitySalesman : AppCompatActivity() {
@@ -44,6 +45,7 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
     private var title = ""
     private var description = ""
     private var price = ""
+    private var discount = ""
     private var category = ""
     private var selectedCategoryId = ""
     private var selectedCategoryTitle = ""
@@ -102,6 +104,7 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
         title = binding.titleEt.text.toString().trim()
         description = binding.descriptionEt.text.toString().trim()
         price = binding.costEt.text.toString().trim()
+        discount = binding.discountEt.text.toString().trim()
 //        category = binding.categoryTv.text.toString().trim()
         //validate data
         if (title.isEmpty()) {
@@ -134,22 +137,28 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
         val filePathAndName = "Books/$timestamp"
         //storage reference
         val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
-        storageReference.putFile(pdfUri!!)
-            .addOnSuccessListener { taskSnapshot ->
-                Log.d(TAG, "uploadPdfToStorage: PDF uploaded now getting url...")
+        (if (pdfUri != null) pdfUri else throw NullPointerException("Expression 'pdfUri' must not be null"))?.let {
+            storageReference.putFile(it)
+                .addOnSuccessListener { taskSnapshot ->
+                    Log.d(TAG, "uploadPdfToStorage: PDF uploaded now getting url...")
 
-                //Step -3  Get url of upload pdf
-                val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
-                while (!uriTask.isSuccessful);
-                val uploadPdfUrl = "${uriTask.result}"
-                uploadPdfInfoToDo(uploadPdfUrl, timestamp)
-            }
-            .addOnFailureListener { e ->
-                Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
-                progressDialog.dismiss()
-                Toast.makeText(this, "Failure to upload due to ${e.message}", Toast.LENGTH_SHORT)
-                    .show()
-            }
+                    //Step -3  Get url of upload pdf
+                    val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
+                    while (!uriTask.isSuccessful);
+                    val uploadPdfUrl = "${uriTask.result}"
+                    uploadPdfInfoToDo(uploadPdfUrl, timestamp)
+                }
+                .addOnFailureListener { e ->
+                    Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
+                    progressDialog.dismiss()
+                    Toast.makeText(
+                        this,
+                        "Failure to upload due to ${e.message}",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+        }
     }
 
     private fun uploadPdfInfoToDo(uploadPdfUrl: String, timestamp: Long) {
@@ -167,6 +176,7 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
         hashMap["title"] = "$title"
         hashMap["description"] = "$description"
         hashMap["price"] = "$price"
+        hashMap["discount"] = "$discount"
         hashMap["categoryId"] = "$categoryId"
         hashMap["url"] = "$uploadPdfUrl"
         hashMap["timestamp"] = timestamp
@@ -182,14 +192,12 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
                 pdfUri = null
-
-                onBackPressed()
-                onBackPressed()
-//                val intent = Intent(this, DashboardSalesmanPageActivity::class.java)
-
-//                startActivity(intent)
-//                intent.putExtra("categoryUp", categoryId)
-//                finish()
+//
+//                onBackPressed()
+//                onBackPressed()
+                val intent = Intent(this, DashboardSalesmanPageActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             .addOnFailureListener { e ->
                 Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")

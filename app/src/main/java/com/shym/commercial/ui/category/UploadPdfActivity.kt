@@ -27,86 +27,82 @@ import com.shym.commercial.models.ModelCategory
 @Suppress("DEPRECATION")
 class UploadPdfActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityUploadPdfBinding
-
-    //pdf categories
     private lateinit var categoryArrayList: ArrayList<ModelCategory>
-
-    //uri of picked pdf
-    private var pdfUri: Uri? = null
-
-    //Tag
-    private val TAG = "Pdf_add_tag"
-
-    //dialog
+    private var fileUris: ArrayList<Uri> = ArrayList()
+    private val TAG = "File_upload_tag"
     private lateinit var progressDialog: ProgressDialog
-
-    //firebase auth
     private lateinit var firebaseAuth: FirebaseAuth
     private var title = ""
     private var description = ""
     private var price = ""
+    private var uid = ""
     private var category = ""
     private var selectedCategoryId = ""
     private var selectedCategoryTitle = ""
-    val pdfActivityResultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult(),
-        ActivityResultCallback<ActivityResult> { result ->
-            if (result.resultCode == RESULT_OK) {
-                Log.d(TAG, "Pdf picked: ")
-                pdfUri = result.data!!.data
-            } else {
-                Log.d(TAG, "Pdf Pick cancelled ")
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
+
+    val fileActivityResultLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            ActivityResultCallback<ActivityResult> { result ->
+                if (result.resultCode == RESULT_OK) {
+                    Log.d(TAG, "Files picked: ")
+                    val data = result.data
+                    if (data != null) {
+                        if (data.clipData != null) {
+                            for (i in 0 until data.clipData!!.itemCount) {
+                                val clipItem = data.clipData!!.getItemAt(i)
+                                fileUris.add(clipItem.uri)
+                                if (fileUris.size >= 7) {
+                                    break
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    Log.d(TAG, "File Pick cancelled ")
+                    Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
+                }
             }
-        }
-    )
+        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadPdfBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        //init firebase
         firebaseAuth = FirebaseAuth.getInstance()
-        loadPdfCategories()
-        //setup pro
+        loadFileCategories()
+
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait...")
         progressDialog.setCanceledOnTouchOutside(false)
-        //handle click, show categorypick dialog
 
         binding.categoryTv.setOnClickListener {
             categoryPickDialog()
         }
 
-        //handle click, goback
         binding.backBtn.setOnClickListener {
             onBackPressed()
         }
 
-        //handle click, pick pdf intent
         binding.attacheConst.setOnClickListener {
-            pdfPickIntent()
+            filePickIntent()
         }
-        //handle click, start uploading pdf/product
+
         binding.submitConst.setOnClickListener {
             validateData()
         }
-
     }
 
     private fun validateData() {
-        //validate data ?Step 1
         Log.d(TAG, "validateData: validating data")
-        //get data
+
         title = binding.titleEt.text.toString().trim()
         description = binding.descriptionEt.text.toString().trim()
         category = binding.categoryTv.text.toString().trim()
         price = binding.costEt.text.toString().trim()
-        //validate data
+
         if (title.isEmpty()) {
             Toast.makeText(this, "Enter Title...", Toast.LENGTH_SHORT).show()
         } else if (description.isEmpty()) {
@@ -115,106 +111,113 @@ class UploadPdfActivity : AppCompatActivity() {
             Toast.makeText(this, "Write a price product...", Toast.LENGTH_SHORT).show()
         } else if (category.isEmpty()) {
             Toast.makeText(this, "Enter Category...", Toast.LENGTH_SHORT).show()
-        } else if (pdfUri == null) {
-            Toast.makeText(this, "Pick PDF...", Toast.LENGTH_SHORT).show()
-
+        } else if (fileUris.isEmpty()) {
+            Toast.makeText(this, "Pick Files...", Toast.LENGTH_SHORT).show()
         } else {
-            //data validated, begin upload
             binding.attacheConst.background =
                 ContextCompat.getDrawable(this, R.drawable.add_new_product_salesman)
-            uploadPdfToStorage()
+            uploadFilesToStorage()
         }
     }
 
-    private fun uploadPdfToStorage() {
-        /*upload pdf to firebase storage*/
-        Log.d(TAG, "uploadPdfToStorage: upload to storage...")
-        //show progress dialog
-        progressDialog.setMessage("Uploading Pdf...")
+    private fun uploadFilesToStorage() {
+        Log.d(TAG, "uploadFilesToStorage: upload to storage...")
+
+        progressDialog.setMessage("Uploading Files...")
         progressDialog.show()
 
-        //timestamp
         val timestamp = System.currentTimeMillis()
-        // path of pdf in firebase storage
-        val filePathAndName = "Books/$timestamp"
-        //storage reference
-        val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
-        storageReference.putFile(pdfUri!!)
-            .addOnSuccessListener { taskSnapshot ->
-                Log.d(TAG, "uploadPdfToStorage: PDF uploaded now getting url...")
+        val filesInfoHashMap: HashMap<String, Any> = HashMap()
 
-                //Step -3  Get url of upload pdf
-                val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
-                while (!uriTask.isSuccessful);
-                val uploadPdfUrl = "${uriTask.result}"
-                uploadPdfInfoToDo(uploadPdfUrl, timestamp)
-            }
-            .addOnFailureListener { e ->
-                Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
-                progressDialog.dismiss()
-                Toast.makeText(this, "Failure to upload due to ${e.message}", Toast.LENGTH_SHORT)
-                    .show()
-            }
+        for ((index, uri) in fileUris.withIndex()) {
+            val filePathAndName = "Files/$timestamp/$uid/$title/$category/$price/$index"
+            val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
+
+            storageReference.putFile(uri)
+                .addOnSuccessListener { taskSnapshot ->
+                    Log.d(TAG, "uploadFilesToStorage: File uploaded now getting url...")
+
+                    val uriTask: Task<Uri> = taskSnapshot.storage.downloadUrl
+                    while (!uriTask.isSuccessful);
+                    val uploadFileUrl = "${uriTask.result}"
+
+                    // Add file info to the HashMap
+                    val fileInfoHashMap: HashMap<String, Any> = HashMap()
+                    fileInfoHashMap["url"] = uploadFileUrl
+                    fileInfoHashMap["timestamp"] = System.currentTimeMillis()
+
+                    // Use the index as a key to distinguish different files
+                    filesInfoHashMap["$index"] = fileInfoHashMap
+
+                    // Check if this is the last file
+                    if (index == fileUris.size - 1) {
+                        uploadFilesInfoToDb(filesInfoHashMap, timestamp)
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Log.d(TAG, "uploadFilesToStorage: failed to upload due to ${e.message}")
+                    progressDialog.dismiss()
+                    Toast.makeText(
+                        this,
+                        "Failure to upload due to ${e.message}",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+        }
     }
 
-    private fun uploadPdfInfoToDo(uploadPdfUrl: String, timestamp: Long) {
-        //Step 4: Uploaded Pdf info to firebase db
-        Log.d(TAG, "uploadPdfInfoToDo: uploding to db")
-        progressDialog.setMessage("Uploading pdf info...")
+    private fun uploadFilesInfoToDb(filesInfoHashMap: HashMap<String, Any>, timestamp: Long) {
+        Log.d(TAG, "uploadFilesInfoToDb: uploading to db")
+        progressDialog.setMessage("Uploading files info...")
 
-        //uid current user
-        val uid = firebaseAuth.uid
+        uid = firebaseAuth.uid.toString()
 
-        //setup data to upload
         val hashMap: HashMap<String, Any> = HashMap()
-        hashMap["uid"] = "$uid"
-        hashMap["id"] = "$timestamp"
-        hashMap["title"] = "$title"
-        hashMap["description"] = "$description"
-        hashMap["price"] = "$price"
-        hashMap["categoryId"] = "$selectedCategoryId"
-        hashMap["url"] = "$uploadPdfUrl"
+        hashMap["uid"] = uid
+        hashMap["id"] = timestamp
+        hashMap["title"] = title
+        hashMap["description"] = description
+        hashMap["price"] = price
+        hashMap["categoryId"] = selectedCategoryId
         hashMap["timestamp"] = timestamp
         hashMap["viewsCount"] = 0
         hashMap["downloadsCount"] = 0
+        hashMap["files"] = filesInfoHashMap
 
-        //db reference DB > BookS>BookId> (Book Info)
-        val ref = FirebaseDatabase.getInstance().getReference("Books")
+        val ref = FirebaseDatabase.getInstance().getReference("Files")
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
-                Log.d(TAG, "uploadPdfInfoToDo: upload to db")
+                Log.d(TAG, "uploadFilesInfoToDb: upload to db")
                 progressDialog.dismiss()
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
-                pdfUri = null
+                fileUris.clear()
                 startActivity(Intent(this, DashboardAdminActivity::class.java))
             }
             .addOnFailureListener { e ->
-                Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
+                Log.d(TAG, "uploadFilesInfoToDb: failed to upload due to ${e.message}")
                 progressDialog.dismiss()
-                Toast.makeText(this, "Failure to upload due to ${e.message}", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    this,
+                    "Failure to upload due to ${e.message}",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
-
             }
-
-
     }
 
 
-    private fun loadPdfCategories() {
-        Log.d(TAG, "loadCategories: Loading pdf categories")
-        //init arraylist
+    private fun loadFileCategories() {
+        Log.d(TAG, "loadCategories: Loading file categories")
         categoryArrayList = ArrayList()
-        /*database reference to load categories DF > Categories */
+
         val ref = FirebaseDatabase.getInstance().getReference("Categories")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                //clear list before adding data
                 categoryArrayList.clear()
                 for (ds in snapshot.children) {
-                    //get data
                     val model = ds.getValue(ModelCategory::class.java)
-                    //add data to arrayList
                     categoryArrayList.add(model!!)
                     Log.d(TAG, "onDataChange: ${model.category}")
                 }
@@ -227,25 +230,18 @@ class UploadPdfActivity : AppCompatActivity() {
     }
 
     private fun categoryPickDialog() {
-        Log.d(TAG, "categoryPickDialog: Showing pdf category pick dialog")
+        Log.d(TAG, "categoryPickDialog: Showing file category pick dialog")
 
-        //get string array of categories from arrayList
         val categoriesArray = arrayOfNulls<String>(categoryArrayList.size)
         for (i in categoriesArray.indices) {
             categoriesArray[i] = categoryArrayList[i].category
         }
 
-        //alert dialog
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Pick Category")
             .setItems(categoriesArray) { dialog, which ->
-
-                //handle click
-                //get click item
-
                 selectedCategoryTitle = categoryArrayList[which].category
                 selectedCategoryId = categoryArrayList[which].id
-                //set category
                 binding.categoryTv.text = selectedCategoryTitle
                 Log.d(TAG, "categoryPickDialog: Selected Category ID: $selectedCategoryId")
                 Log.d(TAG, "categoryPickDialog: Selected Category Title: $selectedCategoryTitle")
@@ -253,13 +249,14 @@ class UploadPdfActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun pdfPickIntent() {
-        Log.d(TAG, "pdfPickIntent: starting pdf pick intent")
+    private fun filePickIntent() {
+        Log.d(TAG, "filePickIntent: starting file pick intent")
 
         val intent = Intent()
-        intent.type = "application/pdf"
+        intent.type = "*/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        pdfActivityResultLauncher.launch(intent)
-    }
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true) // Разрешить выбор нескольких файлов
 
+        fileActivityResultLauncher.launch(intent)
+    }
 }

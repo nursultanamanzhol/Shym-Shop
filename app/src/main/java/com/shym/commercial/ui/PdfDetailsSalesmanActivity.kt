@@ -1,4 +1,4 @@
-package com.shym.commercial.ui.salesman
+package com.shym.commercial.ui
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -20,7 +20,6 @@ import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityPdfDetailsSalesmanBinding
 import com.shym.commercial.pdflist.Constants
 import com.shym.commercial.pdflist.MyApplication
-import com.shym.commercial.ui.PdfViewActivity
 import java.io.FileOutputStream
 
 class PdfDetailsSalesmanActivity : AppCompatActivity() {

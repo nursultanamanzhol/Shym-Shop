@@ -217,8 +217,6 @@
                             style="@style/ImageChange"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:layout_below="@+id/backBtn"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:elevation="4dp"
                             app:layout_constraintEnd_toEndOf="parent"

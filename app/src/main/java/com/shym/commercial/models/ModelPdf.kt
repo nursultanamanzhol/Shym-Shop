@@ -8,6 +8,7 @@ class ModelPdf {
     var id: String = ""
     var title: String = ""
     var price: String = ""
+    var discount: String = ""
     var description: String = ""
     var categoryId: String = ""
     var url: String = ""

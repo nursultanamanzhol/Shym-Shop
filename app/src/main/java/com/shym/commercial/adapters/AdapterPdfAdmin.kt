@@ -41,7 +41,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderPdfAdmin {
-    //bind/ inflate layout row_pdf_admin.xml
+        //bind/ inflate layout row_pdf_admin.xml
         binding = RowPdfAdminBinding.inflate(LayoutInflater.from(context), parent, false)
 
         return HolderPdfAdmin(binding.root)
@@ -59,6 +59,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         val categoryId = model.categoryId
         val title = model.title
         val price = model.price
+        val discount = model.discount
         val description = model.description
         val pdfUrl = model.url
         val timestamp = model.timestamp
@@ -66,12 +67,25 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         //convert timestamp to dd/mm/yyyy format
 
         val formattedDate = MyApplication.formatTimeStamp(timestamp)
-
         holder.titleTv.text = title
         holder.priceTv.text = price
+
+// Предполагаем, что price и discount представляют числовые значения
+        val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
+
+        holder.discountTv.text = discountedPrice.toString()
+
+// Управление видимостью элементов в зависимости от условий
+        if (price.toDouble() == discountedPrice) {
+            holder.discountTv.visibility = View.GONE
+            holder.imageRedLine.visibility = View.GONE
+        } else {
+            holder.discountTv.visibility = View.VISIBLE
+            holder.imageRedLine.visibility = View.VISIBLE
+        }
+
         holder.descriptionTv.text = description
         holder.dateTv.text = formattedDate
-
         //load further detail like category, pdf url, pdf size
 
         //load category
@@ -82,7 +96,7 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         MyApplication.loadPdfFromUrlSinglePage(
             pdfUrl,
             title,
-            holder.pdfView,
+            holder.imageView,
             holder.progressBar,
             null
         )
@@ -143,11 +157,13 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
     inner class HolderPdfAdmin(itemView: View) : RecyclerView.ViewHolder(itemView){
         /*UI Views of row_pdf_admin.xml*/
 
-        val pdfView = binding.pdfView
+        val imageView = binding.pdfView
         val progressBar = binding.progressBar
         val titleTv = binding.titleTv
         val descriptionTv = binding.descriptionTv
         val priceTv = binding.priceTv
+        val imageRedLine = binding.imageRedLine
+        val discountTv = binding.discountTv
         val categoryTv = binding.categoryTv
         val sizeTv = binding.sizeTv
         val dateTv = binding.dateTv

@@ -69,6 +69,10 @@
         <item name="android:src">@drawable/ic_dark_logo_and_splash</item>
     </style>
 
+    <style name="IcAttachBtn">
+        <item name="android:src">@drawable/ic_attach_black</item>
+    </style>
+
     <style name="IconLogoutBtn">
         <item name="android:src">@drawable/ic_logout_custom_white</item>
     </style>

@@ -8,7 +8,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.GravityCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -17,15 +19,20 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shym.commercial.ui.MainActivity
 import com.shym.commercial.R
+import com.shym.commercial.adapters.AdapterPdfAdmin
 import com.shym.commercial.databinding.ActivityDashboardSalesmanPageBinding
 import com.shym.commercial.models.ModelPdf
 import com.shym.commercial.ui.MainUserPage
 import com.shym.commercial.ui.profile.ProfileActivity
 import com.shym.commercial.adapters.AdapterPdfSalesman
+import com.shym.commercial.databinding.HeaderDrawerBinding
+import com.shym.commercial.ui.admin.PdfListAdminActivity
+import com.shym.commercial.ui.category.UploadPdfActivitySalesman
 
 class DashboardSalesmanPageActivity : AppCompatActivity() {
     //viewBinding
     private lateinit var binding: ActivityDashboardSalesmanPageBinding
+    private lateinit var bindHeader: HeaderDrawerBinding
 
     //firebase auth
     private lateinit var firebaseAuth: FirebaseAuth
@@ -45,6 +52,7 @@ class DashboardSalesmanPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardSalesmanPageBinding.inflate(layoutInflater)
+        bindHeader = HeaderDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //init firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
@@ -97,7 +105,7 @@ class DashboardSalesmanPageActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 //filter data
                 try {
-                    adapterPdfSalesman.filter!!.filter(s)
+                    adapterPdfSalesman.filter.filter(s)
                 } catch (e: Exception) {
                     Log.d(TAG, "onTextChanged: ${e.message}")
                 }
@@ -126,32 +134,71 @@ class DashboardSalesmanPageActivity : AppCompatActivity() {
     private fun loadPdfList() {
         //init arraylist
         pdfArrayList = ArrayList()
+
         val ref = FirebaseDatabase.getInstance().getReference("Books")
-        ref.orderByChild("categoryId").equalTo(categoryId)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    //clear list before start adding data into it
-                    pdfArrayList.clear()
-                    for (ds in snapshot.children) {
-                        //get data
-                        val model = ds.getValue(ModelPdf::class.java)
-                        //add to list
-                        if (model != null) {
-                            pdfArrayList.add(model)
-                            Log.d(TAG, "onDataChange: ${model.title} ${model.categoryId}")
+        val userRef = FirebaseDatabase.getInstance().getReference("Users")
+        (if (firebaseAuth.uid != null) firebaseAuth.uid else throw NullPointerException("Expression 'firebaseAuth.uid' must not be null"))?.let {
+            userRef.child(it)
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //get user info
+                        val name = "${snapshot.child("name").value}"
+                        val categories = "${snapshot.child("categories").value}"
+                        val profileImage = "${snapshot.child("profileImage").value}"
+
+                        ref.orderByChild("categoryId").equalTo(categories)
+                            .addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    //clear list before start adding data into it
+                                    pdfArrayList.clear()
+                                    for (ds in snapshot.children) {
+                                        //get data
+                                        val model = ds.getValue(ModelPdf::class.java)
+                                        //add to list
+                                        if (model != null) {
+                                            pdfArrayList.add(model)
+                                            Log.d(
+                                                TAG,
+                                                "onDataChange: ${model.title} ${model.categoryId}"
+                                            )
+                                        }
+                                    }
+
+                                    //setup adapter
+                                    adapterPdfSalesman = AdapterPdfSalesman(
+                                        this@DashboardSalesmanPageActivity,
+                                        pdfArrayList
+                                    )
+                                    binding.booksRsv.adapter = adapterPdfSalesman
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+
+
+                        //set date
+                        bindHeader?.nameTv?.text = name
+                        //set image
+                        try {
+                            if (!profileImage.isNullOrEmpty()) {
+                                Glide.with(this@DashboardSalesmanPageActivity)
+                                    .load(profileImage)
+                                    .placeholder(R.drawable.ic_person_gray)
+                                    .into(bindHeader?.profileImg!!)
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
+
                     }
 
-                    //setup adapter
-                    adapterPdfSalesman =
-                        AdapterPdfSalesman(this@DashboardSalesmanPageActivity, pdfArrayList)
-                    binding.booksRsv.adapter = adapterPdfSalesman
-                }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+        }
 
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            })
 
     }
 

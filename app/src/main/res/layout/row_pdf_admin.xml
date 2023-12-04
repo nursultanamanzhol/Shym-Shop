@@ -28,6 +28,15 @@
             android:layout_height="match_parent"
             />
 
+<!--        &lt;!&ndash;ImageView&ndash;&gt;-->
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:visibility="gone" />-->
+
+
         <!--ProgressBar-->
         <ProgressBar
             android:layout_width="match_parent"
@@ -74,6 +83,30 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/imageRedLine"
+        android:layout_width="100dp"
+        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_discount"
+        app:layout_constraintBottom_toBottomOf="@+id/priceTv"
+        app:layout_constraintEnd_toEndOf="@+id/priceTv"
+        app:layout_constraintStart_toStartOf="@+id/priceTv"
+        app:layout_constraintTop_toTopOf="@+id/priceTv" />
+    <!--Price-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/discountTv"
+        android:text="price"
+        android:layout_margin="10dp"
+        android:drawableEnd="@drawable/ic_img_tenge"
+        android:drawablePadding="5dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceTv"
         />
 
 
@@ -127,12 +160,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
         android:background="@android:color/transparent"
         android:padding="5dp"
         android:src="@drawable/ic_more_btn_black"
+        app:layout_constraintBottom_toTopOf="@+id/categoryTv"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/priceTv"
         />
 
 

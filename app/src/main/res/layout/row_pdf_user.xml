@@ -70,6 +70,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
+        <ImageView
+            android:id="@+id/imageRedLine"
+            android:layout_width="100dp"
+            android:scaleType="centerCrop"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_line_discount"
+            app:layout_constraintBottom_toBottomOf="@+id/priceTv"
+            app:layout_constraintEnd_toEndOf="@+id/priceTv"
+            app:layout_constraintStart_toStartOf="@+id/priceTv"
+            app:layout_constraintTop_toTopOf="@+id/priceTv" />
+        <!--Price-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/discountTv"
+            android:text="price"
+            android:layout_margin="10dp"
+            android:drawableEnd="@drawable/ic_img_tenge"
+            android:drawablePadding="5dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/priceTv"
+            />
 
         <TextView
             android:id="@+id/categoryTv"

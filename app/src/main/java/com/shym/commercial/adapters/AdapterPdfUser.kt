@@ -51,6 +51,7 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         val title = model.title
         val description = model.description
         val price = model.price
+        val discount = model.discount
         val uid = model.uid
         val pdfUrl = model.url
         val timestamp = model.timestamp
@@ -61,6 +62,21 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         //set data
         holder.titleTv.text = title
         holder.priceTv.text = price
+
+// Предполагаем, что price и discount представляют числовые значения
+        val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
+
+        holder.discountTv.text = discountedPrice.toString()
+
+// Управление видимостью элементов в зависимости от условий
+        if (price.toDouble() == discountedPrice) {
+            holder.discountTv.visibility = View.GONE
+            holder.imageRedLine.visibility = View.GONE
+        } else {
+            holder.discountTv.visibility = View.VISIBLE
+            holder.imageRedLine.visibility = View.VISIBLE
+        }
+
         holder.descriptionTv.text = description
         holder.dateTv.text = date
 
@@ -101,6 +117,8 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         var titleTv = binding.titleTv
         var descriptionTv = binding.descriptionTv
         val priceTv = binding.priceTv
+        val imageRedLine = binding.imageRedLine
+        val discountTv = binding.discountTv
         var categoryTv = binding.categoryTv
         var sizeTv = binding.sizeTv
         var dateTv = binding.dateTv
