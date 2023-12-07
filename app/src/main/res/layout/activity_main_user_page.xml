@@ -6,15 +6,13 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users_role.MainUserPage">
+    tools:context=".ui.main.MainUserPage">
 
 
     <!--Toolbar-->
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarRl"
-        style="@style/ScreenBackCns"
+        style="@style/HeaderBackPages"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,11 +21,10 @@
 
         <TextView
             android:id="@+id/servicesTv"
-            style="@style/TextColor"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-smallcaps"
             android:layout_marginStart="15dp"
             android:background="@android:color/transparent"
             android:padding="5dp"
@@ -38,24 +35,25 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchMode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:thumb="@drawable/thumb"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logOutBtn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:track="@drawable/track" />
+        <!--            <androidx.appcompat.widget.SwitchCompat-->
+        <!--                android:id="@+id/switchMode"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginEnd="10dp"-->
+        <!--                android:thumb="@drawable/thumb"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/logOutBtn"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:track="@drawable/track" />-->
+
 
         <ImageButton
             android:id="@+id/control"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_control"
+            android:src="@drawable/ic_control_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/servicesTv"
             app:layout_constraintTop_toTopOf="parent"
@@ -81,74 +79,81 @@
         android:background="@color/gray02"
         app:layout_constraintTop_toBottomOf="@+id/toolbarRl" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/logRl"
-        style="@style/ScreenBackCard"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loginRegBtnProfile"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view1">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            style="@style/ScreenBackCns"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/logRl"
+            style="@style/ScreenBackCard"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize">
+            android:layout_height="?actionBarSize"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/profileBtn"
-                style="@style/ImagePersonMainPage"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
-                android:background="@android:color/transparent"
-                android:padding="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/MainUserPageProfileBtn"
+                android:id="@+id/prid"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
 
-            <TextView
-                android:id="@+id/subTitleTv"
-                style="@style/TextFooter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="15dp"
-                android:text="@string/welcome"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/profileBtn"
-                app:layout_constraintTop_toTopOf="parent" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profileBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/white"
+                    android:elevation="4dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/styleRoundedCornersMainImage" />
+
+                <TextView
+                    android:id="@+id/subTitleTv"
+                    style="@style/TextFooter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/welcome"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profileBtn"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageButton
-                android:id="@+id/loginBtn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_margin="15dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/arrow_main_page"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageButton
+                    android:id="@+id/loginBtn"
+                    style="@style/ArrowMainPage"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="15dp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/gray02"
-        app:layout_constraintTop_toBottomOf="@+id/logRl" />
+<!--    <View-->
+<!--        android:id="@+id/view3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="3dp"-->
+<!--        android:background="@color/gray02"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loginRegBtnProfile" />-->
 
 
     <LinearLayout
@@ -160,7 +165,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3">
+        app:layout_constraintTop_toBottomOf="@+id/loginRegBtnProfile">
 
         <!--        this layout was intended to be swipe refresh layout -->
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -188,6 +193,7 @@
                     <!--                        app:layout_constraintTop_toBottomOf="@+id/logRl" />-->
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constLogo"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_margin="10dp">
@@ -218,8 +224,6 @@
                             style="@style/ImageChange"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:layout_below="@+id/backBtn"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:elevation="4dp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -244,6 +248,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             style="@style/ScreenBackCns"
+                            android:id="@+id/spechialConst"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -253,7 +258,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-smallcaps"
-                                android:text="Специальные предложения"
+                                android:text="@string/all_products"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -263,11 +268,11 @@
 
                             <ImageButton
                                 android:id="@+id/spechialBtn"
+                                style="@style/ArrowMainPage"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_margin="15dp"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/arrow_main_page"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -281,6 +286,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        app:spanCount="2"
+                        tools:listitem="@layout/row_main_page"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         android:nestedScrollingEnabled="false" />
 
 
@@ -292,6 +300,7 @@
                         app:cardCornerRadius="15dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/allProduct"
                             style="@style/ScreenBackCns"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -302,7 +311,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-smallcaps"
-                                android:text="Вся продукция"
+                                android:text="@string/special_offers"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -312,11 +321,11 @@
 
                             <ImageButton
                                 android:id="@+id/allProductsBtn"
+                                style="@style/ArrowMainPage"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_margin="15dp"
                                 android:background="@android:color/transparent"
-                                android:src="@drawable/arrow_main_page"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -331,10 +340,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        app:spanCount="2"
+                        tools:listitem="@layout/row_main_discount"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         android:nestedScrollingEnabled="false" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         style="@style/ScreenBackground"
+                        android:id="@+id/contactConst"
+                        android:visibility="invisible"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -356,7 +370,7 @@
 
                         <fragment
                             android:id="@+id/fragment_footer_credit"
-                            android:name="com.shym.commercial.users_role.FooterCreditFragment"
+                            android:name="com.shym.commercial.ui.main.FooterCreditFragment"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"

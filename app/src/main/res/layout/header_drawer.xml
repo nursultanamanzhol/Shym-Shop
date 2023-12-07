@@ -2,33 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="wrap_content"
-    android:padding="15dp"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    style="@style/DrawerHeaderCard"
+    android:padding="15dp">
 
     <ImageView
         android:id="@+id/profileImg"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/logo_and_splash"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!--app:shapeAppearanceOverlay="@style/styleRoundedCornersMainImage"-->
 
     <TextView
-        android:id="@+id/nameTvHeader"
+        android:id="@+id/nameTv"
+        android:textColor="@color/login_register_input_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/profileImg"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Shym-Shop"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Nursultan Amanzhol"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/profileImg" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
+        android:layout_marginTop="5dp"
         android:background="@color/gray02"
-        app:layout_constraintTop_toBottomOf="@+id/nameTvHeader"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/nameTv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

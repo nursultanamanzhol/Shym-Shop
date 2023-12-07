@@ -15,7 +15,7 @@
             <solid android:color="@android:color/transparent" />
             <stroke
                 android:width="2dp"
-                android:color="@color/my_red" />
+                android:color="@color/lavender" />
             <corners
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp" />

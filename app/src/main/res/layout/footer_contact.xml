@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Контакты"
+                    android:text="@string/contacts"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -70,7 +70,7 @@
                         style="@style/TextFooter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nursultan Amanzhol" />
+                        android:text="@string/nursultan_serikovich" />
 
                 </LinearLayout>
 
@@ -88,7 +88,7 @@
                         style="@style/TextFooter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Accepted payment methods"
+                        android:text="@string/accepted_payment_methods"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"

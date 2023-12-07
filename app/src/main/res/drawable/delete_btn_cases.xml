@@ -14,10 +14,10 @@
     <!-- Shape for the border -->
     <item android:top="1dp">
         <shape android:shape="rectangle">
-            <solid android:color="@android:color/white" />
+            <solid android:color="@android:color/transparent" />
             <stroke
                 android:width="2dp"
-                android:color="@color/my_red" />
+                android:color="@color/gray02" />
             <corners
                 android:bottomLeftRadius="10dp"
                 android:bottomRightRadius="10dp"

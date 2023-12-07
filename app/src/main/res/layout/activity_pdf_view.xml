@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pdflist.PdfViewActivity">
+    style="@style/ScreenBackground"
+    tools:context=".ui.pdf.PdfViewActivity">
 
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarCn"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/salesman_toolbar"
+        style="@style/HeaderBackPages"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,11 +31,12 @@
 
         <!--Title -->
         <TextView
+            android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_500"
             android:text="Read Books"
-            android:textColor="@color/red"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:text="N/N"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

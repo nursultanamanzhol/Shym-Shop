@@ -5,13 +5,13 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users_role.profile.ProfileActivity">
+    tools:context=".ui.profile.ProfileActivity">
 
 
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarUpload"
-        style="@style/ScreenBackground"
+        style="@style/HeaderBackPages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="0dp"
@@ -35,17 +35,28 @@
 
         <TextView
             android:id="@+id/titleTv"
-            style="@style/TextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_500"
-            android:text="Profile"
+            android:text="@string/profile"
             android:textAllCaps="false"
             android:textSize="20sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <androidx.appcompat.widget.SwitchCompat-->
+<!--            android:id="@+id/switchMode"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:thumb="@drawable/thumb"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:track="@drawable/track" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,6 +82,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:id="@+id/profileMainConst"
             android:layout_height="match_parent">
 
             <ImageView
@@ -149,6 +161,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTv">
 
         <LinearLayout
+            android:id="@+id/accountLn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -160,7 +173,7 @@
                 style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Account"
+                android:text="@string/account"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -175,6 +188,7 @@
         </LinearLayout>
         <!--Member -->
         <LinearLayout
+            android:id="@+id/memberLn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -186,7 +200,7 @@
                 style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Member"
+                android:text="@string/account_creation"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -202,6 +216,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
+            android:id="@+id/favoriteLn"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -212,7 +227,7 @@
                 style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Favorite Products"
+                android:text="@string/favorite_products"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -235,6 +250,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

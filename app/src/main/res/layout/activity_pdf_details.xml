@@ -2,16 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pdflist.PdfDetailsActivity">
+    tools:context=".ui.pdf.PdfDetailsActivity">
 
     <!--Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarCn"
+        style="@style/HeaderBackPages"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,9 +33,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_500"
-            android:text="Book Details"
-            android:textColor="@color/red"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/details"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,20 +43,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="price"
-            android:textSize="20sp"
-            android:drawableEnd="@drawable/ic_img_tenge"
-            android:textColor="@color/red"
-            android:drawablePadding="10dp"
-            android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+        <ImageView
+            android:id="@+id/readBookBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_book_24"
+            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/priceTv"
-            />
+            app:layout_constraintEnd_toStartOf="@+id/downloadBookBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/downloadBookBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_download_book"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,10 +83,11 @@
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/bookOptionsCns"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCn">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -83,58 +95,143 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
+
+            <!--Book Title -->
+            <TextView
+                android:id="@+id/titleTv"
+                style="@style/TextColorRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Book Title"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            />
+
             <!--Book info-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constCenter"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/titleTv">
+
+                <!--                <Button-->
+                <!--                    android:id="@+id/favoriteBookBtn"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:drawableTop="@drawable/ic_favorite"-->
+                <!--                    android:text="Нравится"-->
+                <!--                    android:textAllCaps="false"-->
+                <!--                    android:textColor="@color/red"-->
+                <!--                    android:elevation="21dp"-->
+                <!--                    android:textSize="10sp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="@+id/pdfCns"-->
+                <!--                    />-->
                 <!--Book preview-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/pdfCns"
-                    android:layout_width="110dp"
-                    android:layout_height="150dp"
-                    android:background="@color/gray02"
+                    android:layout_width="300dp"
+                    android:layout_height="400dp"
+                    android:background="@android:color/transparent"
+                    android:elevation="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <!--Pdf View-->
-                    <com.github.barteksc.pdfviewer.PDFView
-                        android:id="@+id/pdfView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
-                        <ProgressBar
-                            android:id="@+id/progressBar"
+                    <!--Pdf View-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:elevation="2dp"
+                        app:cardCornerRadius="15dp"
+                        app:cardUseCompatPadding="true">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </com.github.barteksc.pdfviewer.PDFView>
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/priceTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_img_tenge"
+                                android:drawablePadding="10dp"
+                                android:layout_margin="10dp"
+                                android:text="price"
+                                android:elevation="22dp"
+                                android:textColor="@color/topColor"
+                                android:textSize="20sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <Button
+                                android:id="@+id/favoriteBookBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:drawableTop="@drawable/ic_favorite"
+                                android:elevation="22dp"
+                                android:text="Нравится"
+                                android:textAllCaps="false"
+                                android:textColor="@color/red"
+                                android:textSize="10sp"
+                                android:layout_margin="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+
+
+                            <com.github.barteksc.pdfviewer.PDFView
+                                android:id="@+id/pdfView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ProgressBar
+                                    android:id="@+id/progressBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+                            </com.github.barteksc.pdfviewer.PDFView>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!--Book Title -->
-                <TextView
-                    android:id="@+id/titleTv"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="Book Title"
-                    app:layout_constraintStart_toEndOf="@+id/pdfCns"
-                    app:layout_constraintTop_toTopOf="parent" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!--Table-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTable"
+                style="@style/CardBackgroundColorDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constCenter">
                 <!--Table-->
                 <TableLayout
-                    android:layout_width="0dp"
+                    android:id="@+id/tableData"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/pdfCns"
-                    app:layout_constraintTop_toBottomOf="@+id/titleTv">
+                    app:layout_constraintStart_toStartOf="parent">
                     <!--Category Row -->
                     <TableRow
                         android:layout_marginStart="10dp"
@@ -142,10 +239,12 @@
 
                         <TextView
                             android:id="@+id/categoryLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Category"
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="@string/category"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
 
                             />
 
@@ -157,6 +256,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:text="N/A"
+                            android:textColor="@color/grey"
 
                             />
 
@@ -169,10 +269,12 @@
 
                         <TextView
                             android:id="@+id/dateLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Date" />
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="@string/date"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/dateTv"
@@ -182,6 +284,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:text="N/A"
+                            android:textColor="@color/grey"
 
                             />
 
@@ -193,10 +296,12 @@
 
                         <TextView
                             android:id="@+id/sizeLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Size" />
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="@string/size"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/sizeTv"
@@ -206,8 +311,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:text="N/A"
-
-                            />
+                            android:textColor="@color/grey" />
 
                     </TableRow>
 
@@ -218,10 +322,12 @@
 
                         <TextView
                             android:id="@+id/viewsLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Views" />
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="@string/views"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/viewsTv"
@@ -231,8 +337,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:text="N/A"
-
-                            />
+                            android:textColor="@color/grey" />
 
                     </TableRow>
 
@@ -243,10 +348,12 @@
 
                         <TextView
                             android:id="@+id/downloadsLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Downloads" />
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="@string/downloads"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/downloadsTv"
@@ -256,8 +363,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:text="N/A"
-
-                            />
+                            android:textColor="@color/grey" />
 
                     </TableRow>
 
@@ -268,10 +374,12 @@
 
                         <TextView
                             android:id="@+id/pagesLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pages" />
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="@string/pages"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/pagesTv"
@@ -280,84 +388,38 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:text="N/A" />
+                            android:text="N/A"
+                            android:textColor="@color/grey" />
 
                     </TableRow>
 
                 </TableLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/descriptionTv"
+            <androidx.cardview.widget.CardView
+                style="@style/CardBackgroundColorDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The description of the book"
-                android:textColor="@color/black"
+                app:cardCornerRadius="15dp"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constCenter" />
+                app:layout_constraintTop_toBottomOf="@+id/cardTable">
 
+                <TextView
+                    android:id="@+id/descriptionTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:padding="10dp"
+                    android:text="The description of the book"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <!--Bottom  buttons for book options-->
-    <LinearLayout
-        android:id="@+id/bookOptionsCns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
-
-        <!--android:id="@+id/readBookBtn"-->
-        <Button
-            android:id="@+id/readBookBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/admin_back_details_activity"
-            android:drawableTop="@drawable/ic_book_24"
-            android:text="Читать"
-            android:textAllCaps="false"
-            android:textColor="@color/red"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/downloadBookBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/admin_back_details_activity"
-            android:drawableTop="@drawable/ic_download_book"
-            android:text="Загрузить"
-            android:textAllCaps="false"
-            android:textColor="@color/red"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/favoriteBookBtn"
-            app:layout_constraintStart_toEndOf="@+id/readBookBtn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/favoriteBookBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/admin_back_details_activity"
-            android:drawableTop="@drawable/ic_favorite"
-            android:text="Нравится"
-            android:textAllCaps="false"
-            android:textColor="@color/red"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
