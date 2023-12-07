@@ -1,6 +1,7 @@
 package com.shym.commercial.ui.profile
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +14,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -25,14 +27,19 @@ import com.shym.commercial.extensions.DialogUtils
 import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityProfileEditBinding
 import com.shym.commercial.extensions.setSafeOnClickListener
+import com.shym.commercial.extensions.MyApplication
+import com.yariksoffice.lingver.Lingver
 
 class ProfileEditActivity : AppCompatActivity() {
+
 
     private lateinit var binding: ActivityProfileEditBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
     //image uri
     private var imageUri: Uri? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileEditBinding.inflate(layoutInflater)
@@ -41,30 +48,46 @@ class ProfileEditActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         loadUserInfo()
 
+//        switchLDMode()
+
         binding.backBtn.setSafeOnClickListener {
             onBackPressed()
             val progressDialog = DialogUtils.createProgressDialog(this, "Please wait...")
             progressDialog.show()
         }
+
+        binding.lngImg.setSafeOnClickListener {
+            lngPickDialog()
+        }
+        binding.modeTv.setSafeOnClickListener {
+            modePickDialog()
+        }
+
         binding.updateBtn.setSafeOnClickListener {
             validateData()
 
         }
         binding.cameraImg.setSafeOnClickListener {
             showImageMenu()
-//            val progressDialog = DialogUtils.createProgressDialog(this, "The camera opens...")
-//            progressDialog.show()
+
         }
 
     }
 
+
     private var name = ""
+    private var language = ""
+    private var modeDl = ""
     private fun validateData() {
         //get data
         name = binding.nameEt.text.toString().trim()
+        language = binding.lngImg.text.toString().trim()
+        modeDl = binding.modeTv.text.toString().trim()
         //validate data
         if (name.isEmpty()) {
             Toast.makeText(this, "Enter name", Toast.LENGTH_SHORT).show()
+//        } else if (language.isEmpty()) { // Проверяем выбран ли язык
+//
         } else {
             if (imageUri == null) {
                 //update without image
@@ -75,8 +98,6 @@ class ProfileEditActivity : AppCompatActivity() {
                 updateImage()
             }
         }
-
-
     }
 
     private fun updateImage() {
@@ -108,10 +129,43 @@ class ProfileEditActivity : AppCompatActivity() {
 
     }
 
+    private fun lngPickDialog() {
+        val languages = arrayOf("en", "kk", "ru")
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Pick Language")
+            .setSingleChoiceItems(languages, -1) { dialog, which ->
+                // which - индекс выбранного элемента
+                language = languages[which]
+                binding.lngImg.text = language// Сохраняем выбранный язык
+                dialog.dismiss()
+            }
+            .setCancelable(true)
+            .show()
+    }
+
+    private fun modePickDialog() {
+        val modes = arrayOf("Light Mode", "System Mode", "Dark Mode")
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Choose mode")
+            .setSingleChoiceItems(modes, -1) { dialog, which ->
+                // which - индекс выбранного элемента
+                modeDl = modes[which]
+                binding.modeTv.text = modeDl// Сохраняем выбранный язык
+                dialog.dismiss()
+            }
+            .setCancelable(true)
+            .show()
+    }
+
+
     private fun updateProfile(uploadedImageUrl: String) {
 
         val hashMap: HashMap<String, Any> = HashMap()
-        hashMap["name"] = "$name"
+        hashMap["name"] = name
+        hashMap["language"] = language
+        hashMap["mode"] = modeDl
         if (imageUri != null) {
             hashMap["profileImage"] = uploadedImageUrl
         }
@@ -125,12 +179,26 @@ class ProfileEditActivity : AppCompatActivity() {
                 .updateChildren(hashMap)
                 .addOnSuccessListener {
                     // update success
-                    progressDialog.dismiss()
-                    Toast.makeText(
-                        this,
-                        "Profile updated",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this, "Profile updated", Toast.LENGTH_SHORT).show()
+                    if (modeDl.isEmpty()) {
+                        setTheme(MyApplication.Theme.SYSTEM)
+                    } else if (modeDl == "Light Mode") {
+                        setTheme(MyApplication.Theme.LIGHT)
+                    } else if (modeDl == "System Mode") {
+                        setTheme(MyApplication.Theme.SYSTEM)
+                    } else if (modeDl == "Dark Mode") {
+                        setTheme(MyApplication.Theme.DARK)
+                    }
+
+                    if (language.isEmpty()) {
+                        Lingver.getInstance().setLocale(this@ProfileEditActivity, language)
+                        this.recreate()
+                    } else {
+                        Lingver.getInstance().setLocale(this@ProfileEditActivity, "en")
+                        this.recreate()
+                    }
+                    startActivity(Intent(this@ProfileEditActivity, ProfileActivity::class.java))
+                    finish()
                 }
                 .addOnFailureListener { e ->
                     //fail
@@ -143,6 +211,10 @@ class ProfileEditActivity : AppCompatActivity() {
                 }
         }
     }
+    private fun setTheme(theme: MyApplication.Theme) {
+        AppCompatDelegate.setDefaultNightMode(theme.system)
+    }
+
 
     private fun loadUserInfo() {
         //db firebase user info
@@ -153,6 +225,8 @@ class ProfileEditActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         //get user info
                         val name = "${snapshot.child("name").value}"
+                        val language = "${snapshot.child("language").value}"
+                        val mode = "${snapshot.child("mode").value}"
                         val profileImage = "${snapshot.child("profileImage").value}"
                         val timestamp = "${snapshot.child("timestamp").value}"
                         val uid = "${snapshot.child("uid").value}"
@@ -161,6 +235,8 @@ class ProfileEditActivity : AppCompatActivity() {
 
                         //set date
                         binding.nameEt.setText(name)
+                        binding.lngImg.setText(language)
+                        binding.modeTv.setText(mode)
 
                         //set image
                         try {
@@ -254,6 +330,6 @@ class ProfileEditActivity : AppCompatActivity() {
             }
         }
     )
-
-
 }
+
+

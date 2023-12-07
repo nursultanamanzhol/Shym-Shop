@@ -21,6 +21,49 @@
     <style name="ScreenBackground">
         <item name="android:background">@color/white</item>
     </style>
+    <style name="DrawerMenu">
+        <item name="itemBackground">@color/white</item>
+        <item name="itemTextColor">@color/topColor</item>
+        <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@color/topColor</item>
+    </style>
+
+    <style name="DrawerHeaderCard">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="TabLayoutTextColor">
+        <item name="tabTextColor">@color/topColor</item>
+    </style>
+
+    <style name="HeaderBackPages">
+        <item name="android:background">@color/topColor</item>
+    </style>
+    <style name="CardBackgroundColorDetails">
+        <item name="cardBackgroundColor">@color/topColor</item>
+    </style>
+    <style name="RowUserTengeDrawable">
+        <item name="android:drawableEnd">@drawable/ic_img_tenge</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="RowUserTextColor">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
+
+
+    <style name="MainUserPageProfileBtn">
+        <item name="android:background">@drawable/ic_back_cardview_profile_main_white</item>
+    </style>
+
+    <style name="UploadedFileBackDetails">
+        <item name="android:background">@drawable/uploaded_file_categaties_and_tvt1</item>
+    </style>
+    <style name="UploadedFileBackDetails2">
+        <item name="android:background">@drawable/uploaded_file_categaties_and_tvt</item>
+    </style>
+    <style name="RowBackLine">
+        <item name="android:background">@drawable/row_back_rv_white</item>
+    </style>
 
     <style name="CardBackgroundColor">
         <item name="cardBackgroundColor">@color/white</item>
@@ -49,6 +92,18 @@
     <style name="ScreenBackCard">
         <item name="cardBackgroundColor">@color/white</item>
     </style>
+    <style name="ScreenBackCard2">
+        <item name="cardBackgroundColor">@color/topColor</item>
+    </style>
+    <style name="CardBackRowCategory">
+        <item name="cardBackgroundColor">@color/grey</item>
+    </style>
+    <style name="ProfileBtnBackCard">
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+    <style name="ScreenBackCardRow">
+        <item name="cardBackgroundColor">#E4E4E4</item>
+    </style>
 
     <style name="ScreenBackCns">
         <item name="android:background">@color/white</item>
@@ -66,12 +121,33 @@
         <item name="android:textColor">@color/grey</item>
     </style>
 
+    <style name="TextColorRow">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextColorBtn">
         <item name="android:textColor">@color/login_register_input_back</item>
     </style>
 
     <style name="ImageChange">
         <item name="android:src">@drawable/logo_and_splash</item>
+    </style>
+    <style name="MoreOptions">
+        <item name="android:src">@drawable/ic_more_btn_white_mode</item>
+    </style>
+
+    <style name="DeleteBtnCategory">
+        <item name="android:src">@drawable/ic_delete_white</item>
+    </style>
+
+    <style name="ArrowMainPage">
+        <item name="android:src">@drawable/ic_arrow_main_white_mode</item>
+    </style>
+    <style name="BaselineBtnClose">
+        <item name="android:src">@drawable/ic_baseline_close_white_mode</item>
+    </style>
+    <style name="BtnNavViewDrawer">
+        <item name="android:src">@drawable/ic_menu_white_mode</item>
     </style>
     <style name="IcAttachBtn">
         <item name="android:src">@drawable/ic_attach_white</item>
@@ -82,11 +158,11 @@
     </style>
 
     <style name="CheckBtnPassword">
-        <item name="android:src">@drawable/ic_check_dark_mode</item>
+        <item name="android:src">@drawable/ic_check_white</item>
     </style>
 
     <style name="BackSpaceBtn">
-        <item name="android:src">@drawable/ic_backspace_white_mode</item>
+        <item name="android:src">@drawable/ic_backspace_white</item>
     </style>
 
     <style name="BtnLock">
@@ -109,6 +185,17 @@
     <style name="ProgressBar">
         <item name="colorSecondary">@color/login_register_input_back</item>
     </style>
+
+
+    <style name="InternetBtnFooter">
+        <item name="srcCompat">@drawable/ic_baseline_internet_white</item>
+    </style>
+    <style name="EmailBtnFooter">
+        <item name="srcCompat">@drawable/ic_baseline_email_white</item>
+    </style>
+
+
+
 
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_in</item>

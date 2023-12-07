@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/white"
-    tools:context=".ui.salesman.DashboardSalesmanPageActivity"
-    >
+    tools:context=".ui.users.DashboardSalesmanPageActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -25,15 +24,16 @@
             <!--Toolbar-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/toolbarRl"
+                style="@style/HeaderBackPages"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
                     android:id="@+id/btnNavView"
+                    style="@style/BtnNavViewDrawer"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
@@ -41,7 +41,6 @@
                     android:layout_marginStart="15dp"
                     android:background="@android:color/transparent"
                     android:padding="5dp"
-                    android:src="@drawable/ic_menu"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -49,12 +48,12 @@
 
                 <TextView
                     android:id="@+id/titleTv"
+                    style="@style/TextFooter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:text="Dashboard Salesman"
-                    android:textColor="@color/gray02"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -62,40 +61,31 @@
 
                 <TextView
                     android:id="@+id/subTitleTv"
+                    style="@style/TextFooter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/titleTv"
                     android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:text="abc@example.com"
-                    android:textColor="@color/gray02"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+
+                <ImageButton
+                    android:id="@+id/logoutBtn"
+                    style="@style/BaselineBtnClose"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageButton
-                        android:id="@+id/logoutBtn"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:padding="10dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/baseline_close_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,7 +105,7 @@
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/back_gray_01"
                 android:drawableEnd="@drawable/ic_search"
-                android:hint="Search"
+                android:hint="@string/search"
                 android:paddingStart="15dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="15dp"
@@ -130,14 +120,12 @@
                 android:id="@+id/booksRsv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.473"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/searchEt"
-                app:layout_constraintVertical_bias="0.157"
                 tools:listitem="@layout/row_product_salesman" />
 
 
@@ -147,14 +135,14 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="330dp"
         android:id="@+id/navHeaderSalesman"
-        app:headerLayout="@layout/header_drawer"
+        style="@style/DrawerMenu"
+        android:layout_width="330dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white"
-        app:menu="@menu/menu_salesman"
-        >
+        android:fontFamily="sans-serif-smallcaps"
+        app:headerLayout="@layout/header_drawer"
+        app:menu="@menu/menu_salesman">
 
     </com.google.android.material.navigation.NavigationView>
 

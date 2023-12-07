@@ -9,6 +9,7 @@
     <style name="styleRoundedCornersMainImage">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
+
     </style>
 
 

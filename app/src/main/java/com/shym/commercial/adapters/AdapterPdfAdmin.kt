@@ -11,22 +11,25 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.shym.commercial.filters.FilterPdfAdmin
 import com.shym.commercial.databinding.RowPdfAdminBinding
-import com.shym.commercial.models.ModelPdf
-import com.shym.commercial.pdflist.MyApplication
-import com.shym.commercial.ui.PdfDetailsActivity
-import com.shym.commercial.ui.PdfEditActivity
+import com.shym.commercial.data.model.ModelPdf
+import com.shym.commercial.extensions.MyApplication
+import com.shym.commercial.ui.pdf.PdfDetailsActivity
+import com.shym.commercial.ui.pdf.PdfEditActivity
 
-class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Filterable {
+class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Filterable {
 
     //context
     private var context: Context
+
     //arraylist to hold pdf
     public var pdfArrayList: ArrayList<ModelPdf>
     private var filterList: ArrayList<ModelPdf>
+
     //viewBinding
     private lateinit var binding: RowPdfAdminBinding
+
     //filter object
-    private var filter : FilterPdfAdmin? = null
+    private var filter: FilterPdfAdmin? = null
 
     //constructor
     constructor(context: Context, pdfArrayList: ArrayList<ModelPdf>) : super() {
@@ -34,7 +37,6 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         this.pdfArrayList = pdfArrayList
         this.filterList = pdfArrayList
     }
-
 
 
     /*View holder class for row_pdf_admin.xml*/
@@ -73,13 +75,13 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
 // Предполагаем, что price и discount представляют числовые значения
         val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
 
-        holder.discountTv.text = discountedPrice.toString()
 
 // Управление видимостью элементов в зависимости от условий
         if (price.toDouble() == discountedPrice) {
             holder.discountTv.visibility = View.GONE
             holder.imageRedLine.visibility = View.GONE
         } else {
+            holder.discountTv.text = discountedPrice.toString()
             holder.discountTv.visibility = View.VISIBLE
             holder.imageRedLine.visibility = View.VISIBLE
         }
@@ -128,15 +130,18 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
         //alert dialog
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Choose options: ")
-            .setItems(options){dialog, position ->
+            .setItems(options) { dialog, position ->
                 //handle item click
-                if(position == 0){
+                if (position == 0) {
                     //Edit is clicked, lets create activity to edit
                     val intent = Intent(context, PdfEditActivity::class.java)
-                    intent.putExtra("bookId", bookId) //passed id in book, will be used to edit the book
+                    intent.putExtra(
+                        "bookId",
+                        bookId
+                    ) //passed id in book, will be used to edit the book
                     context.startActivity(intent)
 
-                }else if (position == 1){
+                } else if (position == 1) {
                     //delete
 
                     //show confirmation dialog first if you need...
@@ -148,13 +153,13 @@ class AdapterPdfAdmin :RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
 
 
     override fun getFilter(): Filter {
-        if (filter == null){
+        if (filter == null) {
             filter = FilterPdfAdmin(filterList, this)
         }
         return filter as FilterPdfAdmin
     }
 
-    inner class HolderPdfAdmin(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class HolderPdfAdmin(itemView: View) : RecyclerView.ViewHolder(itemView) {
         /*UI Views of row_pdf_admin.xml*/
 
         val imageView = binding.pdfView

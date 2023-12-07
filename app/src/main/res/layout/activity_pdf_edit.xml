@@ -4,183 +4,271 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.PdfEditActivity">
+    style="@style/ScreenBackground"
+    tools:context=".ui.pdf.PdfEditActivity">
 
     <!--Toolbar-->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--Input category-->
+    <androidx.cardview.widget.CardView
         android:id="@+id/toolbarRl"
+        style="@style/ScreenBackCard2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/salesman_toolbar">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            android:src="@drawable/ic_back_btn_white_mode"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iconIv"
-            android:layout_width="150dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/logo_and_splash"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <!--Title -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Edit Book Info"
-            android:textColor="@color/red"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconIv" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <!--Back Button-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/backBtn"
+                style="@style/ProfileBackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+            <ImageView
+                android:id="@+id/iconIv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/backBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logo_and_splash"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/iconTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/edit_product"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iconIv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <!--Scrollview-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbarRl"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
             <!--input book title -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/titleTil"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:hintEnabled="false"
+                app:cardCornerRadius="15dp"
+                style="@style/ScreenBackCard2"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/titleEt"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/back_gray_01"
-                    android:drawableEnd="@drawable/ic_pdf_black"
-                    android:drawablePadding="10dp"
-                    android:hint="@string/name_product"
-                    android:inputType="textPersonName|textCapSentences"
-                    android:padding="10dp"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray01"
-                    android:textSize="16sp" />
+                    android:layout_margin="15dp"
+                    android:layout_height="wrap_content">
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/titleTil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        <EditText
+                            android:id="@+id/titleEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/UploadedFileBackDetails2"
+                            android:drawableEnd="@drawable/ic_pdf_black"
+                            android:fontFamily="@font/roboto_400"
+                            android:hint="@string/name_product"
+                            android:inputType="textPersonName|textCapWords"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray01"
+                            android:textSize="16sp" />
 
-            <!--input book description-->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/descriptionTil"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/white"
-                app:hintEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleTil">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/descriptionEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/back_gray_01"
-                    android:drawableEnd="@drawable/ic_pdf_black"
-                    android:drawablePadding="10dp"
-                    android:hint="@string/description_product"
-                    android:inputType="textPersonName|textCapSentences"
-                    android:padding="10dp"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray01"
-                    android:textSize="16sp" />
+                    <!--input book description-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/descriptionTil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleTil">
 
+                        <EditText
+                            android:id="@+id/descriptionEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            style="@style/UploadedFileBackDetails2"
+                            android:drawableEnd="@drawable/ic_pdf_black"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/roboto_400"
+                            android:hint="@string/description_product"
+                            android:inputType="textMultiLine|textCapSentences"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray01"
+                            android:textSize="16sp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/costProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTil">
 
-            <!--Pick Book category-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoryConst"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTil">
+                        <EditText
+                            android:id="@+id/costEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            style="@style/UploadedFileBackDetails2"
+                            android:drawableEnd="@drawable/ic_img_tenge"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/roboto_400"
+                            android:hint="@string/cost_product"
+                            android:inputType="number"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray01"
+                            android:textSize="16sp"
 
-                <TextView
-                    android:id="@+id/categoryTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/back_orange_01"
-                    android:drawableStart="@drawable/ic_category"
-                    android:drawableEnd="@drawable/arrow_down_black"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/roboto_400"
-                    android:gravity="center_vertical"
-                    android:hint="@string/category_product"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray01"
-                    android:textSize="16sp"
-                    app:hintEnabled="false"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageButton
-                android:id="@+id/attacheConst"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/add_new_product_salesman"
-                android:padding="15dp"
-                android:src="@drawable/ic_attach_black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/discountProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/costProduct">
 
-            <Button
-                android:id="@+id/submitConst"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/add_new_product_salesman"
-                android:text="@string/upload"
-                android:textColor="@color/red"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/attacheConst"
-                app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
+                        <EditText
+                            android:id="@+id/discountEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            style="@style/UploadedFileBackDetails2"
+                            android:drawableEnd="@drawable/ic_percentage_white"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/roboto_400"
+                            android:hint="@string/product_discount"
+                            android:inputType="number"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray01"
+                            android:textSize="16sp"
 
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--Pick Book category-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/categoryConst"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/discountProduct">
+
+                        <TextView
+                            android:id="@+id/categoryTv"
+                            style="@style/UploadedFileBackDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_category"
+                            android:drawableEnd="@drawable/arrow_down_black"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/roboto_400"
+                            android:gravity="center_vertical"
+                            android:hint="@string/category_product"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray01"
+                            android:textSize="16sp"
+                            app:hintEnabled="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageButton
+                        android:id="@+id/attacheConst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        style="@style/IcAttachBtn"
+                        android:padding="15dp"
+                        android:background="@drawable/login_register_input_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
+
+                    <Button
+                        android:id="@+id/submitConst"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/login_register_btn_color_back"
+                        android:text="@string/update_product"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/attacheConst"
+                        app:layout_constraintTop_toBottomOf="@+id/categoryConst" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

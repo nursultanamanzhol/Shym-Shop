@@ -1,57 +1,59 @@
 package com.shym.commercial.filters
 
+import android.os.Handler
+import android.os.Looper
 import android.widget.Filter
+import androidx.recyclerview.widget.DiffUtil
 import com.shym.commercial.adapters.AdapterCategory
-import com.shym.commercial.models.ModelCategory
+import com.shym.commercial.data.model.ModelCategory
 
-class FilterCategory : Filter {
-    // arraylist in which we want to search
-    private var filterList: ArrayList<ModelCategory>
+class FilterCategory(
+    private val originalList: List<ModelCategory>,
+    private val adapterCategory: AdapterCategory
+) : Filter() {
 
-    //adapter
-    private var adapterCategory: AdapterCategory
-
-    //constructor
-    constructor(filterList: ArrayList<ModelCategory>, adapterCategory: AdapterCategory) : super() {
-        this.filterList = filterList
-        this.adapterCategory = adapterCategory
-    }
+    private var filteredList: List<ModelCategory> = originalList
 
     override fun performFiltering(constraint: CharSequence?): FilterResults {
-        var constraint = constraint
+        var constraintString = constraint
         val results = FilterResults()
 
-        //value
-        if (constraint != null && constraint.isNotEmpty()) {
-            //search is value is no null not empty
-
-
+        if (constraintString != null && constraintString.isNotEmpty()) {
             //change to upper case, or lower case to avoid case sensitivity
-            constraint = constraint.toString().uppercase()
-            val filteredModels: ArrayList<ModelCategory> = ArrayList()
-            for (i in 0 until filterList.size) {
-                //validate
-                if (filterList[i].category.uppercase().contains(constraint)) {
-                    // add to filtered list
-                    filteredModels.add(filterList[i])
-                }
+            constraintString = constraintString.toString().uppercase()
+            val filterModels = originalList.filter {
+                it.category.uppercase().contains(constraintString)
             }
-            results.count = filteredModels.size
-            results.values = filteredModels
+            results.values = filterModels
         } else {
-            //search value is either null or empty
-            results.count = filterList.size
-            results.values = filterList
-
+            results.values = originalList
         }
+
         return results
     }
 
     override fun publishResults(constraint: CharSequence?, results: FilterResults) {
-        //apply filter
-        adapterCategory.categoryArrayList = results.values as ArrayList<ModelCategory>
+        val newFilteredList = results.values as List<ModelCategory>
 
-        //notify changes
-        adapterCategory.notifyDataSetChanged()
+        val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int = filteredList.size
+            override fun getNewListSize(): Int = newFilteredList.size
+
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return filteredList[oldItemPosition] == newFilteredList[newItemPosition]
+            }
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return filteredList[oldItemPosition] == newFilteredList[newItemPosition]
+            }
+        })
+
+        filteredList = newFilteredList
+
+        // Оповещение адаптера асинхронно с использованием Handler и Looper
+        val handler = Handler(Looper.getMainLooper())
+        handler.post {
+            diffResult.dispatchUpdatesTo(adapterCategory)
+        }
     }
 }

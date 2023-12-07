@@ -20,5 +20,7 @@
     <color name="colorAccent">#009688</color>
     <color name="grey">#aaa</color>
     <color name="darKGrey">#ff424242</color>
+    <color name="topColor">#033f54</color>
+
 
 </resources>

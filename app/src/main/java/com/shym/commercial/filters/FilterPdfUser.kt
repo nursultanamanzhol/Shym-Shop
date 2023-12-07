@@ -1,7 +1,7 @@
 package com.shym.commercial.filters
 
 import android.widget.Filter
-import com.shym.commercial.models.ModelPdf
+import com.shym.commercial.data.model.ModelPdf
 import com.shym.commercial.adapters.AdapterPdfUser
 
 class FilterPdfUser : Filter {
@@ -26,7 +26,7 @@ class FilterPdfUser : Filter {
             val filteredModels = ArrayList<ModelPdf>()
             for (i in filterList.indices){
                 if (filterList[i].title.uppercase().contains(constraint))
-                    //searched value matched with title, add to list
+                //searched value matched with title, add to list
                     filteredModels.add(filterList[i])
 
             } // return filtered
@@ -53,3 +53,4 @@ class FilterPdfUser : Filter {
 
 
 }
+

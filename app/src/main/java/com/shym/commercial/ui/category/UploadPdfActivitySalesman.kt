@@ -20,8 +20,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.shym.commercial.R
 import com.shym.commercial.databinding.ActivityUploadPdfSalesmanBinding
-import com.shym.commercial.models.ModelCategory
-import com.shym.commercial.ui.salesman.DashboardSalesmanPageActivity
+import com.shym.commercial.data.model.ModelCategory
+import com.shym.commercial.ui.users.DashboardSalesmanPageActivity
 
 @Suppress("DEPRECATION")
 class UploadPdfActivitySalesman : AppCompatActivity() {
@@ -67,7 +67,6 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
         binding = ActivityUploadPdfSalesmanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        categoryId = intent.getStringExtra("categoryId")!!
         //init firebase
         firebaseAuth = FirebaseAuth.getInstance()
         loadPdfCategories()
@@ -113,6 +112,8 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
             Toast.makeText(this, "Enter Description...", Toast.LENGTH_SHORT).show()
         } else if (price.isEmpty()) {
             Toast.makeText(this, "Write a price product...", Toast.LENGTH_SHORT).show()
+        } else if (discount.isEmpty()) {
+            Toast.makeText(this, "Write a discount...", Toast.LENGTH_SHORT).show()
         } else if (pdfUri == null) {
             Toast.makeText(this, "Pick PDF...", Toast.LENGTH_SHORT).show()
 
@@ -169,43 +170,55 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
         //uid current user
         val uid = firebaseAuth.uid
 
-        //setup data to upload
-        val hashMap: HashMap<String, Any> = HashMap()
-        hashMap["uid"] = "$uid"
-        hashMap["id"] = "$timestamp"
-        hashMap["title"] = "$title"
-        hashMap["description"] = "$description"
-        hashMap["price"] = "$price"
-        hashMap["discount"] = "$discount"
-        hashMap["categoryId"] = "$categoryId"
-        hashMap["url"] = "$uploadPdfUrl"
-        hashMap["timestamp"] = timestamp
-        hashMap["viewsCount"] = 0
-        hashMap["downloadsCount"] = 0
+        val userRef = FirebaseDatabase.getInstance().getReference("Users")
+        userRef.child(firebaseAuth.uid!!)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //get user info
+                    categoryId = "${snapshot.child("categories").value}"
+                    //setup data to upload
+                    val hashMap: HashMap<String, Any> = HashMap()
+                    hashMap["uid"] = "$uid"
+                    hashMap["id"] = "$timestamp"
+                    hashMap["title"] = "$title"
+                    hashMap["description"] = "$description"
+                    hashMap["price"] = "$price"
+                    hashMap["discount"] = "$discount"
+                    hashMap["categoryId"] = "$categoryId"
+                    hashMap["url"] = "$uploadPdfUrl"
+                    hashMap["timestamp"] = timestamp
+                    hashMap["viewsCount"] = 0
+                    hashMap["downloadsCount"] = 0
 
-        //db reference DB > BookS>BookId> (Book Info)
-        val ref = FirebaseDatabase.getInstance().getReference("Books")
-        ref.child("$timestamp")
-            .setValue(hashMap)
-            .addOnSuccessListener {
-                Log.d(TAG, "uploadPdfInfoToDo: upload to db")
-                progressDialog.dismiss()
-                Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
-                pdfUri = null
-//
-//                onBackPressed()
-//                onBackPressed()
-                val intent = Intent(this, DashboardSalesmanPageActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            .addOnFailureListener { e ->
-                Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
-                progressDialog.dismiss()
-                Toast.makeText(this, "Failure to upload due to ${e.message}", Toast.LENGTH_SHORT)
-                    .show()
+                    //db reference DB > BookS>BookId> (Book Info)
+                    val ref = FirebaseDatabase.getInstance().getReference("Books")
+                    ref.child("$timestamp")
+                        .setValue(hashMap)
+                        .addOnSuccessListener {
+                            Log.d(TAG, "uploadPdfInfoToDo: upload to db")
+                            progressDialog.dismiss()
+                            Toast.makeText(this@UploadPdfActivitySalesman, "Uploaded...", Toast.LENGTH_SHORT).show()
+                            pdfUri = null
+//                fileUris.clear()
+                            startActivity(Intent(this@UploadPdfActivitySalesman, DashboardSalesmanPageActivity::class.java))
+                        }
+                        .addOnFailureListener { e ->
+                            Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
+                            progressDialog.dismiss()
+                            Toast.makeText(
+                                this@UploadPdfActivitySalesman,
+                                "Failure to upload due to ${e.message}",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
 
-            }
+                        }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
 
 
     }

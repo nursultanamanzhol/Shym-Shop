@@ -1,161 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="5dp"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="0dp"
-    app:contentPadding="5dp"
-    android:layout_height="140dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.cardview.widget.CardView
+        style="@style/ScreenBackCardRow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="140dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pdfRl"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="100dp"
-            android:layout_height="140dp"
-            android:layout_marginEnd="5dp"
-            android:background="@color/gray02">
-            <!--Pdf View-->
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pdfRl"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                app:cardCornerRadius="15dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray02">
+                    <!--Pdf View-->
+
+
+                    <com.github.barteksc.pdfviewer.PDFView
+                        android:id="@+id/pdfView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!--ProgressBar-->
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/titleTv"
+                style="@style/RowUserTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="The Book Title"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/pdfRl"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--Description-->
+            <TextView
+                android:id="@+id/descriptionTv"
+                style="@style/RowUserTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="The description of the book"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/pdfRl"
+                app:layout_constraintTop_toBottomOf="@+id/titleTv" />
+
+            <!--Price-->
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                style="@style/RowUserTengeDrawable"
+                android:drawablePadding="5dp"
+                android:text="price"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!--Category-->
+            <TextView
+                android:id="@+id/categoryTv"
+                style="@style/RowUserTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="8dp"
+                android:text="Category"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/pdfRl"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionTv" />
+
+
+            <!--Date-->
+            <TextView
+                android:id="@+id/dateTv"
+                style="@style/RowUserTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toStartOf="@+id/categoryTv"
+                android:maxLines="1"
+                android:layout_marginStart="15dp"
+                android:text="dd/mm/yyyy"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sizeTv" />
+
+            <!--Size-->
+
+            <TextView
+                android:id="@+id/sizeTv"
+                style="@style/RowUserTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="6dp"
+                android:maxLines="1"
+                android:text="size File"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pdfRl" />
 
             <ImageView
-                android:id="@+id/pdfView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
+                android:id="@+id/imageRedLine"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:rotation="45"
+                android:src="@drawable/ic_line_discount"
+                app:layout_constraintBottom_toBottomOf="@+id/priceTv"
+                app:layout_constraintEnd_toEndOf="@+id/priceTv"
+                app:layout_constraintStart_toStartOf="@+id/priceTv"
+                app:layout_constraintTop_toTopOf="@+id/priceTv" />
+            <!--Price-->
+            <TextView
+                android:id="@+id/discountTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RowUserTengeDrawable"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="5dp"
+                android:text="price"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceTv" />
+            <!--show more options-->
 
-            <!--ProgressBar-->
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/progressBar"/>
+
+            <ImageButton
+                android:id="@+id/moreBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="5dp"
+                style="@style/MoreOptions"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/titleTv"
-            android:layout_marginStart="4dp"
-            android:maxLines="1"
-            android:text="The Book Title"
-            app:layout_constraintStart_toEndOf="@+id/pdfRl"
-            android:ellipsize="end"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            />
-        <!--Description-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/descriptionTv"
-            android:layout_marginStart="6dp"
-            android:ellipsize="end"
-            app:layout_constraintTop_toBottomOf="@+id/titleTv"
-            android:maxLines="2"
-            app:layout_constraintStart_toEndOf="@+id/pdfRl"
-            android:layout_marginTop="8dp"
-            android:text="The description of the book"
-            style="@style/TextAppearance.MaterialComponents.Body2"
-            />
-
-        <!--Price-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/priceTv"
-            android:text="price"
-            android:layout_margin="10dp"
-            android:drawableEnd="@drawable/ic_img_tenge"
-            android:drawablePadding="5dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-
-        <!--Category-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/categoryTv"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:maxLines="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Category"
-            />
-
-
-        <!--Date-->
-        <TextView
-            android:id="@+id/dateTv"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/categoryTv"
-            android:maxLines="1"
-            android:text="dd/mm/yyyy"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/categoryTv"
-            app:layout_constraintStart_toEndOf="@+id/sizeTv" />
-
-        <!--Size-->
-
-        <TextView
-            android:id="@+id/sizeTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:maxLines="1"
-            android:layout_marginStart="6dp"
-            android:text="size File"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/pdfRl" />
-
-        <ImageView
-            android:id="@+id/imageRedLine"
-            android:layout_width="100dp"
-            android:scaleType="centerCrop"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_line_discount"
-            app:layout_constraintBottom_toBottomOf="@+id/priceTv"
-            app:layout_constraintEnd_toEndOf="@+id/priceTv"
-            app:layout_constraintStart_toStartOf="@+id/priceTv"
-            app:layout_constraintTop_toTopOf="@+id/priceTv" />
-        <!--Price-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/discountTv"
-            android:text="price"
-            android:layout_margin="10dp"
-            android:drawableEnd="@drawable/ic_img_tenge"
-            android:drawablePadding="5dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceTv"
-            />
-        <!--show more options-->
-
-
-        <ImageButton
-            android:id="@+id/moreBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:padding="5dp"
-            android:src="@drawable/ic_more_btn_black"
-            app:layout_constraintBottom_toTopOf="@+id/categoryTv"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/ScreenBackground"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.main.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topConst"
+        style="@style/TopBackground"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        style="@style/TopBackground"
         android:elevation="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +39,7 @@
 
             <ImageView
                 android:id="@+id/iconIv"
+                style="@style/ImageChange"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_alignParentTop="true"
@@ -46,7 +47,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:cropToPadding="true"
-                style="@style/ImageChange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,22 +59,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/topCardView"
+        style="@style/ScreenBackCard"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:visibility="invisible"
         app:cardCornerRadius="30dp"
         app:cardElevation="21dp"
-        style="@style/ScreenBackCard"
         app:layout_constraintBottom_toBottomOf="@+id/topConst"
         app:layout_constraintEnd_toEndOf="@+id/scrollView"
         app:layout_constraintStart_toStartOf="@+id/scrollView"
-        app:layout_constraintTop_toBottomOf="@+id/topConst"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/topConst">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/ScreenBackCns"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="@style/ScreenBackCns">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -105,10 +104,10 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
+            style="@style/ScreenBackCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            style="@style/ScreenBackCard"
             android:visibility="invisible"
             app:cardCornerRadius="30dp"
             app:cardElevation="4dp"
@@ -119,19 +118,19 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/centerConst"
+                style="@style/ScreenBackCns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                style="@style/ScreenBackCns"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
+                    style="@style/ScreenBackCns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/ScreenBackCns"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -162,7 +161,7 @@
                             android:background="@drawable/login_register_input_back"
                             android:drawableStart="@drawable/ic_email_gray"
                             android:drawablePadding="10dp"
-                            android:hint="Email"
+                            android:hint="@string/email"
                             android:inputType="textEmailAddress"
                             android:padding="10dp"
                             android:textColor="@color/black"
@@ -191,7 +190,7 @@
                             android:background="@drawable/login_register_input_back"
                             android:drawableStart="@drawable/ic_lock_gray"
                             android:drawablePadding="10dp"
-                            android:hint="Password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:padding="10dp"
                             android:textColor="@color/black"
@@ -203,14 +202,14 @@
                     <!--Forget Password-->
                     <TextView
                         android:id="@+id/forgetTv"
+                        style="@style/TextColorBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/passwordTil"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="5dp"
                         android:padding="5dp"
-                        android:text="Forget Password?"
-                        style="@style/TextColorBtn"
+                        android:text="@string/forget_password"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/passwordTil" />
 
@@ -218,13 +217,13 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/loginBtn"
+                        style="@style/TextColorBtn"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/login_register_btn_color_back"
                         android:text="@string/login"
-                        style="@style/TextColorBtn"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -317,17 +316,18 @@
 
         <TextView
             android:id="@+id/textView"
+            style="@style/TextColorBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/registerBtn"
-            style="@style/TextColorBtn"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/lottieAnimationView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="5dp"

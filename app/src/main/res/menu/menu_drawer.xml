@@ -10,7 +10,6 @@
             android:id="@+id/profile"
             android:icon="@drawable/ic_person_gray"
             android:title="@string/profile"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             />
 
@@ -18,7 +17,6 @@
             android:id="@+id/email"
             android:icon="@drawable/ic_email_gray"
             android:title="1/1"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
 
     </group>
@@ -31,31 +29,26 @@
             android:id="@+id/add_category_menu"
             android:icon="@drawable/ic_add_category"
             android:title="@string/add_category"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
         <item
             android:id="@+id/add_product_menu"
             android:icon="@drawable/ic_pdf_white"
             android:title="@string/add_newproduct"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
         <item
             android:id="@+id/settings_menu"
             android:icon="@drawable/baseline_settings_24"
             android:title="@string/settings"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
         <item
             android:id="@+id/favorites_menu"
             android:icon="@drawable/baseline_favorite_24"
             android:title="@string/favorites"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
         <item
             android:id="@+id/history_menu"
             android:icon="@drawable/baseline_history_24"
             android:title="@string/history"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
     </group>
 
@@ -66,13 +59,11 @@
             android:id="@+id/shared_friend"
             android:icon="@drawable/ic_person_gray"
             android:title="@string/shared_friend"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
         <item
             android:id="@+id/shym_shop_make"
             android:icon="@drawable/baseline_question_mark_24"
             android:title="@string/shym_shop_make"
-            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"/>
 
     </group>

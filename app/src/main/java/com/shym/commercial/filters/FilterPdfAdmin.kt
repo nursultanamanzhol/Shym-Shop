@@ -1,57 +1,59 @@
 package com.shym.commercial.filters
 
+
+import android.os.Handler
+import android.os.Looper
 import android.widget.Filter
+import androidx.recyclerview.widget.DiffUtil
 import com.shym.commercial.adapters.AdapterPdfAdmin
-import com.shym.commercial.models.ModelPdf
+import com.shym.commercial.data.model.ModelPdf
 
+class FilterPdfAdmin(
+    private val originalList: List<ModelPdf>,
+    private val adapterPdfAdmin: AdapterPdfAdmin
+) : Filter() {
 
-/*used to filter data from recyclerview | search pdf from pdf list in recyclerview*/
-
-class FilterPdfAdmin : Filter {
-    //arrayList in which we want to search
-    var filterList: ArrayList<ModelPdf>
-
-    //adapter in which filter need to be implemented
-    var adapterPdfAdmin: AdapterPdfAdmin
-
-    //constructor
-    constructor(filterList: ArrayList<ModelPdf>, adapterPdfAdmin: AdapterPdfAdmin) {
-        this.filterList = filterList
-        this.adapterPdfAdmin = adapterPdfAdmin
-    }
+    private var filteredList: List<ModelPdf> = originalList
 
     override fun performFiltering(constraint: CharSequence?): FilterResults {
-        var constraint: CharSequence? = constraint //value search
+        val constraintString = constraint?.toString()?.lowercase()
+
         val results = FilterResults()
-        //value to be searched should not be null and not empty
-        if (constraint!= null && constraint.isNotEmpty()){
-            //change to upper case, or lowercase to avoid case sensitivity
-            constraint = constraint.toString().lowercase()
-            var filterModels = ArrayList<ModelPdf>()
-            for (i in filterList.indices){
-                //validate if match
-                if (filterList[i].title.lowercase().contains(constraint)){
-                    // searched value is similar to value in list, add to filtered list
-                    filterModels.add(filterList[i])
-                }
+
+        if (constraintString != null && constraintString.isNotEmpty()) {
+            val filterModels = originalList.filter {
+                it.title.lowercase().contains(constraintString)
             }
-            results.count = filterModels.size
             results.values = filterModels
-        }
-        else{
-            //searched value is either null or empty, return all data
-            results.count = filterList.size
-            results.values = filterList
+        } else {
+            results.values = originalList
         }
 
-        return results  //  do not miss
+        return results
     }
 
     override fun publishResults(constraint: CharSequence?, results: FilterResults) {
-        //apply filter changes
-        adapterPdfAdmin.pdfArrayList = results.values as ArrayList<ModelPdf>
+        val newFilteredList = results.values as List<ModelPdf>
 
-        //notify changes
-        adapterPdfAdmin.notifyDataSetChanged()
+        val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int = filteredList.size
+            override fun getNewListSize(): Int = newFilteredList.size
+
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return filteredList[oldItemPosition] == newFilteredList[newItemPosition]
+            }
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return filteredList[oldItemPosition] == newFilteredList[newItemPosition]
+            }
+        })
+
+        filteredList = newFilteredList
+
+        // Оповещение адаптера асинхронно с использованием Handler и Looper
+        val handler = Handler(Looper.getMainLooper())
+        handler.post {
+            diffResult.dispatchUpdatesTo(adapterPdfAdmin)
+        }
     }
 }

@@ -12,10 +12,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.shym.commercial.ui.admin.PdfListAdminActivity
+import com.shym.commercial.ui.pdf.PdfListAdminActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.shym.commercial.filters.FilterCategory
-import com.shym.commercial.models.ModelCategory
+import com.shym.commercial.data.model.ModelCategory
 import com.shym.commercial.databinding.RowCategoryBinding
 
 class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Filterable {

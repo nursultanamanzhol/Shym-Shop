@@ -9,9 +9,9 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.shym.commercial.databinding.RowPdfUserBinding
-import com.shym.commercial.models.ModelPdf
-import com.shym.commercial.pdflist.MyApplication
-import com.shym.commercial.ui.PdfDetailsActivity
+import com.shym.commercial.data.model.ModelPdf
+import com.shym.commercial.extensions.MyApplication
+import com.shym.commercial.ui.pdf.PdfDetailsActivity
 import com.shym.commercial.filters.FilterPdfUser
 
 class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filterable {
@@ -59,6 +59,7 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         // convert time
         val date = MyApplication.formatTimeStamp(timestamp)
 
+
         //set data
         holder.titleTv.text = title
         holder.priceTv.text = price
@@ -66,13 +67,14 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
 // Предполагаем, что price и discount представляют числовые значения
         val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
 
-        holder.discountTv.text = discountedPrice.toString()
+
 
 // Управление видимостью элементов в зависимости от условий
         if (price.toDouble() == discountedPrice) {
             holder.discountTv.visibility = View.GONE
             holder.imageRedLine.visibility = View.GONE
         } else {
+            holder.discountTv.text = discountedPrice.toString()
             holder.discountTv.visibility = View.VISIBLE
             holder.imageRedLine.visibility = View.VISIBLE
         }

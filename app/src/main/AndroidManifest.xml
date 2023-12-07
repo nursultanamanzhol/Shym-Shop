@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".pdflist.MyApplication"
+        android:name=".extensions.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,34 +21,34 @@
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized" />
         <activity
-            android:name=".ui.PasswordPage"
+            android:name=".ui.main.PasswordPage"
             android:exported="false" />
         <activity
-            android:name=".ui.MainUserPage"
+            android:name=".ui.main.MainUserPage"
             android:exported="false" />
         <activity
-            android:name=".ui.PdfDetailsSalesmanActivity"
+            android:name=".ui.pdf.PdfDetailsSalesmanActivity"
             android:exported="false" />
         <activity
             android:name=".ui.category.UploadPdfActivitySalesman"
             android:exported="false" />
         <activity
-            android:name=".ui.salesman.DashboardSalesmanPageActivity"
+            android:name=".ui.users.DashboardSalesmanPageActivity"
             android:exported="false" />
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.PdfViewActivity"
+            android:name=".ui.pdf.PdfViewActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.PdfDetailsActivity"
+            android:name=".ui.pdf.PdfDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.PdfEditActivity"
+            android:name=".ui.pdf.PdfEditActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.admin.PdfListAdminActivity"
+            android:name=".ui.pdf.PdfListAdminActivity"
             android:exported="false" />
         <activity
             android:name=".ui.category.UploadPdfActivity"
@@ -61,21 +61,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.admin.DashboardAdminActivity"
+            android:name=".ui.users.DashboardAdminActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.customer.DashboardUserActivity"
+            android:name=".ui.users.DashboardUserActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.main.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized">
             <meta-data
@@ -83,7 +83,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.RegisterActivity"
+            android:name=".ui.main.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.TheAuthorized">
             <meta-data
@@ -91,7 +91,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.main.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.BookApp">
             <intent-filter>
@@ -104,7 +104,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.main.MainActivity" />
     </application>
 
 </manifest>
