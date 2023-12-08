@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="180dp"
-    android:layout_height="250dp"
+    android:layout_width="150dp"
+    android:layout_height="210dp"
     >
 
     <androidx.cardview.widget.CardView
@@ -26,9 +26,9 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pdfRl"
-                android:layout_width="140dp"
+                android:layout_width="120dp"
                 app:cardUseCompatPadding="true"
-                android:layout_height="180dp"
+                android:layout_height="150dp"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,18 +61,7 @@
                         app:layout_constraintTop_toTopOf="@+id/pdfView" />
 
                     <!--Price-->
-                    <TextView
-                        android:id="@+id/priceTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        style="@style/RowUserTengeDrawable"
-                        android:drawablePadding="5dp"
-                        android:text="price"
-                        android:elevation="22dp"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+
 
                     <TextView
                         android:id="@+id/discount"
@@ -80,13 +69,13 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_discount"
                         android:elevation="22dp"
-                        android:text="@string/product_discount"
-                        android:textColor="@color/red"
-                        android:textSize="20sp"
+                        android:text="n"
+                        android:background="@color/red"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,13 +89,27 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-smallcaps"
                 android:maxLines="1"
+                android:layout_marginStart="10dp"
                 android:text="The Book Title"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pdfRl" />
             <!--Description-->
+            <TextView
+                android:id="@+id/priceTv"
+                style="@style/RowUserTengeDrawable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:elevation="22dp"
+                android:text="price"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
 
+                app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
 
             <!--Price-->

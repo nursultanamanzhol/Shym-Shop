@@ -28,6 +28,10 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerBtn.setSafeOnClickListener {
             validateDataAndRegister()
         }
+        binding.logInBtn.setSafeOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
         registerViewModel.registrationResult.observe(this) { result ->
             result.onSuccess {
