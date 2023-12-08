@@ -45,7 +45,8 @@ class MainUserPage : AppCompatActivity() {
     private var categoryId = ""
     private var category = ""
     private var uid = ""
-    private lateinit var pdfArrayList: ArrayList<ModelPdf>
+    private lateinit var pdfArrayListAll: ArrayList<ModelPdf>
+    private lateinit var pdfArrayListDiscount: ArrayList<ModelPdf>
     private var backPressedTime = 0L
 
     override fun onBackPressed() {
@@ -116,16 +117,16 @@ class MainUserPage : AppCompatActivity() {
     }
 
     private fun loadAllBooks() {
-        pdfArrayList = ArrayList()
-        val ref = FirebaseDatabase.getInstance().getReference("Books").limitToFirst(10)
+        pdfArrayListAll = ArrayList()
+        val ref = FirebaseDatabase.getInstance().getReference("Books")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                pdfArrayList.clear()
+                pdfArrayListAll.clear()
                 for (ds in snapshot.children) {
                     val model = ds.getValue(ModelPdf::class.java)
-                    model?.let { pdfArrayList.add(it) }
+                    model?.let { pdfArrayListAll.add(it) }
                 }
-                adapterMainPage = AdapterMainPage(this@MainUserPage, pdfArrayList)
+                adapterMainPage = AdapterMainPage(this@MainUserPage, pdfArrayListAll)
                 binding.productList1.adapter = adapterMainPage
             }
 
@@ -136,18 +137,25 @@ class MainUserPage : AppCompatActivity() {
     }
 
     private fun loadDiscountBooks() {
-        pdfArrayList = ArrayList()
+        pdfArrayListDiscount = ArrayList()
         val ref = FirebaseDatabase.getInstance().getReference("Books").limitToFirst(10)
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                pdfArrayList.clear()
+                pdfArrayListDiscount.clear()
                 for (ds in snapshot.children) {
                     val model = ds.getValue(ModelPdf::class.java)
-                    if (model != null && model.discount.toInt() > 5) {
-                        pdfArrayList.add(model)
+                    if (model != null && !model.discount.isNullOrEmpty()) {
+                        try {
+                            val discountValue = model.discount.toInt()
+                            if (discountValue > 10) {
+                                pdfArrayListDiscount.add(model)
+                            }
+                        } catch (e: NumberFormatException) {
+                            Log.e(TAG, "Invalid discount format: ${model.discount}")
+                        }
                     }
                 }
-                adapterMainSpecial = AdapterMainSpecial(this@MainUserPage, pdfArrayList)
+                adapterMainSpecial = AdapterMainSpecial(this@MainUserPage, pdfArrayListDiscount)
                 binding.productList2.adapter = adapterMainSpecial
             }
 
@@ -156,6 +164,7 @@ class MainUserPage : AppCompatActivity() {
             }
         })
     }
+
 
 
 
