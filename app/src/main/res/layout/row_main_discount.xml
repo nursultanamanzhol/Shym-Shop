@@ -69,9 +69,11 @@
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_discount"
                         android:elevation="22dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
                         android:text="n"
-                        android:background="@color/red"
-                        android:textColor="@color/white"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/red"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -89,9 +91,9 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-smallcaps"
                 android:maxLines="1"
-                android:layout_marginStart="10dp"
                 android:text="The Book Title"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pdfRl" />
             <!--Description-->
@@ -100,15 +102,16 @@
                 style="@style/RowUserTengeDrawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="5dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="3dp"
+                android:drawablePadding="5dp"
                 android:elevation="22dp"
                 android:text="price"
                 android:textColor="@color/black"
                 android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
 

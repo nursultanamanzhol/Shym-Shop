@@ -132,8 +132,8 @@ class ProfileEditActivity : AppCompatActivity() {
     private fun lngPickDialog() {
         val languages = arrayOf("en", "kk", "ru")
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Pick Language")
+        val builders = AlertDialog.Builder(this)
+        builders.setTitle("Pick Language")
             .setSingleChoiceItems(languages, -1) { dialog, which ->
                 // which - индекс выбранного элемента
                 language = languages[which]
@@ -191,10 +191,10 @@ class ProfileEditActivity : AppCompatActivity() {
                     }
 
                     if (language.isEmpty()) {
-                        Lingver.getInstance().setLocale(this@ProfileEditActivity, language)
+                        Lingver.getInstance().setLocale(this@ProfileEditActivity, "en")
                         this.recreate()
                     } else {
-                        Lingver.getInstance().setLocale(this@ProfileEditActivity, "en")
+                        Lingver.getInstance().setLocale(this@ProfileEditActivity, language)
                         this.recreate()
                     }
                     startActivity(Intent(this@ProfileEditActivity, ProfileActivity::class.java))
