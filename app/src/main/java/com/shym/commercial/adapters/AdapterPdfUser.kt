@@ -62,16 +62,13 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
 
         //set data
         holder.titleTv.text = title
-        holder.priceTv.text = price
+        holder.priceTv.text = price.toString()
 
-// Предполагаем, что price и discount представляют числовые значения
-        // Парсинг строк в числа с проверкой на пустоту
-        val priceValue = if (price.isNotEmpty()) price.toInt() else 0
-        val discountValue = if (discount.isNotEmpty()) discount.toInt() else 0
+        val priceValue = price.toIntOrNull() ?: 0
+        val discountValue = discount.toIntOrNull() ?: 0
 
-        val discountedPrice = priceValue - ((discountValue / 100) * priceValue)
+        val discountedPrice = priceValue - (priceValue * discountValue / 100)
 
-// Управление видимостью элементов в зависимости от условий
         if (priceValue == discountedPrice) {
             holder.discountTv.visibility = View.GONE
             holder.imageRedLine.visibility = View.GONE
@@ -80,6 +77,7 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
             holder.discountTv.visibility = View.VISIBLE
             holder.imageRedLine.visibility = View.VISIBLE
         }
+
 
         holder.descriptionTv.text = description
         holder.dateTv.text = date
