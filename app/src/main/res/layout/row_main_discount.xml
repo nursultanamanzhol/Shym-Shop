@@ -101,9 +101,9 @@
                     android:layout_marginBottom="10dp"
                     android:drawablePadding="5dp"
                     android:text="price"
+                    android:layout_marginStart="10dp"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/discount"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
@@ -124,6 +124,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/priceTv"
                     app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

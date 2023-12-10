@@ -73,11 +73,15 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
         holder.priceTv.text = price
 
 // Предполагаем, что price и discount представляют числовые значения
-        val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
+        val discountedPrice = price.toInt() - ((discount.toInt() / 100) * price.toInt())
 
+//        val priceValue = if (price.isNotEmpty()) price.toInt() else 0
+//        val discountValue = if (discount.isNotEmpty()) discount.toInt() else 0
+//
+//        val discountedPrice = priceValue - ((discountValue / 100) * priceValue)
 
 // Управление видимостью элементов в зависимости от условий
-        if (price.toDouble() == discountedPrice) {
+        if (price.toInt() == discountedPrice) {
             holder.discountTv.visibility = View.GONE
             holder.imageRedLine.visibility = View.GONE
         } else {

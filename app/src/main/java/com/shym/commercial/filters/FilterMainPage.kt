@@ -1,6 +1,7 @@
 package com.shym.commercial.filters
 
 
+import android.annotation.SuppressLint
 import android.widget.Filter
 import com.shym.commercial.adapters.AdapterMainPage
 import com.shym.commercial.data.model.ModelPdf
@@ -44,6 +45,7 @@ class FilterMainPage : Filter {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun publishResults(constraint: CharSequence, results: FilterResults) {
         // app filter changes
         adapterMainPage.pdfArrayList = results.values as ArrayList<ModelPdf>
