@@ -12,6 +12,7 @@ import com.shym.commercial.data.model.ModelPdf
 import com.shym.commercial.databinding.RowMainPageBinding
 import com.shym.commercial.databinding.RowPdfUserBinding
 import com.shym.commercial.extensions.MyApplication
+import com.shym.commercial.extensions.setSafeOnClickListener
 import com.shym.commercial.filters.FilterMainPage
 import com.shym.commercial.ui.pdf.PdfDetailsActivity
 
@@ -41,11 +42,18 @@ class AdapterMainPage(
         val title = model.title
         val description = model.description
         val price = model.price
-        val discount = model.discount
+        val discount = model.discount.toIntOrNull() ?: 0
         val uid = model.uid
         val pdfUrl = model.url
         val timestamp = model.timestamp
         // ... Остальной код без изменений
+        holder.priceTv.text = price
+        if ( discount == 0) {
+            holder.discount.visibility = View.GONE
+        } else {
+            holder.discount.visibility = View.VISIBLE
+            holder.discount.text = discount.toString()
+        }
         holder.titleTv.text = title
 
         MyApplication.loadPdfFromUrlSinglePage(
@@ -56,7 +64,7 @@ class AdapterMainPage(
             null
         )
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.setSafeOnClickListener {
             val intent = Intent(context, PdfDetailsActivity::class.java)
             intent.putExtra("bookId", model.id)
             context.startActivity(intent)
@@ -74,10 +82,11 @@ class AdapterMainPage(
         var pdfView = binding.pdfView
         var progressBar = binding.progressBar
         var titleTv = binding.titleTv
+        var priceTv = binding.priceTv
+        var discount = binding.discount
 //        var descriptionTv = binding.descriptionTv
 //        val priceTv = binding.priceTv
 //        val imageRedLine = binding.imageRedLine
-//        val discountTv = binding.discountTv
 //        var categoryTv = binding.categoryTv
 //        var sizeTv = binding.sizeTv
 //        var dateTv = binding.dateTv

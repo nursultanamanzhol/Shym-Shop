@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shym.commercial.data.model.ModelPdf
 import com.shym.commercial.databinding.RowMainDiscountBinding
 import com.shym.commercial.extensions.MyApplication
+import com.shym.commercial.extensions.setSafeOnClickListener
 import com.shym.commercial.filters.FilterMainPage
 import com.shym.commercial.filters.FilterMainSpecial
 import com.shym.commercial.ui.pdf.PdfDetailsActivity
@@ -58,11 +59,11 @@ class AdapterMainSpecial(
             null
         )
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, PdfDetailsActivity::class.java)
-            intent.putExtra("bookId", model.id)
-            context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener {
+//            val intent = Intent(context, PdfDetailsActivity::class.java)
+//            intent.putExtra("bookId", model.id)
+//            context.startActivity(intent)
+//        }
     }
 
     override fun getFilter(): Filter {
@@ -78,10 +79,18 @@ class AdapterMainSpecial(
         var titleTv = binding.titleTv
         var discount = binding.discount
         val priceTv = binding.priceTv
-//        val imageRedLine = binding.imageRedLine
-//        val discountTv = binding.discountTv
-//        var categoryTv = binding.categoryTv
-//        var sizeTv = binding.sizeTv
-//        var dateTv = binding.dateTv
+
+        init {
+            // Устанавливаем обработчик клика на itemView, который включает в себя pdfView
+            itemView.setSafeOnClickListener {
+                val intent = Intent(context, PdfDetailsActivity::class.java)
+                intent.putExtra("bookId", pdfArrayList[adapterPosition].id)
+                context.startActivity(intent)
+            }
+
+            // Если вы хотите также обрабатывать клики на pdfView, раскомментируйте следующую строку:
+            // pdfView.setSafeOnClickListener { /* ваш код обработки клика на pdfView */ }
+        }
+
     }
 }

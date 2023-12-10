@@ -216,7 +216,7 @@ class PdfDetailsActivity : AppCompatActivity() {
                     binding.pagesTv
                 )
                 MyApplication.loadPdfSize("$bookUrl", "$bookTitle", binding.sizeTv)
-                val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
+                val discountedPrice = price.toInt() - ((discount.toInt() / 100) * price.toInt())
                 binding.titleTv.text = bookTitle
                 binding.priceTv.text = discountedPrice.toString()
                 binding.descriptionTv.text = description
