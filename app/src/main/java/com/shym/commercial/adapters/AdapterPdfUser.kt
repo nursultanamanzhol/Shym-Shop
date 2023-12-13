@@ -64,12 +64,9 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
         holder.titleTv.text = title
         holder.priceTv.text = price.toString()
 
-        val priceValue = price.toIntOrNull() ?: 0
-        val discountValue = discount.toIntOrNull() ?: 0
+        val discountedPrice = price - ((discount / 100) * price)
 
-        val discountedPrice = priceValue - (priceValue * discountValue / 100)
-
-        if (priceValue == discountedPrice) {
+        if (price == discountedPrice) {
             holder.discountTv.visibility = View.GONE
             holder.imageRedLine.visibility = View.GONE
         } else {
@@ -106,7 +103,6 @@ class AdapterPdfUser : RecyclerView.Adapter<AdapterPdfUser.HolderPdfIUser>, Filt
     override fun getFilter(): Filter {
         if (filter == null) {
             filter = FilterPdfUser(filterList, this)
-
         }
         return filter as FilterPdfUser
     }

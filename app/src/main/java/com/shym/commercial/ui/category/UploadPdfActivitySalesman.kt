@@ -44,8 +44,8 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var title = ""
     private var description = ""
-    private var price = ""
-    private var discount = ""
+    private var price = 0
+    private var discount =0
     private var category = ""
     private var selectedCategoryId = ""
     private var selectedCategoryTitle = ""
@@ -97,30 +97,37 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
     }
 
     private fun validateData() {
-        //validate data ?Step 1
-        Log.d(TAG, "validateData: validating data")
-        //get data
+        // Проверка данных - Шаг 1
+        Log.d(TAG, "validateData: проверка данных")
+        // Получение данных
         title = binding.titleEt.text.toString().trim()
         description = binding.descriptionEt.text.toString().trim()
-        price = binding.costEt.text.toString().trim()
-        discount = binding.discountEt.text.toString().trim()
-//        category = binding.categoryTv.text.toString().trim()
-        //validate data
-        if (title.isEmpty()) {
-            Toast.makeText(this, "Enter Title...", Toast.LENGTH_SHORT).show()
-        } else if (description.isEmpty()) {
-            Toast.makeText(this, "Enter Description...", Toast.LENGTH_SHORT).show()
-        } else if (price.isEmpty()) {
-            Toast.makeText(this, "Write a price product...", Toast.LENGTH_SHORT).show()
-        } else if (discount.isEmpty()) {
-            Toast.makeText(this, "Write a discount...", Toast.LENGTH_SHORT).show()
-        } else if (pdfUri == null) {
-            Toast.makeText(this, "Pick PDF...", Toast.LENGTH_SHORT).show()
 
+        // Преобразование строк в Int
+        price = binding.costEt.text.toString().toIntOrNull() ?: 0
+        discount = binding.discountEt.text.toString().toIntOrNull() ?: 0
+
+//        category = binding.categoryTv.text.toString().trim()
+
+        // Проверка данных
+        if (title.isEmpty()) {
+            Toast.makeText(this, "Введите заголовок...", Toast.LENGTH_SHORT).show()
+        } else if (description.isEmpty()) {
+            Toast.makeText(this, "Введите описание...", Toast.LENGTH_SHORT).show()
+        } else if (price == 0) {
+            Toast.makeText(this, "Введите цену продукта...", Toast.LENGTH_SHORT).show()
+        }
+//        else if (discount.isEmpty()) {
+//            Toast.makeText(this, "Введите скидку...", Toast.LENGTH_SHORT).show()
+//        }
+        else if (category.isEmpty()) {
+            Toast.makeText(this, "Введите категорию...", Toast.LENGTH_SHORT).show()
+        } else if (pdfUri == null) {
+            Toast.makeText(this, "Выберите PDF...", Toast.LENGTH_SHORT).show()
         } else {
-            //data validated, begin upload
+            // Данные проверены, начнем загрузку
             binding.attacheConst.background =
-                ContextCompat.getDrawable(this, R.drawable.add_new_product_salesman_uploaded)
+                ContextCompat.getDrawable(this, R.drawable.add_new_product_salesman)
             uploadPdfToStorage()
         }
     }
@@ -156,8 +163,7 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
                         this,
                         "Failure to upload due to ${e.message}",
                         Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    ).show()
                 }
         }
     }
@@ -182,8 +188,8 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
                     hashMap["id"] = "$timestamp"
                     hashMap["title"] = "$title"
                     hashMap["description"] = "$description"
-                    hashMap["price"] = "$price"
-                    hashMap["discount"] = "$discount"
+                    hashMap["price"] = price
+                    hashMap["discount"] = discount
                     hashMap["categoryId"] = "$categoryId"
                     hashMap["url"] = "$uploadPdfUrl"
                     hashMap["timestamp"] = timestamp
@@ -197,10 +203,19 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
                         .addOnSuccessListener {
                             Log.d(TAG, "uploadPdfInfoToDo: upload to db")
                             progressDialog.dismiss()
-                            Toast.makeText(this@UploadPdfActivitySalesman, "Uploaded...", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@UploadPdfActivitySalesman,
+                                "Uploaded...",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             pdfUri = null
 //                fileUris.clear()
-                            startActivity(Intent(this@UploadPdfActivitySalesman, DashboardSalesmanPageActivity::class.java))
+                            startActivity(
+                                Intent(
+                                    this@UploadPdfActivitySalesman,
+                                    DashboardSalesmanPageActivity::class.java
+                                )
+                            )
                         }
                         .addOnFailureListener { e ->
                             Log.d(TAG, "uploadPdfToStorage: failed to upload due to ${e.message}")
@@ -248,42 +263,6 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
             }
         })
     }
-
-//    private fun categoryPickDialog() {
-//        Log.d(TAG, "categoryPickDialog: Showing pdf category pick dialog")
-//
-//        val categoriesArray = arrayOfNulls<String>(categoryArrayList.size)
-//        for (i in categoriesArray.indices) {
-//            categoriesArray[i] = categoryArrayList[i].category
-//        }
-//
-//        val builder = AlertDialog.Builder(this)
-//        var selectedPosition = -1 // Позиция выбранного элемента, изначально не выбрано
-//
-//        builder.setTitle("Pick Category")
-//            .setSingleChoiceItems(categoriesArray, -1) { _, which ->
-//                // Обработка выбора элемента
-//                selectedPosition = which
-//            }
-//            .setPositiveButton("OK") { dialog, _ ->
-//                // Обработка нажатия кнопки "OK"
-//                if (selectedPosition != -1) {
-//                    // Если элемент выбран
-//                    selectedCategoryTitle = categoryArrayList[selectedPosition].category
-//                    selectedCategoryId = categoryArrayList[selectedPosition].id
-//                    binding.categoryTv.text = selectedCategoryTitle
-//                    Log.d(TAG, "categoryPickDialog: Selected Category ID: $selectedCategoryId")
-//                    Log.d(TAG, "categoryPickDialog: Selected Category Title: $selectedCategoryTitle")
-//                }
-//                dialog.dismiss() // Закрыть диалоговое окно
-//            }
-//            .setNegativeButton("Cancel") { dialog, _ ->
-//                // Обработка нажатия кнопки "Cancel"
-//                dialog.dismiss() // Закрыть диалоговое окно
-//            }
-//            .show()
-//    }
-
 
     private fun pdfPickIntent() {
         Log.d(TAG, "pdfPickIntent: starting pdf pick intent")

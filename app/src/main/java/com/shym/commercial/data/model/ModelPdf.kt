@@ -9,8 +9,8 @@ class ModelPdf {
     var uid: String = ""
     var id: String = ""
     var title: String = ""
-    var price: String = ""
-    var discount: String = ""
+    var price: Int = 0
+    var discount: Int = 0
     var description: String = ""
     var categoryId: String = ""
     var url: String = ""
@@ -28,8 +28,8 @@ class ModelPdf {
         id: String,
         title: String,
         description: String,
-        price: String,
-        discount: String,
+        price: Int,
+        discount: Int,
         categoryId: String,
         url: String,
         timestamp: Long,

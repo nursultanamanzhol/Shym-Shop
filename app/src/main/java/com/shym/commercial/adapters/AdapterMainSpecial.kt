@@ -48,8 +48,8 @@ class AdapterMainSpecial(
         val timestamp = model.timestamp
         // ... Остальной код без изменений
         holder.titleTv.text = title
-        holder.priceTv.text = price
-        holder.discount.text = discount
+        holder.priceTv.text = price.toString()
+        holder.discount.text = discount.toString()
 
         MyApplication.loadPdfFromUrlSinglePage(
             pdfUrl,

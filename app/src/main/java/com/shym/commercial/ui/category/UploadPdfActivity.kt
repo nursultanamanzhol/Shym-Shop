@@ -46,7 +46,8 @@ class UploadPdfActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var title = ""
     private var description = ""
-    private var price = ""
+    private var price = 0
+    private var discount = 0
     private var category = ""
     private var selectedCategoryId = ""
     private var selectedCategoryTitle = ""
@@ -76,7 +77,7 @@ class UploadPdfActivity : AppCompatActivity() {
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait...")
         progressDialog.setCanceledOnTouchOutside(false)
-        //handle click, show categorypick dialog
+        //handle click, show category pick dialog
 
         binding.categoryTv.setOnClickListener {
             categoryPickDialog()
@@ -99,32 +100,40 @@ class UploadPdfActivity : AppCompatActivity() {
     }
 
     private fun validateData() {
-        //validate data ?Step 1
-        Log.d(TAG, "validateData: validating data")
-        //get data
+        // Проверка данных - Шаг 1
+        Log.d(TAG, "validateData: проверка данных")
+        // Получение данных
         title = binding.titleEt.text.toString().trim()
         description = binding.descriptionEt.text.toString().trim()
-        category = binding.categoryTv.text.toString().trim()
-        price = binding.costEt.text.toString().trim()
-        //validate data
-        if (title.isEmpty()) {
-            Toast.makeText(this, "Enter Title...", Toast.LENGTH_SHORT).show()
-        } else if (description.isEmpty()) {
-            Toast.makeText(this, "Enter Description...", Toast.LENGTH_SHORT).show()
-        } else if (price.isEmpty()) {
-            Toast.makeText(this, "Write a price product...", Toast.LENGTH_SHORT).show()
-        } else if (category.isEmpty()) {
-            Toast.makeText(this, "Enter Category...", Toast.LENGTH_SHORT).show()
-        } else if (pdfUri == null) {
-            Toast.makeText(this, "Pick PDF...", Toast.LENGTH_SHORT).show()
 
+        // Преобразование строк в Int
+        price = binding.costEt.text.toString().toIntOrNull() ?: 0
+        discount = binding.discountEt.text.toString().toIntOrNull() ?: 0
+        category = binding.categoryTv.text.toString().trim()
+
+        // Проверка данных
+        if (title.isEmpty()) {
+            Toast.makeText(this, "Введите заголовок...", Toast.LENGTH_SHORT).show()
+        } else if (description.isEmpty()) {
+            Toast.makeText(this, "Введите описание...", Toast.LENGTH_SHORT).show()
+        } else if (price == 0) {
+            Toast.makeText(this, "Введите цену продукта...", Toast.LENGTH_SHORT).show()
+        }
+//        else if (discount == ) {
+//            Toast.makeText(this, "Введите скидку...", Toast.LENGTH_SHORT).show()
+//        }
+        else if (category.isEmpty()) {
+            Toast.makeText(this, "Введите категорию...", Toast.LENGTH_SHORT).show()
+        } else if (pdfUri == null) {
+            Toast.makeText(this, "Выберите PDF...", Toast.LENGTH_SHORT).show()
         } else {
-            //data validated, begin upload
+            // Данные проверены, начнем загрузку
             binding.attacheConst.background =
                 ContextCompat.getDrawable(this, R.drawable.add_new_product_salesman)
             uploadPdfToStorage()
         }
     }
+
 
     private fun uploadPdfToStorage() {
         /*upload pdf to firebase storage*/
@@ -171,7 +180,8 @@ class UploadPdfActivity : AppCompatActivity() {
         hashMap["id"] = "$timestamp"
         hashMap["title"] = "$title"
         hashMap["description"] = "$description"
-        hashMap["price"] = "$price"
+        hashMap["price"] = price
+        hashMap["discount"] = discount
         hashMap["categoryId"] = "$selectedCategoryId"
         hashMap["url"] = "$uploadPdfUrl"
         hashMap["timestamp"] = timestamp
