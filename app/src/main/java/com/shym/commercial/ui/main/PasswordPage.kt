@@ -65,8 +65,7 @@ class PasswordPage : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser!!
         val usersRef = FirebaseDatabase.getInstance().getReference("Users")
         usersRef.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object :
-                ValueEventListener {
+            .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(userSnapshot: DataSnapshot) {
                     password = userSnapshot.child("quickAccessCode").value.toString()
                     checkBtn.setSafeOnClickListener {

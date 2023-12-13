@@ -71,17 +71,13 @@ class AdapterPdfSalesman : RecyclerView.Adapter<AdapterPdfSalesman.HolderPdfSale
 
 
         holder.titleTv.text = title
-        holder.priceTv.text = price
+        holder.priceTv.text = price.toString()
 
 // Предполагаем, что price и discount представляют числовые значения
-//        val discountedPrice = price.toDouble() - ((discount.toDouble() / 100) * price.toDouble())
+        val discountedPrice = price - ((discount / 100) * price)
 
-        val priceValue = if (price.isNotEmpty()) price.toInt() else 0
-        val discountValue = if (discount.isNotEmpty()) discount.toInt() else 0
-
-        val discountedPrice = priceValue - ((discountValue / 100) * priceValue)
 // Управление видимостью элементов в зависимости от условий
-        if (priceValue == discountedPrice) {
+        if (price == discountedPrice) {
             holder.discountTv.visibility = View.GONE
             holder.imageRedLine.visibility = View.GONE
         } else {

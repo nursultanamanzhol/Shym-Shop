@@ -144,15 +144,8 @@ class MainUserPage : AppCompatActivity() {
                 pdfArrayListDiscount.clear()
                 for (ds in snapshot.children) {
                     val model = ds.getValue(ModelPdf::class.java)
-                    if (model != null && !model.discount.isNullOrEmpty()) {
-                        try {
-                            val discountValue = model.discount.toInt()
-                            if (discountValue > 10) {
-                                pdfArrayListDiscount.add(model)
-                            }
-                        } catch (e: NumberFormatException) {
-                            Log.e(TAG, "Invalid discount format: ${model.discount}")
-                        }
+                    if (model != null && model.discount > 0) {
+                        pdfArrayListDiscount.add(model)
                     }
                 }
                 adapterMainSpecial = AdapterMainSpecial(this@MainUserPage, pdfArrayListDiscount)
@@ -160,10 +153,11 @@ class MainUserPage : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.d(TAG, "loadAllBooks onCancelled: ${error.message}")
+                Log.d(TAG, "loadDiscountBooks onCancelled: ${error.message}")
             }
         })
     }
+
 
 
 

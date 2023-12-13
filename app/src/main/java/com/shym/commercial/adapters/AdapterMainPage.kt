@@ -42,12 +42,12 @@ class AdapterMainPage(
         val title = model.title
         val description = model.description
         val price = model.price
-        val discount = model.discount.toIntOrNull() ?: 0
+        val discount = model.discount
         val uid = model.uid
         val pdfUrl = model.url
         val timestamp = model.timestamp
         // ... Остальной код без изменений
-        holder.priceTv.text = price
+        holder.priceTv.text = price.toString()
         if ( discount == 0) {
             holder.discount.visibility = View.GONE
         } else {
@@ -55,6 +55,7 @@ class AdapterMainPage(
             holder.discount.text = discount.toString()
         }
         holder.titleTv.text = title
+        holder.priceTv.text = price.toString()
 
         MyApplication.loadPdfFromUrlSinglePage(
             pdfUrl,
