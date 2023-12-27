@@ -120,9 +120,10 @@ class UploadPdfActivitySalesman : AppCompatActivity() {
 //        else if (discount.isEmpty()) {
 //            Toast.makeText(this, "Введите скидку...", Toast.LENGTH_SHORT).show()
 //        }
-        else if (category.isEmpty()) {
-            Toast.makeText(this, "Введите категорию...", Toast.LENGTH_SHORT).show()
-        } else if (pdfUri == null) {
+//        else if (category.isEmpty()) {
+//            Toast.makeText(this, "Введите категорию...", Toast.LENGTH_SHORT).show()
+//        }
+        else if (pdfUri == null) {
             Toast.makeText(this, "Выберите PDF...", Toast.LENGTH_SHORT).show()
         } else {
             // Данные проверены, начнем загрузку
